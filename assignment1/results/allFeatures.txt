@@ -1,0 +1,33 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  class   R-squared:                       0.843
+Model:                            OLS   Adj. R-squared:                  0.841
+Method:                 Least Squares   F-statistic:                     402.5
+Date:                Wed, 10 Oct 2018   Prob (F-statistic):          4.46e-264
+Time:                        20:24:42   Log-Likelihood:                -303.90
+No. Observations:                 683   AIC:                             627.8
+Df Residuals:                     673   BIC:                             673.1
+Df Model:                           9                                         
+Covariance Type:            nonrobust                                         
+============================================================================================
+                               coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------
+const                        1.5047      0.033     45.807      0.000       1.440       1.569
+clumpThickness               0.0634      0.007      8.898      0.000       0.049       0.077
+uniformityOfCellSize         0.0437      0.013      3.428      0.001       0.019       0.069
+uniformityOfCellShape        0.0313      0.012      2.508      0.012       0.007       0.056
+marginalAdhesion             0.0165      0.008      2.065      0.039       0.001       0.032
+singleEpithelialCellSize     0.0202      0.010      1.924      0.055      -0.000       0.041
+bareNuclei                   0.0908      0.006     14.091      0.000       0.078       0.103
+blandChromatin               0.0384      0.010      3.802      0.000       0.019       0.058
+normalNucleoli               0.0371      0.007      4.981      0.000       0.022       0.052
+mitoses                      0.0020      0.010      0.197      0.844      -0.018       0.021
+==============================================================================
+Omnibus:                       84.326   Durbin-Watson:                   1.753
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              461.869
+Skew:                           0.383   Prob(JB):                    5.09e-101
+Kurtosis:                       6.955   Cond. No.                         27.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

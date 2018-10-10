@@ -1,10 +1,10 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                      y   R-squared:                       0.677
+Dep. Variable:                  class   R-squared:                       0.677
 Model:                            OLS   Adj. R-squared:                  0.676
 Method:                 Least Squares   F-statistic:                     1426.
 Date:                Wed, 10 Oct 2018   Prob (F-statistic):          3.40e-169
-Time:                        19:22:09   Log-Likelihood:                -551.15
+Time:                        20:25:21   Log-Likelihood:                -551.15
 No. Observations:                 683   AIC:                             1106.
 Df Residuals:                     681   BIC:                             1115.
 Df Model:                           1                                         
@@ -13,7 +13,7 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 const          1.9359      0.029     66.754      0.000       1.879       1.993
-x1             0.2155      0.006     37.766      0.000       0.204       0.227
+bareNuclei     0.2155      0.006     37.766      0.000       0.204       0.227
 ==============================================================================
 Omnibus:                      218.770   Durbin-Watson:                   1.791
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              796.545
