@@ -1,7 +1,7 @@
-##Preparing data
+## Preparing data
 First of all we need to remove the Data that have missing values.
-##Analysis
 
+## Analysis
 
 ### Linear regression 
 We have 9 Features, we calculated the regression for this features, and save the result of them in 
