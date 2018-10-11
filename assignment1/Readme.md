@@ -45,6 +45,16 @@ multiple regression with these features and we face with this
 
 [All features multiple regression result](./results/allFeatures.txt)
 
+    Dep. Variable:                  class   R-squared:                       0.843
+    Model:                            OLS   Adj. R-squared:                  0.841
+    Method:                 Least Squares   F-statistic:                     402.5
+    Date:                Wed, 10 Oct 2018   Prob (F-statistic):          4.46e-264
+    Time:                        20:24:42   Log-Likelihood:                -303.90
+    No. Observations:                 683   AIC:                             627.8
+    Df Residuals:                     673   BIC:                             673.1
+    Df Model:                           9                                         
+    Covariance Type:            nonrobust        
+
                                  coef         std err      t        P>|t|      [0.025       0.975]
     const                        1.5047       0.033     45.807      0.000       1.440       1.569
     clumpThickness               0.0634      0.007      8.898      0.000       0.049       0.077
@@ -62,6 +72,15 @@ linear regression with other 7 features and get these
 
 [All significant features multiple regression result](./results/allSignificantFeatures.txt)
 
+    Dep. Variable:                  class   R-squared:                       0.842
+    Model:                            OLS   Adj. R-squared:                  0.841
+    Method:                 Least Squares   F-statistic:                     515.4
+    Date:                Thu, 11 Oct 2018   Prob (F-statistic):          6.47e-266
+    Time:                        21:22:05   Log-Likelihood:                -305.95
+    No. Observations:                 683   AIC:                             627.9
+    Df Residuals:                     675   BIC:                             664.1
+    Df Model:                           7                                         
+    Covariance Type:            nonrobust   
 
                               coef        std err     t          P>|t|      [0.025      0.975]
     const                     1.5318      0.030     51.224      0.000       1.473       1.591
@@ -73,10 +92,10 @@ linear regression with other 7 features and get these
     uniformityOfCellShape     0.0331      0.012      2.654      0.008       0.009       0.058
     marginalAdhesion          0.0177      0.008      2.237      0.026       0.002       0.033
     
-
- 
-
-
+As we can see in second multiple regression R-squared  decreases but this is natural
+because when number of features decrease then R-squared decreases too, so the
+best way is to compare Adjusted R-squared in two models that
+ in these tho models are equal (0.841) 
 
 ## References
 * https://towardsdatascience.com/simple-and-multiple-linear-regression-in-python-c928425168f9
