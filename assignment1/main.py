@@ -35,7 +35,7 @@ def save_multiple_linear_regression_for_all_features():
 # Call this function to save the summary of significant features multipleRegression result in allFeatures.txt
 def save_multiple_linear_regression_for_all_significant_features():
     features = ["clumpThickness", "uniformityOfCellSize", "bareNuclei", "blandChromatin",
-                "normalNucleoli", "uniformityOfCellSize"]
+                "normalNucleoli", "uniformityOfCellShape", "marginalAdhesion"]
     X = df[features]
     y = df["class"]
     f = open("./results/allSignificantFeatures.txt", "w")
