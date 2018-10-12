@@ -96,10 +96,66 @@ and prob(F-statistic) is significant, this means at least one feature has relati
 As we can see in second multiple regression, R-squared  decreases but this is natural
 because when number of features decrease then R-squared decreases too, so the
 best way is to compare Adjusted R-squared in two models that
- in these tho models are equal (0.841).
+ in these tho models are equal (0.841), so it tells us removing 2 feature doesnt decrease 
+ R-squared too much so they are not important features.
  In other hand we can compare Prob(F-statistics) too, that when removing 2 Features the
  prob(F-statistics) decreases so we can say that this deleting features give us
  better result.
+ 
+### Regularization
+When Features or samples are too much the over fitting problem may happen
+so we must regularization the features and remove some features that dont't 
+have significant p-values, we use 3 ways to regularize our data in this assignment
+
+#### Ridge
+[Ridge regression Result](./results/ridgeRegression.txt)
+
+                        Feature  Coefficients  t values  Standard Errors  Probabilites
+    0                 constants        1.5047    45.809            0.033         0.000
+    1            clumpThickness        0.0634     8.897            0.007         0.000
+    2      uniformityOfCellSize        0.0437     3.427            0.013         0.001
+    3     uniformityOfCellShape        0.0313     2.509            0.012         0.012
+    4          marginalAdhesion        0.0165     2.066            0.008         0.039
+    5  singleEpithelialCellSize        0.0202     1.924            0.010         0.055
+    6                bareNuclei        0.0908    14.089            0.006         0.000
+    7            blandChromatin        0.0383     3.801            0.010         0.000
+    8            normalNucleoli        0.0371     4.981            0.007         0.000
+    9                   mitoses        0.0020     0.198            0.010         0.843
+
+
+#### Lasso
+[Lasso regression Result](./results/lassoRegression.txt)
+
+                        Feature  Coefficients  t values  Standard Errors  Probabilites
+    0                 constants        1.6064    48.423            0.033         0.000
+    1            clumpThickness        0.0558     7.757            0.007         0.000
+    2      uniformityOfCellSize        0.0553     4.293            0.013         0.000
+    3     uniformityOfCellShape        0.0315     2.502            0.013         0.013
+    4          marginalAdhesion        0.0116     1.436            0.008         0.152
+    5  singleEpithelialCellSize        0.0017     0.156            0.011         0.876
+    6                bareNuclei        0.0952    14.640            0.007         0.000
+    7            blandChromatin        0.0256     2.514            0.010         0.012
+    8            normalNucleoli        0.0370     4.918            0.008         0.000
+    9                   mitoses        0.0000     0.000            0.010         1.000
+
+
+#### Elastic net
+[Elastic net regression Result](./results/elasticNetRegression.txt)
+    
+                        Feature  Coefficients  t values  Standard Errors  Probabilites
+    0                 constants        1.8835    49.730            0.038         0.000
+    1            clumpThickness        0.0257     3.127            0.008         0.002
+    2      uniformityOfCellSize        0.0577     3.926            0.015         0.000
+    3     uniformityOfCellShape        0.0316     2.197            0.014         0.028
+    4          marginalAdhesion        0.0000     0.000            0.009         1.000
+    5  singleEpithelialCellSize        0.0000     0.000            0.012         1.000
+    6                bareNuclei        0.0981    13.208            0.007         0.000
+    7            blandChromatin        0.0000     0.000            0.012         1.000
+    8            normalNucleoli        0.0246     2.868            0.009         0.004
+    9                   mitoses        0.0000     0.000            0.011         1.000
+
+
+#### Conclusion
 
 ## References
 * https://towardsdatascience.com/simple-and-multiple-linear-regression-in-python-c928425168f9
