@@ -68,7 +68,8 @@ multiple regression with these features and we face with this
     mitoses                      0.0020      0.010      0.197      0.844      -0.018       0.021
 So the mitoses and singleEpithelialCellSize have p-value > 0.05 then these are 
 insignificant features and we can remove them and again calculate the multiple
-linear regression with other 7 features and get these 
+linear regression with other 7 features and get these.
+and prob(F-statistic) is significant, this means at least one feature has relationship with response. 
 
 [All significant features multiple regression result](./results/allSignificantFeatures.txt)
 
@@ -92,13 +93,18 @@ linear regression with other 7 features and get these
     uniformityOfCellShape     0.0331      0.012      2.654      0.008       0.009       0.058
     marginalAdhesion          0.0177      0.008      2.237      0.026       0.002       0.033
     
-As we can see in second multiple regression R-squared  decreases but this is natural
+As we can see in second multiple regression, R-squared  decreases but this is natural
 because when number of features decrease then R-squared decreases too, so the
 best way is to compare Adjusted R-squared in two models that
- in these tho models are equal (0.841) 
+ in these tho models are equal (0.841).
+ In other hand we can compare Prob(F-statistics) too, that when removing 2 Features the
+ prob(F-statistics) decreases so we can say that this deleting features give us
+ better result.
 
 ## References
 * https://towardsdatascience.com/simple-and-multiple-linear-regression-in-python-c928425168f9
+
+* http://statisticsbyjim.com/regression/interpret-f-test-overall-significance-regression
 
 
 
