@@ -104,55 +104,69 @@ best way is to compare Adjusted R-squared in two models that
  
 ### Regularization
 When Features or samples are too much the over fitting problem may happen
-so we must regularization the features and remove some features that dont't 
-have significant p-values, we use 3 ways to regularize our data in this assignment
+so we must regularization the features and remove or some features that dont't 
+have significant p-values or shrink samples data, we use 3 ways to regularize our data in this assignment
+
+For use the best aphpha in formula we check from 0.01 to 1 in a loop to find best R-squared then choose that alpha
 
 #### Ridge
 [Ridge regression Result](./results/ridgeRegression.txt)
 
+    Alpha  = 0.09
+    
+    R-squared  = 0.8433241288929687
+    
                         Feature  Coefficients  t values  Standard Errors  Probabilites
-    0                 constants        1.5047    45.809            0.033         0.000
-    1            clumpThickness        0.0634     8.897            0.007         0.000
-    2      uniformityOfCellSize        0.0437     3.427            0.013         0.001
-    3     uniformityOfCellShape        0.0313     2.509            0.012         0.012
-    4          marginalAdhesion        0.0165     2.066            0.008         0.039
+    0                 constants        1.5047    45.807            0.033         0.000
+    1            clumpThickness        0.0634     8.898            0.007         0.000
+    2      uniformityOfCellSize        0.0437     3.428            0.013         0.001
+    3     uniformityOfCellShape        0.0313     2.508            0.012         0.012
+    4          marginalAdhesion        0.0165     2.065            0.008         0.039
     5  singleEpithelialCellSize        0.0202     1.924            0.010         0.055
-    6                bareNuclei        0.0908    14.089            0.006         0.000
-    7            blandChromatin        0.0383     3.801            0.010         0.000
+    6                bareNuclei        0.0908    14.091            0.006         0.000
+    7            blandChromatin        0.0384     3.801            0.010         0.000
     8            normalNucleoli        0.0371     4.981            0.007         0.000
-    9                   mitoses        0.0020     0.198            0.010         0.843
+    9                   mitoses        0.0020     0.197            0.010         0.844
 
 
 #### Lasso
 [Lasso regression Result](./results/lassoRegression.txt)
 
+    Alpha  = 0.09
+    
+    R-squared  = 0.8407933263502866
+    
                         Feature  Coefficients  t values  Standard Errors  Probabilites
-    0                 constants        1.6064    48.423            0.033         0.000
-    1            clumpThickness        0.0558     7.757            0.007         0.000
-    2      uniformityOfCellSize        0.0553     4.293            0.013         0.000
-    3     uniformityOfCellShape        0.0315     2.502            0.013         0.013
-    4          marginalAdhesion        0.0116     1.436            0.008         0.152
-    5  singleEpithelialCellSize        0.0017     0.156            0.011         0.876
-    6                bareNuclei        0.0952    14.640            0.007         0.000
-    7            blandChromatin        0.0256     2.514            0.010         0.012
-    8            normalNucleoli        0.0370     4.918            0.008         0.000
+    0                 constants        1.5963    48.208            0.033         0.000
+    1            clumpThickness        0.0566     7.878            0.007         0.000
+    2      uniformityOfCellSize        0.0541     4.212            0.013         0.000
+    3     uniformityOfCellShape        0.0315     2.505            0.013         0.012
+    4          marginalAdhesion        0.0121     1.502            0.008         0.134
+    5  singleEpithelialCellSize        0.0035     0.336            0.011         0.737
+    6                bareNuclei        0.0948    14.598            0.006         0.000
+    7            blandChromatin        0.0269     2.642            0.010         0.008
+    8            normalNucleoli        0.0370     4.931            0.007         0.000
     9                   mitoses        0.0000     0.000            0.010         1.000
 
 
 #### Elastic net
 [Elastic net regression Result](./results/elasticNetRegression.txt)
     
+    Alpha  = 0.1
+    
+    R-squared  = 0.8425236919081593
+    
                         Feature  Coefficients  t values  Standard Errors  Probabilites
-    0                 constants        1.8835    49.730            0.038         0.000
-    1            clumpThickness        0.0257     3.127            0.008         0.002
-    2      uniformityOfCellSize        0.0577     3.926            0.015         0.000
-    3     uniformityOfCellShape        0.0316     2.197            0.014         0.028
-    4          marginalAdhesion        0.0000     0.000            0.009         1.000
-    5  singleEpithelialCellSize        0.0000     0.000            0.012         1.000
-    6                bareNuclei        0.0981    13.208            0.007         0.000
-    7            blandChromatin        0.0000     0.000            0.012         1.000
-    8            normalNucleoli        0.0246     2.868            0.009         0.004
-    9                   mitoses        0.0000     0.000            0.011         1.000
+    0                 constants        1.5567    47.270            0.033         0.000
+    1            clumpThickness        0.0594     8.312            0.007         0.000
+    2      uniformityOfCellSize        0.0488     3.819            0.013         0.000
+    3     uniformityOfCellShape        0.0320     2.559            0.013         0.011
+    4          marginalAdhesion        0.0145     1.811            0.008         0.071
+    5  singleEpithelialCellSize        0.0115     1.095            0.011         0.274
+    6                bareNuclei        0.0924    14.308            0.006         0.000
+    7            blandChromatin        0.0320     3.164            0.010         0.002
+    8            normalNucleoli        0.0370     4.961            0.007         0.000
+    9                   mitoses        0.0000     0.000            0.010         1.000
 
 
 #### Conclusion

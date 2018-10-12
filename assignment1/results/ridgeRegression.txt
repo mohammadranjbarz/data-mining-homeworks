@@ -1,11 +1,15 @@
+Alpha  = 0.09
+
+R-squared  = 0.8433241288929687
+
                     Feature  Coefficients  t values  Standard Errors  Probabilites
-0                 constants        1.5047    45.809            0.033         0.000
-1            clumpThickness        0.0634     8.897            0.007         0.000
-2      uniformityOfCellSize        0.0437     3.427            0.013         0.001
-3     uniformityOfCellShape        0.0313     2.509            0.012         0.012
-4          marginalAdhesion        0.0165     2.066            0.008         0.039
+0                 constants        1.5047    45.807            0.033         0.000
+1            clumpThickness        0.0634     8.898            0.007         0.000
+2      uniformityOfCellSize        0.0437     3.428            0.013         0.001
+3     uniformityOfCellShape        0.0313     2.508            0.012         0.012
+4          marginalAdhesion        0.0165     2.065            0.008         0.039
 5  singleEpithelialCellSize        0.0202     1.924            0.010         0.055
-6                bareNuclei        0.0908    14.089            0.006         0.000
-7            blandChromatin        0.0383     3.801            0.010         0.000
+6                bareNuclei        0.0908    14.091            0.006         0.000
+7            blandChromatin        0.0384     3.801            0.010         0.000
 8            normalNucleoli        0.0371     4.981            0.007         0.000
-9                   mitoses        0.0020     0.198            0.010         0.843
+9                   mitoses        0.0020     0.197            0.010         0.844

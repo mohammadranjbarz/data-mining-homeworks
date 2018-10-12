@@ -53,12 +53,26 @@ def save_ridge_regression():
     del features[0]
     X = df[features]
     y = df["class"]
-    Ridgemodel = Ridge(alpha=1.0)
+    baseAlpha = 0.1
+    Ridgemodel = Ridge(alpha=baseAlpha)
+    Ridgemodel.fit(X, y)
+    baseScore = Ridgemodel.score(X, y, sample_weight=None)
+
+    for x in range(1, 100):
+        alpha = 0.01 * x
+        Ridgemodel = Ridge(alpha=alpha)
+        Ridgemodel.fit(X, y)
+        if (Ridgemodel.score(X, y, sample_weight=None) > baseScore):
+            baseAlpha = alpha
+
+    Ridgemodel = Ridge(alpha=baseAlpha)
     Ridgemodel.fit(X, y)
     params = np.append(Ridgemodel.intercept_, Ridgemodel.coef_)
     predictions = Ridgemodel.predict(X)
     myDF3 = get_formatted_data_frame_from_predictions(X, y, predictions, params, features)
     f = open("./results/ridgeRegression.txt", "w")
+    f.write("Alpha  = " + str(baseAlpha) + "\n\n")
+    f.write("R-squared  = " + str(Ridgemodel.score(X, y, sample_weight=None)) + "\n\n")
     f.write(str(myDF3))
 
 
@@ -68,14 +82,26 @@ def save_Lasso_regression():
     del features[0]
     X = df[features]
     y = df["class"]
-    regr = Lasso(alpha=0.1)
-    regr.fit(X, y)
-    LassoModel = Lasso(alpha=0.1)
+    baseAlpha = 0.1
+    LassoModel = Lasso(alpha=baseAlpha)
+    LassoModel.fit(X, y)
+    baseScore = LassoModel.score(X, y, sample_weight=None)
+
+    for x in range(1, 100):
+        alpha = 0.01 * x
+        LassoModel = Lasso(alpha=alpha)
+        LassoModel.fit(X, y)
+        if (LassoModel.score(X, y, sample_weight=None) > baseScore):
+            baseAlpha = alpha
+
+    LassoModel = Lasso(alpha=baseAlpha)
     LassoModel.fit(X, y)
     params = np.append(LassoModel.intercept_, LassoModel.coef_)
     predictions = LassoModel.predict(X)
     myDF3 = get_formatted_data_frame_from_predictions(X, y, predictions, params, features)
     f = open("./results/lassoRegression.txt", "w")
+    f.write("Alpha  = " + str(baseAlpha) + "\n\n")
+    f.write("R-squared  = " + str(LassoModel.score(X, y, sample_weight=None)) + "\n\n")
     f.write(str(myDF3))
 
 
@@ -85,13 +111,27 @@ def save_elastic_net_regression():
     del features[0]
     X = df[features]
     y = df["class"]
-    ElNet = ElasticNet(random_state=0)
+    baseAlpha = 0.1
+    ElNet = ElasticNet(random_state=0, alpha=baseAlpha)
+    ElNet.fit(X, y)
+    baseScore = ElNet.score(X, y, sample_weight=None)
+
+    for x in range(1, 100):
+        alpha = 0.01 * x
+        ElNet = ElasticNet(random_state=0, alpha=baseAlpha)
+        ElNet.fit(X, y)
+        if (ElNet.score(X, y, sample_weight=None) > baseScore):
+            baseAlpha = alpha
+
+    ElNet = ElasticNet(random_state=0, alpha=baseAlpha)
     ElNet.fit(X, y)
     params = np.append(ElNet.intercept_, ElNet.coef_)
     predictions = ElNet.predict(X)
     params = np.round(params, 4)
     myDF3 = get_formatted_data_frame_from_predictions(X, y, predictions, params, features)
     f = open("./results/elasticNetRegression.txt", "w")
+    f.write("Alpha  = " + str(baseAlpha) + "\n\n")
+    f.write("R-squared  = " + str(ElNet.score(X, y, sample_weight=None)) + "\n\n")
     f.write(str(myDF3))
 
 
@@ -112,3 +152,9 @@ def get_formatted_data_frame_from_predictions(X, y, predictions, params, feature
         features, params, ts_b, sd_b, p_values]
     return myDF3
 
+# save_all_linear_regressions()
+# save_multiple_linear_regression_for_all_features
+# save_multiple_linear_regression_for_all_significant_features()
+# save_elastic_net_regression()
+# save_ridge_regression()
+# save_Lasso_regression()
