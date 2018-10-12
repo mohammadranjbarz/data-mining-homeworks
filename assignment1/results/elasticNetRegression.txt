@@ -1,0 +1,11 @@
+                    Feature  Coefficients  t values  Standard Errors  Probabilites
+0                 constants        1.8835    49.730            0.038         0.000
+1            clumpThickness        0.0257     3.127            0.008         0.002
+2      uniformityOfCellSize        0.0577     3.926            0.015         0.000
+3     uniformityOfCellShape        0.0316     2.197            0.014         0.028
+4          marginalAdhesion        0.0000     0.000            0.009         1.000
+5  singleEpithelialCellSize        0.0000     0.000            0.012         1.000
+6                bareNuclei        0.0981    13.208            0.007         0.000
+7            blandChromatin        0.0000     0.000            0.012         1.000
+8            normalNucleoli        0.0246     2.868            0.009         0.004
+9                   mitoses        0.0000     0.000            0.011         1.000
