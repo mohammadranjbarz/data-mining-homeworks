@@ -1,6 +1,6 @@
-Alpha  = 0.09
+Alpha  = 0.1
 
-R-squared  = 0.8433241288929687
+R-squared  = 0.8433241288874997
 
                     Feature  Coefficients  t values  Standard Errors  Probabilites
 0                 constants        1.5047    45.807            0.033         0.000

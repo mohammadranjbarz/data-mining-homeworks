@@ -59,11 +59,12 @@ def save_ridge_regression():
     baseScore = Ridgemodel.score(X, y, sample_weight=None)
 
     for x in range(1, 100):
-        alpha = 0.01 * x
+        alpha = 1 * x
         Ridgemodel = Ridge(alpha=alpha)
         Ridgemodel.fit(X, y)
         if (Ridgemodel.score(X, y, sample_weight=None) > baseScore):
             baseAlpha = alpha
+            baseScore = Ridgemodel.score(X, y, sample_weight=None)
 
     Ridgemodel = Ridge(alpha=baseAlpha)
     Ridgemodel.fit(X, y)
@@ -88,11 +89,12 @@ def save_Lasso_regression():
     baseScore = LassoModel.score(X, y, sample_weight=None)
 
     for x in range(1, 100):
-        alpha = 0.01 * x
+        alpha = 1 * x
         LassoModel = Lasso(alpha=alpha)
         LassoModel.fit(X, y)
         if (LassoModel.score(X, y, sample_weight=None) > baseScore):
             baseAlpha = alpha
+            baseScore = LassoModel.score(X, y, sample_weight=None)
 
     LassoModel = Lasso(alpha=baseAlpha)
     LassoModel.fit(X, y)
@@ -111,17 +113,20 @@ def save_elastic_net_regression():
     del features[0]
     X = df[features]
     y = df["class"]
-    baseAlpha = 0.1
+    baseAlpha = 1
     ElNet = ElasticNet(random_state=0, alpha=baseAlpha)
     ElNet.fit(X, y)
     baseScore = ElNet.score(X, y, sample_weight=None)
 
     for x in range(1, 100):
-        alpha = 0.01 * x
-        ElNet = ElasticNet(random_state=0, alpha=baseAlpha)
+        alpha = 1 * x
+        ElNet = ElasticNet(random_state=0, alpha=alpha)
         ElNet.fit(X, y)
+        print("alpha  : ", str(alpha), ", score:  "
+              , str(ElNet.score(X, y, sample_weight=None)))
         if (ElNet.score(X, y, sample_weight=None) > baseScore):
             baseAlpha = alpha
+            baseScore = ElNet.score(X, y, sample_weight=None)
 
     ElNet = ElasticNet(random_state=0, alpha=baseAlpha)
     ElNet.fit(X, y)
@@ -152,9 +157,10 @@ def get_formatted_data_frame_from_predictions(X, y, predictions, params, feature
         features, params, ts_b, sd_b, p_values]
     return myDF3
 
+
 # save_all_linear_regressions()
 # save_multiple_linear_regression_for_all_features
 # save_multiple_linear_regression_for_all_significant_features()
-# save_elastic_net_regression()
-# save_ridge_regression()
-# save_Lasso_regression()
+save_elastic_net_regression()
+save_ridge_regression()
+save_Lasso_regression()
