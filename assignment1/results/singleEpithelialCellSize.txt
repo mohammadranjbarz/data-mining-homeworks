@@ -3,8 +3,8 @@
 Dep. Variable:                  class   R-squared:                       0.477
 Model:                            OLS   Adj. R-squared:                  0.477
 Method:                 Least Squares   F-statistic:                     622.2
-Date:                Fri, 12 Oct 2018   Prob (F-statistic):           4.73e-98
-Time:                        12:39:05   Log-Likelihood:                -715.27
+Date:                Sun, 14 Oct 2018   Prob (F-statistic):           4.73e-98
+Time:                        18:21:25   Log-Likelihood:                -715.27
 No. Observations:                 683   AIC:                             1435.
 Df Residuals:                     681   BIC:                             1444.
 Df Model:                           1                                         

@@ -35,6 +35,13 @@ p-value is  0.000  so this feature is significant
 9. [mitoses](./results/mitoses.txt)
 p-value is  0.000  so this feature is significant
 
+#### plots
+As you see [our data](./data/breastData.csv) you understand that all of our data X are 
+1 or 2 or 3, ...or 10 , and all y are 2 or 4
+so our coefficient will be so small because y to x ratio is small.
+and all figures for our features are like this , because all plot is just 20 point, and it's 
+because of our data set
+![](./results/plots/bareNuclei.png)
 
 ### Multiple Linear Regression
 
