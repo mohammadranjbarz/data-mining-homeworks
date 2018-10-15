@@ -1,9 +1,9 @@
 ## Preparing data
 First of all we need to remove the Data that have missing values.
 
-## Analysis
+# Analysis
 
-### Linear regression 
+## Linear regression 
 We have 9 Features, we calculated the regression for this features, and save the result of them in 
 [Results Data](./results)
 
@@ -35,7 +35,7 @@ p-value is  0.000  so this feature is significant
 9. [mitoses](./results/mitoses.txt)
 p-value is  0.000  so this feature is significant
 
-#### plots
+### plots
 As you see [our data](./data/breastData.csv) you understand that all of our data X are 
 1 or 2 or 3, ...or 10 , and all y are 2 or 4
 so our coefficient will be so small because y to x ratio is small.
@@ -43,7 +43,7 @@ and all figures for our features are like this , because all plot is just 20 poi
 because of our data set
 ![](./results/plots/bareNuclei.png)
 
-### Multiple Linear Regression
+## Multiple Linear Regression
 
 As we see in Linear Regression all features were significant,
 but if we want to know that if the features are truly significant 
@@ -109,14 +109,14 @@ best way is to compare Adjusted R-squared in two models that
  prob(F-statistics) decreases so we can say that this deleting features give us
  better result.
  
-### Regularization
+# Regularization
 When Features or samples are too much the over fitting problem may happen
 so we must regularization the features and remove or some features that dont't 
 have significant p-values or shrink samples data, we use 3 ways to regularize our data in this assignment
 
 For use the best aphpha in formula we check from 0.01 to 1 in a loop to find best R-squared then choose that alpha
 
-#### Ridge
+## Ridge
 [Ridge regression Result](./results/ridgeRegression.txt)
 
     Alpha  = 0.09
@@ -136,7 +136,7 @@ For use the best aphpha in formula we check from 0.01 to 1 in a loop to find bes
     9                   mitoses        0.0020     0.197            0.010         0.844
 
 
-#### Lasso
+## Lasso
 [Lasso regression Result](./results/lassoRegression.txt)
 
     Alpha  = 0.09
@@ -156,7 +156,7 @@ For use the best aphpha in formula we check from 0.01 to 1 in a loop to find bes
     9                   mitoses        0.0000     0.000            0.010         1.000
 
 
-#### Elastic net
+## Elastic net
 [Elastic net regression Result](./results/elasticNetRegression.txt)
     
     Alpha  = 0.1
@@ -176,7 +176,7 @@ For use the best aphpha in formula we check from 0.01 to 1 in a loop to find bes
     9                   mitoses        0.0000     0.000            0.010         1.000
 
 
-#### Conclusion
+## Conclusion
 
 ## References
 * https://towardsdatascience.com/simple-and-multiple-linear-regression-in-python-c928425168f9

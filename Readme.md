@@ -1,7 +1,20 @@
-## Assignment for data mining course
-For every assignment a directory will be create , and check those please.
+## Contributors
 
-* [Assignment1](./assignment1)
+* Parisa Davoudi
+   * Telegram :  https://t.me/P_davoudi
+   * Email : 
+   * studentId : 
+
+* Mohamad Ranjbar Z
+    * Telegram :  https://t.me/mohammad_ranjbar_z
+    * Email : mranjbar.z2993@gmail.com 
+    * studentId : 97422117
+
+
+
+## Assignment for data mining course
+* [Assignment1 : Linear Regression, Multiple Linear Regression,
+Ridge, Lasso, Elastic net](./assignment1)
 
 ## Installation
 `pip install -r requirements.txt` or `pip3 install -r requirements.txt`

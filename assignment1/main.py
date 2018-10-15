@@ -13,7 +13,7 @@ df = pd.read_csv("./data/breastData.csv", sep='\s*,\s*',
 
 def regression_data(X, y, featureName):
     # plt.scatter(X, y, color='black')
-    plt.plot(X, y , 'ro')
+    plt.plot(X, y, 'ro')
     plt.axis()
     # plt.xticks(())
     # plt.yticks(())
@@ -32,7 +32,7 @@ def save_all_linear_regressions():
         X = df[df.columns.tolist()[x]]
         y = df["class"]
         f = open("./results/" + df.columns.tolist()[x] + ".txt", "w")
-        f.write(str(regression_data(X, y,df.columns.tolist()[x])))
+        f.write(str(regression_data(X, y, df.columns.tolist()[x])))
 
 
 # Call this function to save the summary of all features multipleRegression result in allFeatures.txt
@@ -84,7 +84,6 @@ def save_ridge_regression():
     f.write("Alpha  = " + str(baseAlpha) + "\n\n")
     f.write("R-squared  = " + str(Ridgemodel.score(X, y, sample_weight=None)) + "\n\n")
     f.write(str(myDF3))
-
 
 
 def save_Lasso_regression():
@@ -168,6 +167,18 @@ def get_formatted_data_frame_from_predictions(X, y, predictions, params, feature
     return myDF3
 
 
+def generate_readme_html():
+    from markdown import markdown
+    input_filename = 'Readme.md'
+    output_filename = 'Readme.html'
+
+    f = open(input_filename, 'r')
+    html_text = markdown(f.read(), output_format='html4')
+    file = open(output_filename, "w")
+    file.write(str(html_text))
+
+
+generate_readme_html()
 # save_all_linear_regressions()
 # save_multiple_linear_regression_for_all_features
 # save_multiple_linear_regression_for_all_significant_features()
