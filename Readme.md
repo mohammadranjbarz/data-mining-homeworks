@@ -20,5 +20,5 @@ Ridge, Lasso, Elastic net](./assignment1)
 `pip install -r requirements.txt` or `pip3 install -r requirements.txt`
 
 ## Run
-For run every assignment go to that directory and enter this cooman :
+For run every assignment go to that directory and enter this command :
 `python main.py` or `python3 main.py` 
