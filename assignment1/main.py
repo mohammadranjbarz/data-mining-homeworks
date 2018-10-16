@@ -179,9 +179,9 @@ def generate_readme_html():
 
 
 generate_readme_html()
-# save_all_linear_regressions()
-# save_multiple_linear_regression_for_all_features
-# save_multiple_linear_regression_for_all_significant_features()
-# save_elastic_net_regression()
-# save_ridge_regression()
-# save_Lasso_regression()
+save_all_linear_regressions()
+save_multiple_linear_regression_for_all_features
+save_multiple_linear_regression_for_all_significant_features()
+save_elastic_net_regression()
+save_ridge_regression()
+save_Lasso_regression()
