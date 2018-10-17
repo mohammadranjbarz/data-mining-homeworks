@@ -1,5 +1,27 @@
 ## Preparing data
-First of all we need to remove the Data that have missing values.
+[Breast Cancer Wisconsin (Prognostic) Data Set](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Prognostic%29)
+Each record represents follow-up data for one breast cancer case. These are consecutive
+patients seen by Dr. Wolberg since 1984, and include only those cases exhibiting
+invasive breast cancer and no evidence of distant metastases at the time of diagnosis. 
+
+These are attributes that sample-code-number is just an ID and we don't count it a feature,
+and the class attribute is our output for  regression. 
+
+       #  Attribute                     Domain
+       -- -----------------------------------------
+       1. Sample code number            id number
+       2. Clump Thickness               1 - 10
+       3. Uniformity of Cell Size       1 - 10
+       4. Uniformity of Cell Shape      1 - 10
+       5. Marginal Adhesion             1 - 10
+       6. Single Epithelial Cell Size   1 - 10
+       7. Bare Nuclei                   1 - 10
+       8. Bland Chromatin               1 - 10
+       9. Normal Nucleoli               1 - 10
+       10. Mitoses                      1 - 10
+       11. Class:                       (2 for benign, 4 for malignant)
+       
+First of all we need to remove the Data that have missing values (16 row).
 
 # Analysis
 
@@ -7,8 +29,21 @@ First of all we need to remove the Data that have missing values.
 We have 9 Features, we calculated the regression for this features, and save the result of them in 
 [Results Data](./results)
 
-In this level, all p-values have the same values, so they have same importance.
+In this Model we have coefficient from 0.23, all p-values have the same values, so they have same importance.
+There is some thing that surprise us and it was the small coefficients for all features, but we 
+understood that because of our X's that are in {1,2,3,4,5,6,7,8,,9,10} and our y that are in {2,4}
+the coefficients always are near 0.2
 
+* R-squared: R-squared is a statistical measure of  how close the data are to the fitted regression line 
+* p-value : When we perform a hypothesis test in statistics, a p-value helps us determine the significance of your results.
+* Adjusted R-squared : The adjusted R-squared is a modified version of R-squared that has been adjusted for
+ the number of predictors in the model. The adjusted R-squared increases only if the new term improves 
+ the model more than would be expected by chance. It decreases when a predictor improves the model by 
+ less than expected by chance
+* F-statistics : The F value is the ratio of the mean regression sum of squares divided by 
+the mean error sum of squares. Its value will range from zero to an arbitrarily large number.
+ The value of Prob(F) is the probability that the null hypothesis for the full
+ model is true ( that all of the regression coefficients are zero).
 1. [bareNuclei](./results/bareNuclei.txt)
 
                                 OLS Regression Results                            
@@ -34,7 +69,8 @@ In this level, all p-values have the same values, so they have same importance.
         Kurtosis:                       7.386   Cond. No.                         7.23
         ==============================================================================
 p-value is  0.000  so this feature is significant
-
+R-squared is 0.677 do the data almost have a good fit with regression line
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 2. [clump thickness](./results/clumpThickness.txt)
 
                                 OLS Regression Results                            
@@ -60,6 +96,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       3.314   Cond. No.                         10.1
     ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.511 do the data almost have a good fit with regression line
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 3. [uniformity of cell size](./results/uniformityOfCellSize.txt)
 
@@ -86,6 +124,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       4.937   Cond. No.                         6.48
         ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.674 do the data almost have a good fit with regression line
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 4. [uniformity of cell shape](./results/uniformityOfCellShape.txt)
         
@@ -112,6 +152,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       4.595   Cond. No.                         6.63
         ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.675 do the data almost have a good fit with regression line
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 5. [marginal adhesion](./results/marginalAdhesion.txt)
         
@@ -138,6 +180,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       3.915   Cond. No.                         5.84
         ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.498 do the data fitted with regression line not -bad
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 6. [single epithelial cell size](./results/singleEpithelialCellSize.txt)
 
@@ -164,6 +208,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       3.564   Cond. No.                         7.24
         ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.477 do the data fitted with regression line not -bad
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 7. [bland chromatin](./results/blandChromatin.txt)
         
@@ -190,6 +236,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       3.968   Cond. No.                         7.57
         ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.575 do the data almost have a good fit with regression line
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 8. [normal nucleoli](./results/normalNucleoli.txt)
         
@@ -216,6 +264,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       4.374   Cond. No.                         5.91
         ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.677 do the data almost have a good fit with regression line
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 9. [mitoses](./results/mitoses.txt)
         
@@ -242,6 +292,8 @@ p-value is  0.000  so this feature is significant
         Kurtosis:                       1.972   Cond. No.                         3.51
         ==============================================================================
 p-value is  0.000  so this feature is significant
+R-squared is 0.179 do the data fitted with regression line so bad
+Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 ### plots
 As you see [our data](./data/breastData.csv) you understand that all of our data X are 
@@ -308,7 +360,7 @@ and prob(F-statistic) is significant, this means at least one feature has relati
     uniformityOfCellShape     0.0331      0.012      2.654      0.008       0.009       0.058
     marginalAdhesion          0.0177      0.008      2.237      0.026       0.002       0.033
     
-As we can see in second multiple regression, R-squared  decreases but this is natural
+As we see in second multiple regression, R-squared  decreases but this is natural
 because when number of features decrease then R-squared decreases too, so the
 best way is to compare Adjusted R-squared in two models that
  in these tho models are equal (0.841), so it tells us removing 2 feature doesnt decrease 
@@ -318,18 +370,19 @@ best way is to compare Adjusted R-squared in two models that
  better result.
  
 # Regularization
-When Features or samples are too much the over fitting problem may happen
+When Features or samples are too much , the over fitting problem may happen
 so we must regularization the features and remove or some features that dont't 
 have significant p-values or shrink samples data, we use 3 ways to regularize our data in this assignment
 
-For use the best aphpha in formula we check from 0.01 to 1 in a loop to find best R-squared then choose that alpha
+For use the best aphpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
 
 ## Ridge
 [Ridge regression Result](./results/ridgeRegression.txt)
 
     Alpha  = 0.09
+    Alpha  = 0.1
     
-    R-squared  = 0.8433241288929687
+    R-squared  = 0.8433241288874997
     
                         Feature  Coefficients  t values  Standard Errors  Probabilites
     0                 constants        1.5047    45.807            0.033         0.000
@@ -344,9 +397,11 @@ For use the best aphpha in formula we check from 0.01 to 1 in a loop to find bes
     9                   mitoses        0.0020     0.197            0.010         0.844
 
 The Ridge method is based on the restriction of  βi , and the value of α is small,
- So we can conclude that compression is low.
-We also observe that the p-value of all parameters in the ridge method and the multiple 
-linear regression is the same, so we find that the parameters in the two methods are equally important.
+So we can conclude that compression is low.
+the p-value for mitoses (0.844) and singleEpithelialCellSize(0.055) are not small enough so in this
+model these features are not significant and can be remove
+We also observe that the p-value of other parameters in the ridge method and the multiple 
+linear regression almost is the same, so we find that the parameters in the two methods are equally important.
 
 
 ## Lasso
@@ -354,32 +409,36 @@ In Lasso method, we see that the mitosis coefficient is zero, so we find that th
 has been omitted.
 By comparing the two methods of Lasso and Multiple Linear Regression,
  we observe that the p-value of marginalAdhesion , singleEpithelialCellSize , 
- blandChromatin , mitozes in the lasso method has increased, 
- which means that the significance of these parameters is less in this method, 
+ blandChromatin , the coefficient of mitoses in the lasso method is zero so we know in this model 
+ which means that the significance of these parameters is zero in this method, 
+ singleEpithelialCellSize p-value increase to ( 0.876) so in this model singleEpithelialCellSize is not significant,
  also the p-value in uniformityOfCellSize has been reduced, so it has been increased in the lasso method,
-  and in other cases p-value is the same,
+ and in other cases p-value is the same,
  we find out that the parameters have the same importance.
 [Lasso regression Result](./results/lassoRegression.txt)
 
-    Alpha  = 0.09
+    Alpha  = 0.1
     
-    R-squared  = 0.8407933263502866
+    R-squared  = 0.8402016223438626
     
                         Feature  Coefficients  t values  Standard Errors  Probabilites
-    0                 constants        1.5963    48.208            0.033         0.000
-    1            clumpThickness        0.0566     7.878            0.007         0.000
-    2      uniformityOfCellSize        0.0541     4.212            0.013         0.000
-    3     uniformityOfCellShape        0.0315     2.505            0.013         0.012
-    4          marginalAdhesion        0.0121     1.502            0.008         0.134
-    5  singleEpithelialCellSize        0.0035     0.336            0.011         0.737
-    6                bareNuclei        0.0948    14.598            0.006         0.000
-    7            blandChromatin        0.0269     2.642            0.010         0.008
-    8            normalNucleoli        0.0370     4.931            0.007         0.000
+    0                 constants        1.6064    48.423            0.033         0.000
+    1            clumpThickness        0.0558     7.757            0.007         0.000
+    2      uniformityOfCellSize        0.0553     4.293            0.013         0.000
+    3     uniformityOfCellShape        0.0315     2.502            0.013         0.013
+    4          marginalAdhesion        0.0116     1.436            0.008         0.152
+    5  singleEpithelialCellSize        0.0017     0.156            0.011         0.876
+    6                bareNuclei        0.0952    14.640            0.007         0.000
+    7            blandChromatin        0.0256     2.514            0.010         0.012
+    8            normalNucleoli        0.0370     4.918            0.008         0.000
     9                   mitoses        0.0000     0.000            0.010         1.000
 
 
 ## Elastic net
 [Elastic net regression Result](./results/elasticNetRegression.txt)
+The elastic net is a regularized regression method that linearly combines
+ the L1 and L2 penalties of the lasso and ridge methods.
+ like Lasso results we can see that also in this model mitoses coefficient is zero and has been removed. 
     
     Alpha  = 0.1
     
@@ -399,11 +458,13 @@ By comparing the two methods of Lasso and Multiple Linear Regression,
 
 
 ## Conclusion
+As we see in results of above models we see that the R-squared in Lasso, Ridge and Elastic net doesnt increase
+, so for our data-set the least square regression and regularization method almos have same result 
 
 ## References
-* https://towardsdatascience.com/simple-and-multiple-linear-regression-in-python-c928425168f9
+* [Simple and Multiple Linear Regression in Python](https://towardsdatascience.com/simple-and-multiple-linear-regression-in-python-c928425168f9)
 
-* http://statisticsbyjim.com/regression/interpret-f-test-overall-significance-regression
+* [How to Interpret the F-test of Overall Significance in Regression Analysis](http://statisticsbyjim.com/regression/interpret-f-test-overall-significance-regression)
 
 
 
