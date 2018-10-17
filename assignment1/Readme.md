@@ -7,32 +7,240 @@ First of all we need to remove the Data that have missing values.
 We have 9 Features, we calculated the regression for this features, and save the result of them in 
 [Results Data](./results)
 
-Now we should analyze every feature data 
+In this level, all p-values have the same values, so they have same importance.
+
 1. [bareNuclei](./results/bareNuclei.txt)
+
+                                OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.677
+        Model:                            OLS   Adj. R-squared:                  0.676
+        Method:                 Least Squares   F-statistic:                     1426.
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):          3.40e-169
+        Time:                        18:21:25   Log-Likelihood:                -551.15
+        No. Observations:                 683   AIC:                             1106.
+        Df Residuals:                     681   BIC:                             1115.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ==============================================================================
+                         coef    std err          t      P>|t|      [0.025      0.975]
+        ------------------------------------------------------------------------------
+        const          1.9359      0.029     66.754      0.000       1.879       1.993
+        bareNuclei     0.2155      0.006     37.766      0.000       0.204       0.227
+        ==============================================================================
+        Omnibus:                      218.770   Durbin-Watson:                   1.791
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):              796.545
+        Skew:                           1.479   Prob(JB):                    1.08e-173
+        Kurtosis:                       7.386   Cond. No.                         7.23
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 2. [clump thickness](./results/clumpThickness.txt)
+
+                                OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.511
+        Model:                            OLS   Adj. R-squared:                  0.510
+        Method:                 Least Squares   F-statistic:                     711.4
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):          7.29e-108
+        Time:                        18:21:25   Log-Likelihood:                -692.64
+        No. Observations:                 683   AIC:                             1389.
+        Df Residuals:                     681   BIC:                             1398.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ==================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+        ----------------------------------------------------------------------------------
+        const              1.6253      0.048     34.065      0.000       1.532       1.719
+        clumpThickness     0.2419      0.009     26.673      0.000       0.224       0.260
+        ==============================================================================
+        Omnibus:                       46.918   Durbin-Watson:                   1.742
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):               54.786
+        Skew:                           0.676   Prob(JB):                     1.27e-12
+        Kurtosis:                       3.314   Cond. No.                         10.1
+    ==============================================================================
 p-value is  0.000  so this feature is significant
 
 3. [uniformity of cell size](./results/uniformityOfCellSize.txt)
+
+                                    OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.674
+        Model:                            OLS   Adj. R-squared:                  0.673
+        Method:                 Least Squares   F-statistic:                     1406.
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):          8.92e-168
+        Time:                        18:21:25   Log-Likelihood:                -554.42
+        No. Observations:                 683   AIC:                             1113.
+        Df Residuals:                     681   BIC:                             1122.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ========================================================================================
+                                   coef    std err          t      P>|t|      [0.025      0.975]
+        ----------------------------------------------------------------------------------------
+        const                    1.8944      0.030     63.242      0.000       1.836       1.953
+        uniformityOfCellSize     0.2556      0.007     37.498      0.000       0.242       0.269
+        ==============================================================================
+        Omnibus:                      141.261   Durbin-Watson:                   1.769
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):              268.178
+        Skew:                           1.191   Prob(JB):                     5.83e-59
+        Kurtosis:                       4.937   Cond. No.                         6.48
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 4. [uniformity of cell shape](./results/uniformityOfCellShape.txt)
+        
+                                    OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.676
+        Model:                            OLS   Adj. R-squared:                  0.675
+        Method:                 Least Squares   F-statistic:                     1418.
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):          1.37e-168
+        Time:                        18:21:25   Log-Likelihood:                -552.54
+        No. Observations:                 683   AIC:                             1109.
+        Df Residuals:                     681   BIC:                             1118.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        =========================================================================================
+                                    coef    std err          t      P>|t|      [0.025      0.975]
+        -----------------------------------------------------------------------------------------
+        const                     1.8558      0.031     60.654      0.000       1.796       1.916
+        uniformityOfCellShape     0.2625      0.007     37.652      0.000       0.249       0.276
+        ==============================================================================
+        Omnibus:                      111.909   Durbin-Watson:                   1.849
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):              189.327
+        Skew:                           1.013   Prob(JB):                     7.73e-42
+        Kurtosis:                       4.595   Cond. No.                         6.63
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 5. [marginal adhesion](./results/marginalAdhesion.txt)
+        
+                                    OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.499
+        Model:                            OLS   Adj. R-squared:                  0.498
+        Method:                 Least Squares   F-statistic:                     677.9
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):          2.98e-104
+        Time:                        18:21:25   Log-Likelihood:                -700.97
+        No. Observations:                 683   AIC:                             1406.
+        Df Residuals:                     681   BIC:                             1415.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ====================================================================================
+                               coef    std err          t      P>|t|      [0.025      0.975]
+        ------------------------------------------------------------------------------------
+        const                2.0337      0.036     55.888      0.000       1.962       2.105
+        marginalAdhesion     0.2354      0.009     26.036      0.000       0.218       0.253
+        ==============================================================================
+        Omnibus:                      126.961   Durbin-Watson:                   1.629
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):              199.005
+        Skew:                           1.240   Prob(JB):                     6.12e-44
+        Kurtosis:                       3.915   Cond. No.                         5.84
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 6. [single epithelial cell size](./results/singleEpithelialCellSize.txt)
+
+                                    OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.477
+        Model:                            OLS   Adj. R-squared:                  0.477
+        Method:                 Least Squares   F-statistic:                     622.2
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):           4.73e-98
+        Time:                        18:21:25   Log-Likelihood:                -715.27
+        No. Observations:                 683   AIC:                             1435.
+        Df Residuals:                     681   BIC:                             1444.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ============================================================================================
+                                       coef    std err          t      P>|t|      [0.025      0.975]
+        --------------------------------------------------------------------------------------------
+        const                        1.7403      0.047     37.287      0.000       1.649       1.832
+        singleEpithelialCellSize     0.2967      0.012     24.943      0.000       0.273       0.320
+        ==============================================================================
+        Omnibus:                       68.911   Durbin-Watson:                   1.769
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):               87.713
+        Skew:                           0.831   Prob(JB):                     8.98e-20
+        Kurtosis:                       3.564   Cond. No.                         7.24
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 7. [bland chromatin](./results/blandChromatin.txt)
+        
+                                    OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.575
+        Model:                            OLS   Adj. R-squared:                  0.574
+        Method:                 Least Squares   F-statistic:                     921.0
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):          1.27e-128
+        Time:                        18:21:25   Log-Likelihood:                -644.76
+        No. Observations:                 683   AIC:                             1294.
+        Df Residuals:                     681   BIC:                             1303.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ==================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+        ----------------------------------------------------------------------------------
+        const              1.6820      0.041     40.878      0.000       1.601       1.763
+        blandChromatin     0.2955      0.010     30.348      0.000       0.276       0.315
+        ==============================================================================
+        Omnibus:                       84.860   Durbin-Watson:                   1.821
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):              118.645
+        Skew:                           0.899   Prob(JB):                     1.72e-26
+        Kurtosis:                       3.968   Cond. No.                         7.57
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 8. [normal nucleoli](./results/normalNucleoli.txt)
+        
+                                    OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.516
+        Model:                            OLS   Adj. R-squared:                  0.516
+        Method:                 Least Squares   F-statistic:                     727.5
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):          1.47e-109
+        Time:                        18:21:25   Log-Likelihood:                -688.73
+        No. Observations:                 683   AIC:                             1381.
+        Df Residuals:                     681   BIC:                             1391.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ==================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+        ----------------------------------------------------------------------------------
+        const              2.0549      0.035     58.886      0.000       1.986       2.123
+        normalNucleoli     0.2247      0.008     26.972      0.000       0.208       0.241
+        ==============================================================================
+        Omnibus:                      147.506   Durbin-Watson:                   1.848
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):              254.504
+        Skew:                           1.328   Prob(JB):                     5.43e-56
+        Kurtosis:                       4.374   Cond. No.                         5.91
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 9. [mitoses](./results/mitoses.txt)
+        
+                                    OLS Regression Results                            
+        ==============================================================================
+        Dep. Variable:                  class   R-squared:                       0.179
+        Model:                            OLS   Adj. R-squared:                  0.178
+        Method:                 Least Squares   F-statistic:                     148.8
+        Date:                Sun, 14 Oct 2018   Prob (F-statistic):           4.30e-31
+        Time:                        18:21:25   Log-Likelihood:                -869.41
+        No. Observations:                 683   AIC:                             1743.
+        Df Residuals:                     681   BIC:                             1752.
+        Df Model:                           1                                         
+        Covariance Type:            nonrobust                                         
+        ==============================================================================
+                         coef    std err          t      P>|t|      [0.025      0.975]
+        ------------------------------------------------------------------------------
+        const          2.3258      0.045     51.536      0.000       2.237       2.414
+        mitoses        0.2333      0.019     12.198      0.000       0.196       0.271
+        ==============================================================================
+        Omnibus:                      226.302   Durbin-Watson:                   1.665
+        Prob(Omnibus):                  0.000   Jarque-Bera (JB):              110.185
+        Skew:                           0.839   Prob(JB):                     1.18e-24
+        Kurtosis:                       1.972   Cond. No.                         3.51
+        ==============================================================================
 p-value is  0.000  so this feature is significant
 
 ### plots
@@ -135,8 +343,22 @@ For use the best aphpha in formula we check from 0.01 to 1 in a loop to find bes
     8            normalNucleoli        0.0371     4.981            0.007         0.000
     9                   mitoses        0.0020     0.197            0.010         0.844
 
+The Ridge method is based on the restriction of  βi , and the value of α is small,
+ So we can conclude that compression is low.
+We also observe that the p-value of all parameters in the ridge method and the multiple 
+linear regression is the same, so we find that the parameters in the two methods are equally important.
+
 
 ## Lasso
+In Lasso method, we see that the mitosis coefficient is zero, so we find that this parameter 
+has been omitted.
+By comparing the two methods of Lasso and Multiple Linear Regression,
+ we observe that the p-value of marginalAdhesion , singleEpithelialCellSize , 
+ blandChromatin , mitozes in the lasso method has increased, 
+ which means that the significance of these parameters is less in this method, 
+ also the p-value in uniformityOfCellSize has been reduced, so it has been increased in the lasso method,
+  and in other cases p-value is the same,
+ we find out that the parameters have the same importance.
 [Lasso regression Result](./results/lassoRegression.txt)
 
     Alpha  = 0.09
