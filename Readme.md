@@ -2,8 +2,8 @@
 
 * Parisa Davoudi
    * Telegram :  https://t.me/P_davoudi
-   * Email : 
-   * studentId : 
+   * Email : parisa.davoudi73@gmail.com
+   * studentId : 97422092
 
 * Mohamad Ranjbar Z
     * Telegram :  https://t.me/mohammad_ranjbar_z
