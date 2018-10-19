@@ -8,7 +8,7 @@ from sklearn.linear_model import Lasso
 from sklearn.linear_model import ElasticNet
 from markdown import markdown
 
-df = pd.read_csv("./data/breastData.csv", sep='\s*,\s*',
+df = pd.read_csv("./breastData.csv", sep='\s*,\s*',
                  header=0, encoding='ascii', engine='python')
 
 

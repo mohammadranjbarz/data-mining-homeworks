@@ -296,7 +296,7 @@ R-squared is 0.179 do the data fitted with regression line so bad
 Prob(f-statistics) is so small so the null hypothesis for features in this model is not true
 
 ### plots
-As you see [our data](./data/breastData.csv) you understand that all of our data X are 
+As you see [our data](breastData.csv) you understand that all of our data X are 
 1 or 2 or 3, ...or 10 , and all y are 2 or 4
 so our coefficient will be so small because y to x ratio is small.
 and all figures for our features are like this , because all plot is just 20 point, and it's 
