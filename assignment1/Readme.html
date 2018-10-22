@@ -1,6 +1,6 @@
 <h2>Preparing data</h2>
-<p><a href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Prognostic%29">Breast Cancer Wisconsin (Prognostic) Data Set</a>
-Each record represents follow-up data for one breast cancer case. These are consecutive
+<p>In <a href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Prognostic%29">Breast Cancer Wisconsin (Prognostic) Data Set</a>
+ Each record represents follow-up data for one breast cancer case. These are consecutive
 patients seen by Dr. Wolberg since 1984, and include only those cases exhibiting
 invasive breast cancer and no evidence of distant metastases at the time of diagnosis. </p>
 <p>These are attributes that sample-code-number is just an ID and we don't count it a feature,
@@ -300,7 +300,7 @@ Prob(f-statistics) is so small so the null hypothesis for features in this model
 </li>
 </ul>
 <h3>plots</h3>
-<p>As you see <a href="breastData.csv">our data</a> you understand that all of our data X are
+<p>As you see <a href="breastData.csv">our data</a> you understand that all of our data X are 
 1 or 2 or 3, ...or 10 , and all y are 2 or 4
 so our coefficient will be so small because y to x ratio is small.
 and all figures for our features are like this , because all plot is just 20 point, and it's 
@@ -371,11 +371,11 @@ best way is to compare Adjusted R-squared in two models that
 <p>When Features or samples are too much , the over fitting problem may happen
 so we must regularization the features and remove or some features that dont't 
 have significant p-values or shrink samples data, we use 3 ways to regularize our data in this assignment</p>
-<p>For use the best aphpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha</p>
 <h2>Ridge</h2>
-<p><a href="./results/ridgeRegression.txt">Ridge regression Result</a></p>
-<pre><code>Alpha  = 0.09
-Alpha  = 0.1
+<p><a href="./results/ridgeRegression.txt">Ridge regression Result</a>
+For use the best alpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
+that in this example is 0.1</p>
+<pre><code>Alpha  = 0.1
 
 R-squared  = 0.8433241288874997
 
@@ -398,16 +398,8 @@ model these features are not significant and can be remove
 We also observe that the p-value of other parameters in the ridge method and the multiple 
 linear regression almost is the same, so we find that the parameters in the two methods are equally important.</p>
 <h2>Lasso</h2>
-<p>In Lasso method, we see that the mitosis coefficient is zero, so we find that this parameter 
-has been omitted.
-By comparing the two methods of Lasso and Multiple Linear Regression,
- we observe that the p-value of marginalAdhesion , singleEpithelialCellSize , 
- blandChromatin , the coefficient of mitoses in the lasso method is zero so we know in this model 
- which means that the significance of these parameters is zero in this method, 
- singleEpithelialCellSize p-value increase to ( 0.876) so in this model singleEpithelialCellSize is not significant,
- also the p-value in uniformityOfCellSize has been reduced, so it has been increased in the lasso method,
- and in other cases p-value is the same,
- we find out that the parameters have the same importance.
+<p>For use the best alpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
+that in this example is 0.1
 <a href="./results/lassoRegression.txt">Lasso regression Result</a></p>
 <pre><code>Alpha  = 0.1
 
@@ -425,11 +417,20 @@ R-squared  = 0.8402016223438626
 8            normalNucleoli        0.0370     4.918            0.008         0.000
 9                   mitoses        0.0000     0.000            0.010         1.000
 </code></pre>
+<p>In Lasso method, we see that the mitosis coefficient is zero, so we find that this parameter 
+has been omitted.
+By comparing the two methods of Lasso and Multiple Linear Regression,
+ we observe that the p-value of marginalAdhesion , singleEpithelialCellSize , 
+ blandChromatin , the coefficient of mitoses in the lasso method is zero so we know in this model 
+ which means that the significance of these parameters is zero in this method, 
+ singleEpithelialCellSize p-value increase to ( 0.876) so in this model singleEpithelialCellSize is not significant,
+ also the p-value in uniformityOfCellSize has been reduced, so it has been increased in the lasso method,
+ and in other cases p-value is the same,
+ we find out that the parameters have the same importance.</p>
 <h2>Elastic net</h2>
-<p><a href="./results/elasticNetRegression.txt">Elastic net regression Result</a>
-The elastic net is a regularized regression method that linearly combines
- the L1 and L2 penalties of the lasso and ridge methods.
- like Lasso results we can see that also in this model mitoses coefficient is zero and has been removed. </p>
+<p>For use the best alpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
+that in this example is 0.1
+<a href="./results/elasticNetRegression.txt">Elastic net regression Result</a></p>
 <pre><code>Alpha  = 0.1
 
 R-squared  = 0.8425236919081593
@@ -446,6 +447,9 @@ R-squared  = 0.8425236919081593
 8            normalNucleoli        0.0370     4.961            0.007         0.000
 9                   mitoses        0.0000     0.000            0.010         1.000
 </code></pre>
+<p>The elastic net is a regularized regression method that linearly combines
+ the L1 and L2 penalties of the lasso and ridge methods.
+ like Lasso results we can see that also in this model mitoses coefficient is zero and has been removed. </p>
 <h2>Conclusion</h2>
 <p>As we see in results of above models we see that the R-squared in Lasso, Ridge and Elastic net doesnt increase
 , so for our data-set the least square regression and regularization method almos have same result </p>

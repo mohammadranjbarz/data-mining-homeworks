@@ -3,6 +3,7 @@ import pandas as pd
 import statsmodels.api as sm
 import numpy as np
 from sklearn.linear_model import Ridge
+from sklearn.linear_model import LinearRegression
 from scipy import stats
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import ElasticNet
@@ -43,8 +44,18 @@ def save_multiple_linear_regression_for_all_features():
     del features[0]
     X = df[features]
     y = df["class"]
+
+    rss = get_rss(X, y)
     f = open("./results/allFeatures.txt", "w")
-    f.write(str(regression_data(X, y)))
+    f.write("\nRss :"+str(rss) +"\n\n"+ str(regression_data(X, y,"allFeatures")) )
+
+
+def get_rss(X, y):
+    linearRegression = LinearRegression()
+    linearRegression.fit(X, y)
+    predictions = linearRegression.predict(X)
+    RSS = sum((predictions - y) ** 2)
+    return RSS
 
 
 # Call this function to save the summary of significant features multipleRegression result in allFeatures.txt
@@ -53,8 +64,9 @@ def save_multiple_linear_regression_for_all_significant_features():
                 "normalNucleoli", "uniformityOfCellSize"]
     X = df[features]
     y = df["class"]
+    rss = get_rss(X, y)
     f = open("./results/allSignificantFeatures.txt", "w")
-    f.write(str(regression_data(X, y)))
+    f.write("\nRss :"+str(rss) +"\n\n"+str(regression_data(X, y,"allSignificantFeatures")))
 
 
 def save_ridge_regression():
@@ -180,8 +192,8 @@ def generate_readme_html():
 
 generate_readme_html()
 # save_all_linear_regressions()
-# save_multiple_linear_regression_for_all_features()
-# save_multiple_linear_regression_for_all_significant_features()
+save_multiple_linear_regression_for_all_features()
+save_multiple_linear_regression_for_all_significant_features()
 # save_elastic_net_regression()
 # save_ridge_regression()
 # save_Lasso_regression()

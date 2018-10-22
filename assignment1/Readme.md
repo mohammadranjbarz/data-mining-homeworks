@@ -374,12 +374,13 @@ When Features or samples are too much , the over fitting problem may happen
 so we must regularization the features and remove or some features that dont't 
 have significant p-values or shrink samples data, we use 3 ways to regularize our data in this assignment
 
-For use the best aphpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
 
 ## Ridge
 [Ridge regression Result](./results/ridgeRegression.txt)
+For use the best alpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
+that in this example is 0.1
 
-    Alpha  = 0.09
+
     Alpha  = 0.1
     
     R-squared  = 0.8433241288874997
@@ -396,6 +397,7 @@ For use the best aphpha in formula we check from 0.01 to 100 in a loop to find b
     8            normalNucleoli        0.0371     4.981            0.007         0.000
     9                   mitoses        0.0020     0.197            0.010         0.844
 
+
 The Ridge method is based on the restriction of  βi , and the value of α is small,
 So we can conclude that compression is low.
 the p-value for mitoses (0.844) and singleEpithelialCellSize(0.055) are not small enough so in this
@@ -403,18 +405,11 @@ model these features are not significant and can be remove
 We also observe that the p-value of other parameters in the ridge method and the multiple 
 linear regression almost is the same, so we find that the parameters in the two methods are equally important.
 
-
 ## Lasso
-In Lasso method, we see that the mitosis coefficient is zero, so we find that this parameter 
-has been omitted.
-By comparing the two methods of Lasso and Multiple Linear Regression,
- we observe that the p-value of marginalAdhesion , singleEpithelialCellSize , 
- blandChromatin , the coefficient of mitoses in the lasso method is zero so we know in this model 
- which means that the significance of these parameters is zero in this method, 
- singleEpithelialCellSize p-value increase to ( 0.876) so in this model singleEpithelialCellSize is not significant,
- also the p-value in uniformityOfCellSize has been reduced, so it has been increased in the lasso method,
- and in other cases p-value is the same,
- we find out that the parameters have the same importance.
+
+ 
+ For use the best alpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
+that in this example is 0.1
 [Lasso regression Result](./results/lassoRegression.txt)
 
     Alpha  = 0.1
@@ -434,11 +429,22 @@ By comparing the two methods of Lasso and Multiple Linear Regression,
     9                   mitoses        0.0000     0.000            0.010         1.000
 
 
+In Lasso method, we see that the mitosis coefficient is zero, so we find that this parameter 
+has been omitted.
+By comparing the two methods of Lasso and Multiple Linear Regression,
+ we observe that the p-value of marginalAdhesion , singleEpithelialCellSize , 
+ blandChromatin , the coefficient of mitoses in the lasso method is zero so we know in this model 
+ which means that the significance of these parameters is zero in this method, 
+ singleEpithelialCellSize p-value increase to ( 0.876) so in this model singleEpithelialCellSize is not significant,
+ also the p-value in uniformityOfCellSize has been reduced, so it has been increased in the lasso method,
+ and in other cases p-value is the same,
+ we find out that the parameters have the same importance.
+ 
 ## Elastic net
+
+ For use the best alpha in formula we check from 0.01 to 100 in a loop to find best R-squared then choose that alpha
+that in this example is 0.1
 [Elastic net regression Result](./results/elasticNetRegression.txt)
-The elastic net is a regularized regression method that linearly combines
- the L1 and L2 penalties of the lasso and ridge methods.
- like Lasso results we can see that also in this model mitoses coefficient is zero and has been removed. 
     
     Alpha  = 0.1
     
@@ -456,6 +462,10 @@ The elastic net is a regularized regression method that linearly combines
     8            normalNucleoli        0.0370     4.961            0.007         0.000
     9                   mitoses        0.0000     0.000            0.010         1.000
 
+The elastic net is a regularized regression method that linearly combines
+ the L1 and L2 penalties of the lasso and ridge methods.
+ like Lasso results we can see that also in this model mitoses coefficient is zero and has been removed. 
+ 
 
 ## Conclusion
 As we see in results of above models we see that the R-squared in Lasso, Ridge and Elastic net doesnt increase
