@@ -30,13 +30,22 @@ def get_formatted_data_frame_from_predictions(X, y, predictions, params, feature
     features.insert(0, "constants")
     myDF3["Feature"], myDF3["Coefficients"], myDF3["t values"], myDF3["Standard Errors"], myDF3["Probabilites"] = [
         features, params, ts_b, sd_b, p_values]
-    return myDF3
+    return MSE, myDF3
 
-X = df[getFeatures()]
-y = df["class"]
-X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=0)
-logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X_train, y_train)
-y_pred = logreg.predict(X)
-logesticRscore = logreg.score(X_train, y_train)
-params = np.append(logreg.intercept_, logreg.coef_)
-get_formatted_data_frame_from_predictions(X,y,y_pred, params, getFeatures())
+def saveLogisticRegression():
+    X = df[getFeatures()]
+    y = df["class"]
+    # X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=0)
+    logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X, y)
+    y_pred = logreg.predict(X)
+    logesticRscore = logreg.score(X, y)
+    params = np.append(logreg.intercept_, logreg.coef_)
+    MSE, result = get_formatted_data_frame_from_predictions(X, y, y_pred, params, getFeatures())
+    print(MSE)
+    print(result)
+    f = open("./results/LogisticRegression.txt", "w")
+    f.write("MSE  = " + str(MSE) + "\n\n")
+    f.write("R-squared  = " + str(logesticRscore) + "\n\n")
+    f.write(str(result))
+
+saveLogisticRegression()
