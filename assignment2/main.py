@@ -2,7 +2,8 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import numpy as np
-from scipy import stats
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 
 
 
@@ -46,8 +47,30 @@ def saveLogisticRegression():
     f = open("./results/LogisticRegression.txt", "w")
     f.write("Misclassification  = " + str(calculateMisclassification(y_test, y_pred)) + "\n\n")
     f.write("R-squared  = " + str(logesticRscore) + "\n\n")
-    print((str(calculateMisclassification(y_test, y_pred))))
-    # f.write(str(result))
+
+
+def saveQdaRegression():
+    X = df[getFeatures()]
+    y = df["class"]
+    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=0)
+    qda = QDA().fit(X_train, y_train)
+    y_pred = qda.predict(X_test)
+    qdaRscore = qda.score(X, y)
+    f = open("./results/Qda.txt", "w")
+    f.write("Misclassification  = " + str(calculateMisclassification(y_test, y_pred)) + "\n\n")
+    f.write("R-squared  = " + str(qdaRscore) + "\n\n")
+
+
+def saveLdaRegression():
+    X = df[getFeatures()]
+    y = df["class"]
+    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=0)
+    lda = LDA().fit(X_train, y_train)
+    y_pred = lda.predict(X_test)
+    ldaRscore = lda.score(X, y)
+    f = open("./results/Lda.txt", "w")
+    f.write("Misclassification  = " + str(calculateMisclassification(y_test, y_pred)) + "\n\n")
+    f.write("R-squared  = " + str(ldaRscore) + "\n\n")
 
 def calculateMisclassification(y_test, y_pred):
     y_test = y_test.values
@@ -55,4 +78,7 @@ def calculateMisclassification(y_test, y_pred):
     for i in range(len(y_test)):
         misclassificationError +=1 if y_test[i] != y_pred[i] else 0
     return  round(misclassificationError /len(y_pred), 4)
+
 saveLogisticRegression()
+saveQdaRegression()
+saveLdaRegression()
