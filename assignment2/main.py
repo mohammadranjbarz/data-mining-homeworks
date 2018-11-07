@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
-
+from sklearn.naive_bayes import GaussianNB
 
 
 df = pd.read_csv("./breastData.csv", sep='\s*,\s*',
@@ -36,49 +36,57 @@ def getFeatures():
 def saveLogisticRegression():
     X = df[getFeatures()]
     y = df["class"]
-    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=0)
-    logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X_train, y_train)
-    y_pred = logreg.predict(X_test)
-    params = np.append(logreg.intercept_, logreg.coef_)
-    # MSE, result = get_formatted_data_frame_from_predictions(X, y, y_pred, params, getFeatures())
+    logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X, y)
+    y_pred = logreg.predict(X)
     logesticRscore = logreg.score(X, y)
-    # print(MSE)
-    # print(result)
     f = open("./results/LogisticRegression.txt", "w")
-    f.write("Misclassification  = " + str(calculateMisclassification(y_test, y_pred)) + "\n\n")
+    f.write("Misclassification  = " + str(calculateMisclassification(y, y_pred)) + "\n\n")
     f.write("R-squared  = " + str(logesticRscore) + "\n\n")
 
 
-def saveQdaRegression():
+def saveQda():
     X = df[getFeatures()]
     y = df["class"]
-    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=0)
-    qda = QDA().fit(X_train, y_train)
-    y_pred = qda.predict(X_test)
+    qda = QDA().fit(X, y)
+    y_pred = qda.predict(X)
     qdaRscore = qda.score(X, y)
     f = open("./results/Qda.txt", "w")
-    f.write("Misclassification  = " + str(calculateMisclassification(y_test, y_pred)) + "\n\n")
+    f.write("Misclassification  = " + str(calculateMisclassification(y, y_pred)) + "\n\n")
     f.write("R-squared  = " + str(qdaRscore) + "\n\n")
 
 
-def saveLdaRegression():
+def saveLda():
     X = df[getFeatures()]
     y = df["class"]
-    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=0)
-    lda = LDA().fit(X_train, y_train)
-    y_pred = lda.predict(X_test)
+    lda = LDA().fit(X, y)
+    y_pred = lda.predict(X)
     ldaRscore = lda.score(X, y)
     f = open("./results/Lda.txt", "w")
-    f.write("Misclassification  = " + str(calculateMisclassification(y_test, y_pred)) + "\n\n")
+    f.write("Misclassification  = " + str(calculateMisclassification(y, y_pred)) + "\n\n")
     f.write("R-squared  = " + str(ldaRscore) + "\n\n")
 
-def calculateMisclassification(y_test, y_pred):
-    y_test = y_test.values
+def saveGnb():
+    X = df[getFeatures()]
+    y = df["class"]
+    gnb = GaussianNB().fit(X, y)
+    y_pred = gnb.predict(X)
+    gnbRscore = gnb.score(X, y)
+    f = open("./results/gnb.txt", "w")
+    f.write("Misclassification  = " + str(calculateMisclassification(y, y_pred)) + "\n\n")
+    f.write("R-squared  = " + str(gnbRscore) + "\n\n")
+
+def calculateMisclassification(y, y_pred):
+    y = y.values
     misclassificationError = 0
-    for i in range(len(y_test)):
-        misclassificationError +=1 if y_test[i] != y_pred[i] else 0
+    for i in range(len(y)):
+        misclassificationError +=1 if y[i] != y_pred[i] else 0
     return  round(misclassificationError /len(y_pred), 4)
 
+#### Phase1 of Assignment2
 saveLogisticRegression()
-saveQdaRegression()
-saveLdaRegression()
+saveQda()
+saveLda()
+saveGnb()
+
+
+#### Phase2 of Assignment3
