@@ -24,10 +24,40 @@ and the class attribute is our output for  regression.
 First of all we need to remove the Data that have missing values (16 row).
 
 # Analysis
+We use the below models for our data and in each model we calculated the misclassification
+with this function
+
+    def calculateMisclassification(y, y_pred):
+    y = y.values
+    misclassificationSum = 0
+    for i in range(len(y)):
+        misclassificationSum +=1 if y[i] != y_pred[i] else 0
+    misclassificationError =misclassificationSum /len(y_pred)
+    return  round(misclassificationError, 4)
+
+and finally we compare models with the misclassification of model on trained data
+    
 
 ## Logistic Regression
+Logistic regression is the appropriate regression analysis to conduct when the dependent variable 
+is dichotomous (binary).  Like all regression analyses, the logistic regression is a predictive analysis. 
+Logistic regression is used to describe data and to explain the relationship between one dependent binary
+variable and one or more nominal, ordinal, interval or ratio-level independent variables.
 
+In this model we used all of data as train data
+We calculate Logistic regression on our data and the calculated misClassification
+was :
+
+    Misclassification  = 0.0307
+
+ 
+## Linear Discriminant Analysis (LDA)
+ 
 ## Conclusion
 
 ## References
-
+* [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+* [What is Logistic Regression?](https://www.statisticssolutions.com/what-is-logistic-regression/)
+* [sklearn.discriminant_analysis.LinearDiscriminantAnalysis](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)
+* [sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html)
+* [sklearn.naive_bayes.GaussianNB](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)

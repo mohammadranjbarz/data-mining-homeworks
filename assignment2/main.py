@@ -5,6 +5,8 @@ import numpy as np
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
 
 
 df = pd.read_csv("./breastData.csv", sep='\s*,\s*',
@@ -77,16 +79,32 @@ def saveGnb():
 
 def calculateMisclassification(y, y_pred):
     y = y.values
-    misclassificationError = 0
+    misclassificationSum = 0
     for i in range(len(y)):
-        misclassificationError +=1 if y[i] != y_pred[i] else 0
-    return  round(misclassificationError /len(y_pred), 4)
+        misclassificationSum +=1 if y[i] != y_pred[i] else 0
+    misclassificationError =misclassificationSum /len(y_pred)
+    return  round(misclassificationError, 4)
 
 #### Phase1 of Assignment2
-saveLogisticRegression()
-saveQda()
-saveLda()
-saveGnb()
+# saveLogisticRegression()
+# saveQda()
+# saveLda()
+# saveGnb()
 
 
 #### Phase2 of Assignment3
+def saveLinearRegression():
+    X = df[getFeatures()]
+    y = df["class"]
+    linearRegression = LinearRegression().fit(X,y)
+    y_pred = linearRegression.predict(X)
+    y_pred_classified = []
+    for i in range(len(y_pred)):
+        if(y_pred[i] >3):
+            y_pred_classified.append(4)
+        else:
+            y_pred_classified.append(2)
+    f = open("./results/LinearRegression.txt", "w")
+    f.write("Misclassification  = " + str(calculateMisclassification(y, y_pred_classified)) + "\n\n")
+    f.write("R-squared  = " + str(linearRegression.score(X,y)) + "\n\n")
+saveLinearRegression()
