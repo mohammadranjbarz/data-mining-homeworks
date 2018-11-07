@@ -1,4 +1,4 @@
-Misclassification  = 0.0395
+MisClassification  = 0.0395
 
 R-squared  = 0.8433241289162845
 

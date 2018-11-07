@@ -1,4 +1,4 @@
-Misclassification  = 0.041
+MisClassification  = 0.041
 
-R-squared  = 0.95900439238653
+Accuracy  = 0.95900439238653
 
