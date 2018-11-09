@@ -30,6 +30,7 @@ def get_model_report(y, y_pred):
 
 def save_logistic_regression(X, y):
     logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X, y)
+    y_pred = logreg.predict(X)
     f = open("./results/LogisticRegression.txt", "w")
     f.write(get_model_report(y, y_pred))
 
@@ -84,8 +85,7 @@ def save_linear_regression(X, y):
         else:
             y_pred_classified.append(2)
     f = open("./results/LinearRegression.txt", "w")
-    f.write("MisClassification  = " + str(calculate_mis_classification(y, y_pred_classified)) + "\n\n")
-    f.write("R-squared  = " + str(linear_regression.score(X, y)) + "\n\n")
+    f.write(get_model_report(y, y_pred_classified))
 
 
 save_linear_regression(X, y)

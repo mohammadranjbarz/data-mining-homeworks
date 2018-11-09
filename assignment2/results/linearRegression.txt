@@ -1,4 +1,10 @@
 MisClassification  = 0.0395
 
-R-squared  = 0.8433241289162845
+Accuracy  = 0.9605
+
+F1 score  =  0.9560753918820103
+
+Precision score  =  0.9615770194717563
+
+Recall score  =  0.9512420370160956
 
