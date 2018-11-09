@@ -4,9 +4,10 @@ from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import KFold
+import numpy as np
 
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, \
-    confusion_matrix
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 df = pd.read_csv("./breastData.csv", sep='\s*,\s*',
                  header=0, encoding='ascii', engine='python')
@@ -20,17 +21,46 @@ def get_features():
 
 
 def get_model_report(y, y_pred):
-    mis_classification = calculate_mis_classification(y, y_pred)
-    return "MisClassification  = " + str(mis_classification) + "\n\n" + "Accuracy  = " + str(
-        1 - mis_classification) + "\n\n" + "F1 score  =  " + str(
-        f1_score(y, y_pred, average="macro")) + "\n\n" + "Precision score  =  " + str(
-        precision_score(y, y_pred, average="macro")) + "\n\n" + "Recall score  =  " + str(
-        recall_score(y, y_pred, average="macro")) + "\n\n"
+    # mis_classification = calculate_mis_classification(y, y_pred)
+    # f1 = f1_score(y, y_pred, average="macro")
+    # precision = precision_score(y, y_pred, average="macro")
+    # recall = recall_score(y, y_pred, average="macro")
+    # accuracy = accuracy_score(y, y_pred)
+    # return format_result_scores(accuracy, f1, mis_classification, precision, recall)
+    return get_model_report_for_multi_y_pred([y], [y_pred])
+
+
+def get_model_report_for_multi_y_pred(y_list, y_pred_list):
+    mis_classification = 0
+    f1 = 0
+    precision = 0
+    recall = 0
+    accuracy = 0
+    for i in range(len(y_pred_list)):
+        y_pred = y_pred_list[i]
+        y = y_list[i]
+        mis_classification += calculate_mis_classification(y, y_pred)
+        f1 += f1_score(y, y_pred, average="macro")
+        precision += precision_score(y, y_pred, average="macro")
+        recall += recall_score(y, y_pred, average="macro")
+        accuracy += accuracy_score(y, y_pred)
+
+    return format_result_scores(accuracy / len(y_pred_list), f1 / len(y_pred_list)
+                                , mis_classification / len(y_pred_list),
+                                precision / len(y_pred_list), recall / len(y_pred_list))
+
+
+def format_result_scores(accuracy, f1, mis_classification, precision, recall):
+    return "MisClassification  = " + str(round(mis_classification, 4)) + "\n\n" + "Accuracy  = " + str(
+        round(accuracy, 4)) + "\n\n" + "F1 score  =  " + str(
+        round(f1, 4)) + "\n\n" + "Precision score  =  " + str(
+        round(precision, 4)) + "\n\n" + "Recall score  =  " + str(
+        round(recall, 4)) + "\n\n"
 
 
 def save_logistic_regression(X, y):
     logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X, y)
-    y_pred = logreg.predic(X)
+    y_pred = logreg.predict(X)
     f = open("./results/LogisticRegression.txt", "w")
     f.write(get_model_report(y, y_pred))
 
@@ -67,14 +97,16 @@ def calculate_mis_classification(y, y_pred):
 
 X = df[get_features()]
 y = df["class"]
+
+
 #### Phase1 of Assignment2
-save_logistic_regression(X, y)
-save_qda(X, y)
-save_lda(X, y)
-save_gnb(X, y)
+# save_logistic_regression(X, y)
+# save_qda(X, y)
+# save_lda(X, y)
+# save_gnb(X, y)
 
 
-#### Phase2 of Assignment3
+#### Phase2 of Assignment2
 def save_linear_regression(X, y):
     linear_regression = LinearRegression().fit(X, y)
     y_pred = linear_regression.predict(X)
@@ -88,4 +120,50 @@ def save_linear_regression(X, y):
     f.write(get_model_report(y, y_pred_classified))
 
 
-save_linear_regression(X, y)
+# save_linear_regression(X, y)
+
+
+##### Phase3 of Assignment2
+def save_regression_k_fold(X, y, classification_model, classification_model_name):
+    k_folde_number = 5
+    y_preds_list = []
+    y_list = []
+    kf = KFold(n_splits=k_folde_number, shuffle=True)
+    kf.get_n_splits(X)
+    for train_index, test_index in kf.split(X):
+        X_train, X_test = X.iloc[train_index], X.iloc[test_index]
+        y_train, y_test = y[train_index], y[test_index]
+        regressionFunction = classification_model.fit(X_train, y_train)
+        y_pred = regressionFunction.predict(X_test)
+        y_list.append(y_test)
+        y_preds_list.append(y_pred)
+
+    f = open(f"./results/k_fold/{classification_model_name}.txt", "w")
+    f.write(get_model_report_for_multi_y_pred(y_list, y_preds_list))
+
+
+def save_logistic_regression_k_fold(X, y):
+    save_regression_k_fold(X, y,
+                           LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial'),
+                           "LogisticRegression")
+
+
+def save_qda_k_fold(X, y):
+    qda = QDA().fit(X, y)
+    save_regression_k_fold(X, y, qda, "Qda")
+
+
+def save_lda_k_fold(X, y):
+    lda = LDA().fit(X, y)
+    save_regression_k_fold(X, y, lda, "Lda")
+
+
+def save_gnb_k_fold(X, y):
+    gnb = GaussianNB().fit(X, y)
+    save_regression_k_fold(X, y, gnb, "gnb")
+
+
+save_logistic_regression_k_fold(X, y)
+save_gnb_k_fold(X,y)
+save_lda_k_fold(X,y)
+save_qda_k_fold(X,y)
