@@ -5,7 +5,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import KFold
-import numpy as np
+from sklearn.model_selection import LeaveOneOut
+from markdown import markdown
+import warnings
+
+warnings.filterwarnings('ignore')
 
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
@@ -129,7 +133,6 @@ def save_regression_k_fold(X, y, classification_model, classification_model_name
     y_preds_list = []
     y_list = []
     kf = KFold(n_splits=k_folde_number, shuffle=True)
-    kf.get_n_splits(X)
     for train_index, test_index in kf.split(X):
         X_train, X_test = X.iloc[train_index], X.iloc[test_index]
         y_train, y_test = y[train_index], y[test_index]
@@ -142,6 +145,25 @@ def save_regression_k_fold(X, y, classification_model, classification_model_name
     f.write(get_model_report_for_multi_y_pred(y_list, y_preds_list))
 
 
+def save_regression_leave_one_out(X, y, classification_model, classification_model_name):
+    y_preds_list = []
+    y_list = []
+    loo = LeaveOneOut()
+    loo.get_n_splits(X)
+    for train_index, test_index in loo.split(X):
+        X_train, X_test = X.iloc[train_index], X.iloc[test_index]
+        y_train, y_test = y[train_index], y[test_index]
+        regressionFunction = classification_model.fit(X_train, y_train)
+        y_pred = regressionFunction.predict(X_test)
+        y_list.append(y_test)
+        y_preds_list.append(y_pred)
+
+    f = open(f"./results/leave_one_out/{classification_model_name}.txt", "w")
+    f.write(get_model_report_for_multi_y_pred(y_list, y_preds_list))
+
+
+###### k-fold
+
 def save_logistic_regression_k_fold(X, y):
     save_regression_k_fold(X, y,
                            LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial'),
@@ -149,21 +171,63 @@ def save_logistic_regression_k_fold(X, y):
 
 
 def save_qda_k_fold(X, y):
-    qda = QDA().fit(X, y)
+    qda = QDA()
     save_regression_k_fold(X, y, qda, "Qda")
 
 
 def save_lda_k_fold(X, y):
-    lda = LDA().fit(X, y)
+    lda = LDA()
     save_regression_k_fold(X, y, lda, "Lda")
 
 
 def save_gnb_k_fold(X, y):
-    gnb = GaussianNB().fit(X, y)
+    gnb = GaussianNB()
     save_regression_k_fold(X, y, gnb, "gnb")
 
 
-save_logistic_regression_k_fold(X, y)
-save_gnb_k_fold(X,y)
-save_lda_k_fold(X,y)
-save_qda_k_fold(X,y)
+# save_logistic_regression_k_fold(X, y)
+# save_gnb_k_fold(X, y)
+# save_lda_k_fold(X, y)
+# save_qda_k_fold(X, y)
+
+
+###### leave_one_out
+
+def save_logistic_regression_leave_one_out(X, y):
+    save_regression_leave_one_out(X, y,
+                                  LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial'),
+                                  "LogisticRegression")
+
+
+def save_qda_leave_one_out(X, y):
+    qda = QDA()
+    save_regression_leave_one_out(X, y, qda, "Qda")
+
+
+def save_lda_leave_one_out(X, y):
+    lda = LDA()
+    save_regression_leave_one_out(X, y, lda, "Lda")
+
+
+def save_gnb_leave_one_out(X, y):
+    gnb = GaussianNB()
+    save_regression_leave_one_out(X, y, gnb, "gnb")
+
+
+# save_logistic_regression_leave_one_out(X, y)
+# save_gnb_leave_one_out(X, y)
+# save_lda_leave_one_out(X, y)
+# save_qda_leave_one_out(X, y)
+
+
+
+
+def generate_readme_html():
+    input_filename = 'Readme.md'
+    output_filename = 'Readme.html'
+
+    f = open(input_filename, 'r')
+    html_text = markdown(f.read(), output_format='html4')
+    file = open(output_filename, "w")
+    file.write(str(html_text))
+generate_readme_html()
