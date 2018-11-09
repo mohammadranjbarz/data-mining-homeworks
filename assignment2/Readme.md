@@ -27,13 +27,15 @@ First of all we need to remove the Data that have missing values (16 row).
 We use the below models for our data and in each model we calculated the misclassification
 with this function
 
-    def calculateMisclassification(y, y_pred):
+    
+    def calculate_mis_classification(y, y_pred):
         y = y.values
-        misclassificationSum = 0
+        misclassification_sum = 0
         for i in range(len(y)):
-            misclassificationSum +=1 if y[i] != y_pred[i] else 0
-        misclassificationError =misclassificationSum /len(y_pred)
-        return  round(misclassificationError, 4)
+            misclassification_sum += 1 if y[i] != y_pred[i] else 0
+        misclassificationError = misclassification_sum / len(y_pred)
+        return round(misclassificationError, 4)
+
 
 and finally we compare models with the misclassification of model on trained data
     

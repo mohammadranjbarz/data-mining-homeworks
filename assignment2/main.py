@@ -1,9 +1,12 @@
 import pandas as pd
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
-from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import LinearRegression
+
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, \
+    confusion_matrix
 
 df = pd.read_csv("./breastData.csv", sep='\s*,\s*',
                  header=0, encoding='ascii', engine='python')
@@ -16,41 +19,41 @@ def get_features():
     return features
 
 
+def get_model_report(y, y_pred):
+    mis_classification = calculate_mis_classification(y, y_pred)
+    return "MisClassification  = " + str(mis_classification) + "\n\n" + "Accuracy  = " + str(
+        1 - mis_classification) + "\n\n" + "F1 score  =  " + str(
+        f1_score(y, y_pred, average="macro")) + "\n\n" + "Precision score  =  " + str(
+        precision_score(y, y_pred, average="macro")) + "\n\n" + "Recall score  =  " + str(
+        recall_score(y, y_pred, average="macro")) + "\n\n"
+
+
 def save_logistic_regression(X, y):
     logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X, y)
     y_pred = logreg.predict(X)
-    logesticRscore = logreg.score(X, y)
     f = open("./results/LogisticRegression.txt", "w")
-    f.write("MisClassification  = " + str(calculate_mis_classification(y, y_pred)) + "\n\n")
-    # f.write("accuracy  = " + str(metrics.accuracy_score(y, y_pred)) + "\n\n")
-    f.write("Accuracy  = " + str(logesticRscore) + "\n\n")
+    f.write(get_model_report(y, y_pred))
 
 
 def save_qda(X, y):
     qda = QDA().fit(X, y)
     y_pred = qda.predict(X)
-    qdaRscore = qda.score(X, y)
     f = open("./results/Qda.txt", "w")
-    f.write("MisClassification  = " + str(calculate_mis_classification(y, y_pred)) + "\n\n")
-    f.write("Accuracy  = " + str(qdaRscore) + "\n\n")
+    f.write(get_model_report(y, y_pred))
 
 
 def save_lda(X, y):
     lda = LDA().fit(X, y)
     y_pred = lda.predict(X)
-    ldaRscore = lda.score(X, y)
     f = open("./results/Lda.txt", "w")
-    f.write("MisClassification  = " + str(calculate_mis_classification(y, y_pred)) + "\n\n")
-    f.write("Accuracy  = " + str(ldaRscore) + "\n\n")
+    f.write(get_model_report(y, y_pred))
 
 
 def save_gnb(X, y):
     gnb = GaussianNB().fit(X, y)
     y_pred = gnb.predict(X)
-    gnbRscore = gnb.score(X, y)
     f = open("./results/gnb.txt", "w")
-    f.write("MisClassification  = " + str(calculate_mis_classification(y, y_pred)) + "\n\n")
-    f.write("Accuracy  = " + str(gnbRscore) + "\n\n")
+    f.write(get_model_report(y, y_pred))
 
 
 def calculate_mis_classification(y, y_pred):
