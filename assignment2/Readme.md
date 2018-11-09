@@ -47,25 +47,37 @@ Logistic regression is used to describe data and to explain the relationship bet
 variable and one or more nominal, ordinal, interval or ratio-level independent variables.
 
 In this model we used all of data as train data
-We calculate Logistic regression on our data and the calculated misClassification
+We calculate Logistic regression on our data and the calculated result
 was :
     
     MisClassification  = 0.0307
     
-    Accuracy  = 0.9692532942898975
-   
+    Accuracy  = 0.9693
+    
+    F1 score  =  0.9661763977616005
+    
+    Precision score  =  0.9666320460768577
+    
+    Recall score  =  0.9657261864374835
+    
+
  
 ## Linear Discriminant Analysis (LDA)
 Linear Discriminant Analysis (LDA) is most commonly used as dimensionality reduction technique in the pre-processing step
  for pattern-classification and machine learning applications. The goal is to project a dataset onto a lower-dimensional 
  space with good class-separability in order avoid overfitting (“curse of dimensionality”) and also reduce computational costs.
  
- the misClassification for this model was:
+ the result for this model was:
  
     MisClassification  = 0.0395
     
-    Accuracy  = 0.9604685212298683
+    Accuracy  = 0.9605
     
+    F1 score  =  0.9560753918820103
+    
+    Precision score  =  0.9615770194717563
+    
+    Recall score  =  0.9512420370160956
 
 
  
@@ -78,12 +90,28 @@ QDA allows for more flexibility for the covariance matrix, tends to fit the data
  but then it has more parameters to estimate. The number of parameters increases significantly with QDA. 
  Because, with QDA, you will have a separate covariance matrix for every class. If you have many classes 
  and not so many sample points, this can be a problem.
-    
+ 
+ 
     MisClassification  = 0.041
     
-    Accuracy  = 0.95900439238653
+    Accuracy  = 0.959
+    
+    F1 score  =  0.9556048731567804
+    
+    Precision score  =  0.9498533993036467
+    
+    Recall score  =  0.9626729239699952
+    
     
 
+## Naive Bayes (NB)
+Naive Bayes (NB) is a simple supervised function and is special form of discriminant analysis. 
+It's a generative model and therefore returns probabilities.
+Naive Bayes works surprisingly well even if independence assumption  is clearly violated because classification doesn’t need accurate probability estimates so long as the greatest probability is assigned to the correct class.
+NB affords fast model building and scoring and can be used for both binary and multi-class classification problems.
+The naive Bayes classifier is very useful in high-dimensional problems because multivariate methods like QDA and even LDA will break down. 
+Naive Bayes is a stable algorithm. A small change in the the training data will not make a big change in the model.
+The fundamental Naive Bayes assumption is that each attribute makes an: independent –equal
 
 ## Conclusion
 
@@ -94,4 +122,5 @@ QDA allows for more flexibility for the covariance matrix, tends to fit the data
 * [sklearn.discriminant_analysis.LinearDiscriminantAnalysis](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)
 * [Quadratic Discriminant Analysis (QDA)](https://onlinecourses.science.psu.edu/stat857/node/80/)
 * [sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html)
+* [Data Mining - Naive Bayes (NB)](https://gerardnico.com/data_mining/naive_bayes )
 * [sklearn.naive_bayes.GaussianNB](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
