@@ -30,6 +30,7 @@ def get_model_report(y, y_pred):
 
 def save_logistic_regression(X, y):
     logreg = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial').fit(X, y)
+    y_pred = logreg.predic(X)
     f = open("./results/LogisticRegression.txt", "w")
     f.write(get_model_report(y, y_pred))
 
