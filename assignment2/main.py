@@ -185,7 +185,7 @@ def save_gnb_k_fold(X, y):
     save_regression_k_fold(X, y, gnb, "gnb")
 
 
-# save_logistic_regression_k_fold(X, y)
+save_logistic_regression_k_fold(X, y)
 # save_gnb_k_fold(X, y)
 # save_lda_k_fold(X, y)
 # save_qda_k_fold(X, y)

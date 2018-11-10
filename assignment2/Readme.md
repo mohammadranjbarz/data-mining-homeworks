@@ -113,7 +113,150 @@ The naive Bayes classifier is very useful in high-dimensional problems because m
 Naive Bayes is a stable algorithm. A small change in the the training data will not make a big change in the model.
 The fundamental Naive Bayes assumption is that each attribute makes an: independent –equal
 
+    MisClassification  = 0.0366
+    
+    Accuracy  = 0.9634
+    
+    F1 score  =  0.9603
+    
+    Precision score  =  0.9548
+    
+    Recall score  =  0.967
+
+
+##Linear Regression
+
+    MisClassification  = 0.0395
+    
+    Accuracy  = 0.9605
+    
+    F1 score  =  0.9561
+    
+    Precision score  =  0.9616
+    
+    Recall score  =  0.9512
+
+#5-fold
+
+## Logistic Regression
+    
+    MisClassification  = 0.0366
+    
+    Accuracy  = 0.9634
+    
+    F1 score  =  0.9587
+    
+    Precision score  =  0.9613
+    
+    Recall score  =  0.9573
+
+
+
+## Linear Discriminant Analysis (LDA)
+
+    MisClassification  = 0.041
+    
+    Accuracy  = 0.959
+    
+    F1 score  =  0.9541
+    
+    Precision score  =  0.9607
+    
+    Recall score  =  0.949
+
+
+
+## Quadratic Discriminant Analysis (QDA) 
+
+    MisClassification  = 0.0484
+    
+    Accuracy  = 0.9516
+    
+    F1 score  =  0.9481
+    
+    Precision score  =  0.9423
+    
+    Recall score  =  0.9574
+
+
+
+## Naive Bayes (NB)
+
+    MisClassification  = 0.0395
+    
+    Accuracy  = 0.9605
+    
+    F1 score  =  0.9571
+    
+    Precision score  =  0.9532
+    
+    Recall score  =  0.9629
+
+
+
+# Leave one out
+
+## Logistic Regression
+
+    MisClassification  = 0.0322
+    
+    Accuracy  = 0.9678
+    
+    F1 score  =  0.9678
+    
+    Precision score  =  0.9678
+    
+    Recall score  =  0.9678
+
+
+
+## Linear Discriminant Analysis (LDA)
+
+    MisClassification  = 0.0395
+    
+    Accuracy  = 0.9605
+    
+    F1 score  =  0.9605
+    
+    Precision score  =  0.9605
+    
+    Recall score  =  0.9605
+
+
+
+## Quadratic Discriminant Analysis (QDA)
+
+    MisClassification  = 0.0498
+    
+    Accuracy  = 0.9502
+    
+    F1 score  =  0.9502
+    
+    Precision score  =  0.9502
+    
+    Recall score  =  0.9502
+
+
+
+## Naive Bayes (NB)
+
+    MisClassification  = 0.0366
+    
+    Accuracy  = 0.9634
+    
+    F1 score  =  0.9634
+    
+    Precision score  =  0.9634
+    
+    Recall score  =  0.9634
+
+
 ## Conclusion
+For bias data the accuracy is important and is metric
+
+For un-biased data we use recall and precission
+
+F-measure use for both biased and unBiased data 
 
 ## References
 * [What is Logistic Regression?](https://www.statisticssolutions.com/what-is-logistic-regression/)
