@@ -124,7 +124,7 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
     Recall score  =  0.967
 
 
-##Linear Regression
+## Linear Regression
 
     MisClassification  = 0.0395
     
@@ -136,7 +136,7 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
     
     Recall score  =  0.9512
 
-#5-fold
+# 5-fold
 
 ## Logistic Regression
     
