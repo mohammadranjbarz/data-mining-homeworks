@@ -124,7 +124,7 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
     Recall score  =  0.967
 
 
-##Linear Regression
+## Linear Regression
 
     MisClassification  = 0.0395
     
@@ -144,6 +144,7 @@ But this time the second fold is used for validation and folds 1, 3 to 10 are us
 This process is repeated k times.
 
 Final predictor is the average of the models.
+
 
 ## Logistic Regression
     
