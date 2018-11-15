@@ -136,7 +136,14 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
     
     Recall score  =  0.9512
 
-#5-fold
+# 5-fold
+This method is a generalisation of hold-out method. Data is randomly splitted in k-folds, 
+typically 10. Let’s assume 10 folds for now. Folds 2 to 10 are used for training the model,
+and the residual first fold for validation of the model. Now, the process is repeated.
+But this time the second fold is used for validation and folds 1, 3 to 10 are used for training the model.
+This process is repeated k times.
+
+Final predictor is the average of the models.
 
 ## Logistic Regression
     
@@ -195,6 +202,9 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
 
 
 # Leave one out
+This method requires (n-1) data for training, 
+and 1 data set for validation. This process is repeated n times. 
+It is numerically very costly, but also is prone to overfitting.
 
 ## Logistic Regression
 
@@ -252,11 +262,38 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
 
 
 ## Conclusion
-For bias data the accuracy is important and is metric
+First, we examine the classification methods based on each of the parameters of the misclassification,
+ accuracy, precision, and recall, and then we give a general conclusion.
 
-For un-biased data we use recall and precission
+### Compare based on MisClassification
+In misclassification analysis if this parameter is less, the classification is better.
+ Thus, with respect to the values, the logistic regression is better because it has the lowest 
+ misclassification value. Other priority classification is like this:
+QDA > LDA > Naive bayes > Logistic regression
 
-F-measure use for both biased and unBiased data 
+### Compare based on Accuracy
+
+In accuracy analysis if this parameter is greater, the classification is better.
+ By comparing the precision values in these methods, we see that the logistic regression has the highest accuracy, 
+ so it is better. Other priority classification is like this:
+Logistic regression > Naive bayes > LDA > QDA
+
+### Compare based on Precision
+In precision analysis if this parameter is greater, the classification is better. 
+According to the explanation, the logistic regression that has the highest precision value is a better way.
+ Other priority classification is like this:
+Logistic regression > LDA > Naive bayes > QDA
+
+### Compare based on Recall
+In recall analysis if this parameter is greater, the classification is better. According to the explanation,
+ the Naive bayes that has the highest recall value is a better way. Other priority classification is like this:
+Naive bayes > Logistic regression > QDA > LDA
+
+### General analysis
+Given that the data is bias, we use precision and recall criteria. Based on the values obtained for these t
+wo methods and their comparison, it can be concluded that the Logistic regression is better for classification,
+Because it has better precision and recall values and it can make a better balance. The Logistic regression is 
+in the first place in terms of precision and second in terms of recall.
 
 ## References
 * [What is Logistic Regression?](https://www.statisticssolutions.com/what-is-logistic-regression/)
