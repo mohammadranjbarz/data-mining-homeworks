@@ -270,31 +270,35 @@ First, we examine the classification methods based on each of the parameters of 
 In misclassification analysis if this parameter is less, the classification is better.
  Thus, with respect to the values, the logistic regression is better because it has the lowest 
  misclassification value. Other priority classification is like this:
-QDA > LDA > Naive bayes > Logistic regression
+`QDA > LDA > Naive bayes > Logistic regression`
 
 ### Compare based on Accuracy
 
 In accuracy analysis if this parameter is greater, the classification is better.
  By comparing the precision values in these methods, we see that the logistic regression has the highest accuracy, 
  so it is better. Other priority classification is like this:
-Logistic regression > Naive bayes > LDA > QDA
+`Logistic regression > Naive bayes > LDA > QDA`
 
 ### Compare based on Precision
 In precision analysis if this parameter is greater, the classification is better. 
 According to the explanation, the logistic regression that has the highest precision value is a better way.
  Other priority classification is like this:
-Logistic regression > LDA > Naive bayes > QDA
+`Logistic regression > LDA > Naive bayes > QDA`
 
 ### Compare based on Recall
 In recall analysis if this parameter is greater, the classification is better. According to the explanation,
  the Naive bayes that has the highest recall value is a better way. Other priority classification is like this:
-Naive bayes > Logistic regression > QDA > LDA
+`Naive bayes > Logistic regression > QDA > LDA`
 
 ### General analysis
-Given that the data is bias, we use precision and recall criteria. Based on the values obtained for these t
-wo methods and their comparison, it can be concluded that the Logistic regression is better for classification,
+Given that the data is bias, we use precision and recall criteria. Based on the values obtained for these 
+two methods and their comparison, it can be concluded that the Logistic regression is better for classification,
 Because it has better precision and recall values and it can make a better balance. The Logistic regression is 
 in the first place in terms of precision and second in terms of recall.
+
+
+### 5-fold VS leave-one-out VS Without-Cross-Validation
+
 
 ## References
 * [What is Logistic Regression?](https://www.statisticssolutions.com/what-is-logistic-regression/)
