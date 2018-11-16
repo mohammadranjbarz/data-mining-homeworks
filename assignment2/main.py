@@ -104,10 +104,10 @@ y = df["class"]
 
 
 #### Phase1 of Assignment2
-# save_logistic_regression(X, y)
-# save_qda(X, y)
-# save_lda(X, y)
-# save_gnb(X, y)
+save_logistic_regression(X, y)
+save_qda(X, y)
+save_lda(X, y)
+save_gnb(X, y)
 
 
 #### Phase2 of Assignment2
@@ -186,9 +186,9 @@ def save_gnb_k_fold(X, y):
 
 
 save_logistic_regression_k_fold(X, y)
-# save_gnb_k_fold(X, y)
-# save_lda_k_fold(X, y)
-# save_qda_k_fold(X, y)
+save_gnb_k_fold(X, y)
+save_lda_k_fold(X, y)
+save_qda_k_fold(X, y)
 
 
 ###### leave_one_out
@@ -214,10 +214,10 @@ def save_gnb_leave_one_out(X, y):
     save_regression_leave_one_out(X, y, gnb, "gnb")
 
 
-# save_logistic_regression_leave_one_out(X, y)
-# save_gnb_leave_one_out(X, y)
-# save_lda_leave_one_out(X, y)
-# save_qda_leave_one_out(X, y)
+save_logistic_regression_leave_one_out(X, y)
+save_gnb_leave_one_out(X, y)
+save_lda_leave_one_out(X, y)
+save_qda_leave_one_out(X, y)
 
 
 
