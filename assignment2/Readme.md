@@ -125,6 +125,8 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
 
 
 ## Linear Regression
+We use linear regression formula, and predict list of training X,  then because our output classes are 2 or 4 , if predicted y
+was greater than 3 we assume that 4, and otherwise we assume that 2 and then with y and y-predcted calculate below scores
 
     MisClassification  = 0.0395
     
