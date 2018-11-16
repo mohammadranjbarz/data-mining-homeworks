@@ -300,6 +300,13 @@ in the first place in terms of precision and second in terms of recall.
 
 
 ### 5-fold VS leave-one-out VS Without-Cross-Validation
+In the 5-Fold and LOOCV checking, we can say that the methods of Logistic regression 
+LDA and NB in the LOOCV have better results because the values of misclassification , 
+accuracy ,  F1-score , precision and recall are better . But in a QDA method we can say that the 
+conditions are approximately equal. Although the LOOCV algorithm needs more time to run.
+
+
+![Analysis](./results/classification_analysis.jpg)
 
 
 ## References
@@ -311,3 +318,4 @@ in the first place in terms of precision and second in terms of recall.
 * [sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html)
 * [Data Mining - Naive Bayes (NB)](https://gerardnico.com/data_mining/naive_bayes )
 * [sklearn.naive_bayes.GaussianNB](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
+
