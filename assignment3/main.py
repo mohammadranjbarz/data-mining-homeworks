@@ -38,6 +38,8 @@ def get_scores_for_regression_tree(X, y):
     y_2 = regr_2.predict(X_test)
     print("MSE error is :", mean_squared_error(y_test, y_1))
     print("r2 score is :", r2_score(y_test, y_1))
+    generate_decision_tree(regr_1, "Regression tree")
+
 
 
 def get_decision_tree(X, y):
@@ -45,8 +47,32 @@ def get_decision_tree(X, y):
     model = tree.DecisionTreeRegressor(max_depth=5)
     tree_model = model.fit(X_train, y_train)
     predict = tree_model.predict(X_test)
+    model.decision_path(X_train)
     print("MSE error is :", mean_squared_error(y_test, predict))
     print("r2 score is :", r2_score(y_test, predict))
+
+    path1 = model.decision_path(X_test)
+
+    from sklearn.externals.six import StringIO
+    from sklearn.tree import export_graphviz
+    import pydotplus
+
+    # dot_data = StringIO()
+
+    # graph.render(view=True)
+    # graph.save("tree.jpg")
+    generate_decision_tree(model, "Decision_tree")
+
+def generate_decision_tree (model, name):
+    dot_data = tree.export_graphviz(model, out_file=None,
+                                    feature_names=get_features(),
+                                    class_names="class",
+                                    filled=True, rounded=True,
+
+                                    special_characters=True)
+    import graphviz
+    graph = graphviz.Source(dot_data)
+    graph.render(filename=name)
 
 
 def get_bagging(X,y):
@@ -82,6 +108,7 @@ def get_svm(X,y):
 
     #####Metrics
     print("Accuracy:", accuracy_score(y_test, y_pred))
+
     # print("Precision:", precision_score(y_test, y_pred))
     # print("Recall:", recall_score(y_test, y_pred))
     # print("F_measure:", f1_score(y_test, y_pred))
@@ -94,4 +121,6 @@ y = df["class"]
 
 # print(get_decision_tree(X,y))
 # print(get_decision_tree(X,y))
-get_svm(X,y)
+# get_decision_tree(X,y)
+# get_scores_for_regression_tree(X,y)
+# get_svm(X,y)
