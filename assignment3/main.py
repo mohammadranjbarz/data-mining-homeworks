@@ -4,9 +4,12 @@ from sklearn.tree import DecisionTreeRegressor
 import matplotlib.pyplot as plt
 from markdown import markdown
 import warnings
-
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+from sklearn.ensemble import BaggingClassifier, RandomForestClassifier
 warnings.filterwarnings('ignore')
-
+from sklearn.metrics import r2_score, mean_squared_error, confusion_matrix
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 df = pd.read_csv("./breastData.csv", sep='\s*,\s*',
@@ -23,46 +26,72 @@ def get_features():
 
 
 
-def generate_readme_html():
-    input_filename = 'Readme.md'
-    output_filename = 'Readme.html'
+def get_scores_for_regression_tree(X, y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+    regr_1 = DecisionTreeRegressor(max_depth=2)
+    regr_2 = DecisionTreeRegressor(max_depth=5)
+    regr_1.fit(X_train, y_train)
+    regr_2.fit(X_train, y_train)
 
-    f = open(input_filename, 'r')
-    html_text = markdown(f.read(), output_format='html4')
-    file = open(output_filename, "w")
-    file.write(str(html_text))
-generate_readme_html()
+    # Predict
+    y_1 = regr_1.predict(X_test)
+    y_2 = regr_2.predict(X_test)
+    print("MSE error is :", mean_squared_error(y_test, y_1))
+    print("r2 score is :", r2_score(y_test, y_1))
+
+
+def get_decision_tree(X, y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+    model = tree.DecisionTreeRegressor(max_depth=5)
+    tree_model = model.fit(X_train, y_train)
+    predict = tree_model.predict(X_test)
+    print("MSE error is :", mean_squared_error(y_test, predict))
+    print("r2 score is :", r2_score(y_test, predict))
+
+
+def get_bagging(X,y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+    bagging = BaggingClassifier()
+    bagging_model = bagging.fit(X_train, y_train)
+
+    predict = bagging_model.predict(X_test)
+    confusion = confusion_matrix(y_test, predict)
+    print(confusion)
+    print("MSE error is :", mean_squared_error(y_test, predict))
+    print("r2 score is :", r2_score(y_test, predict))
+
+def get_svm(X,y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+    svmachine = svm.SVC(gamma='auto', kernel='linear')
+    svm_model = svmachine.fit(X_train, y_train)
+
+    print(svm_model.support_)
+    print(svm_model.support_vectors_)
+    print(svm_model.n_support_)
+    # print(svm_model.coef_)
+
+    # print(svm_model.predict_proba(X_test))
+    # print(svm_model.predict_log_proba(X_test))
+    print(svm_model.score(X_test, y_test))
+    y_pred = svm_model.predict(X_test)
+
+    ########Confusion matrix
+    cnf_matrix = confusion_matrix(y_pred, y_test)
+    print(cnf_matrix)
+
+    #####Metrics
+    print("Accuracy:", accuracy_score(y_test, y_pred))
+    # print("Precision:", precision_score(y_test, y_pred))
+    # print("Recall:", recall_score(y_test, y_pred))
+    # print("F_measure:", f1_score(y_test, y_pred))
+
+
 
 X = df[get_features()]
 y = df["class"]
-from sklearn.model_selection import train_test_split
-X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=0)
-
-regr_1 = DecisionTreeRegressor(max_depth=2)
-regr_2 = DecisionTreeRegressor(max_depth=5)
-regr_1.fit(X_train, y_train)
-regr_2.fit(X_train, y_train)
-
-# Predict
-y_1 = regr_1.predict(X_test)
-y_2 = regr_2.predict(X_test)
-path1 = regr_1.decision_path(X_test)
-print(path1)
-print(regr_1.score(X_test,y_1))
-print(regr_2.score(X_test,y_1))
 
 
-from sklearn.externals.six import StringIO
-from IPython.display import Image
-from sklearn.tree import export_graphviz
-import pydotplus
-
-
-dot_data = StringIO()
-export_graphviz(path1, out_file=dot_data,
-                filled=True, rounded=True,
-                special_characters=True)
-graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
-graph.draw('file.png')
-graph.write_png("./dtree.png")
-
+# print(get_decision_tree(X,y))
+# print(get_decision_tree(X,y))
+get_svm(X,y)
