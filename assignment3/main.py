@@ -38,7 +38,7 @@ def get_scores_for_regression_tree(X, y):
     y_2 = regr_2.predict(X_test)
     print("MSE error is :", mean_squared_error(y_test, y_1))
     print("r2 score is :", r2_score(y_test, y_1))
-    generate_decision_tree(regr_1, "Regression tree")
+    generate_decision_tree(regr_1, "regression_tree")
 
 
 
@@ -61,7 +61,7 @@ def get_decision_tree(X, y):
 
     # graph.render(view=True)
     # graph.save("tree.jpg")
-    generate_decision_tree(model, "Decision_tree")
+    generate_decision_tree(model, "decision_tree")
 
 def generate_decision_tree (model, name):
     dot_data = tree.export_graphviz(model, out_file=None,
@@ -121,6 +121,6 @@ y = df["class"]
 
 # print(get_decision_tree(X,y))
 # print(get_decision_tree(X,y))
-# get_decision_tree(X,y)
-# get_scores_for_regression_tree(X,y)
+get_decision_tree(X,y)
+get_scores_for_regression_tree(X,y)
 # get_svm(X,y)

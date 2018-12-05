@@ -2,7 +2,7 @@ digraph Tree {
 node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
 edge [fontname=helvetica] ;
 0 [label=<uniformityOfCellSize &le; 2.5<br/>mse = 0.905<br/>samples = 546<br/>value = 2.692>, fillcolor="#e581395e"] ;
-1 [label=<normalNucleoli &le; 3.5<br/>mse = 0.115<br/>samples = 337<br/>value = 2.059>, fillcolor="#e5813905"] ;
+1 [label=<bareNuclei &le; 6.0<br/>mse = 0.115<br/>samples = 337<br/>value = 2.059>, fillcolor="#e5813905"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
 2 [label=<mse = 0.048<br/>samples = 330<br/>value = 2.024>, fillcolor="#e5813900"] ;
 1 -> 2 ;
