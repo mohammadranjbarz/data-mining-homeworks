@@ -23,22 +23,48 @@ and the class attribute is our output for  regression.
        
 First of all we need to remove the Data that have missing values (16 row).
 
+
 # Analysis
+## Regression Tree
+
+    MSE : 0.17329908146827155
+    R^2 score : $r2_score(y_test, y_pred)
 ![Decision tree](./results/decision_tree.jpg)
 
+## Decision Tree
+
+    MSE : 0.20641685544583133
+    R^2 score : $r2_score(y_test, y_pred)
 
 
 ![Regression decision tree](./results/regression_tree.jpg)
 
+# Bagging 
 
+        
+    Confusion matrix : [[85  3]
+     [ 2 47]]
+    MSE : 0.145985401459854
+    Accuracy : 0.9635036496350365
+    R^2 score : 0.8425287356321839
+    
+# SVM
+        
+    Confusion matrix : [[83  2]
+     [ 4 48]]
+    MSE : 0.17518248175182483
+    Accuracy : 0.9562043795620438
+    R^2 score : 0.8110344827586207
+    
+    
+# Random forrest
+
+    Confusion matrix : [[84  4]
+     [ 3 46]]
+    MSE : 0.20437956204379562
+    Accuracy : 0.948905109489051
+    R^2 score : 0.7795402298850574
 
 ## References
-* [What is Logistic Regression?](https://www.statisticssolutions.com/what-is-logistic-regression/)
-* [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
-* [Linear Discriminant Analysis ](https://sebastianraschka.com/Articles/2014_python_lda.html)
-* [sklearn.discriminant_analysis.LinearDiscriminantAnalysis](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)
-* [Quadratic Discriminant Analysis (QDA)](https://onlinecourses.science.psu.edu/stat857/node/80/)
-* [sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html)
-* [Data Mining - Naive Bayes (NB)](https://gerardnico.com/data_mining/naive_bayes )
-* [sklearn.naive_bayes.GaussianNB](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
+
 

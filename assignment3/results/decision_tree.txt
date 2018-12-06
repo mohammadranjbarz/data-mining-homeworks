@@ -1,0 +1,2 @@
+MSE : 0.20641685544583133
+R^2 score : $r2_score(y_test, y_pred)
