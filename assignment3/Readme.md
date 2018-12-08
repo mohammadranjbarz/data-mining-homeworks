@@ -32,6 +32,11 @@ First of all we need to remove the Data that have missing values (16 row).
 ![Decision tree](./results/decision_tree.jpg)
 
 ## Decision Tree
+A decision tree is a decision support tool that 
+uses a tree-like model of decisions and their possible
+consequences, including chance event outcomes, resource costs,
+and utility. It is one way to display an algorithm that only
+contains conditional control statements.
 
     MSE : 0.20641685544583133
     R^2 score : $r2_score(y_test, y_pred)
