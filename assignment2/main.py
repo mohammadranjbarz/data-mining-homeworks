@@ -11,7 +11,7 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, r2_score, mean_squared_error
 
 df = pd.read_csv("./breastData.csv", sep='\s*,\s*',
                  header=0, encoding='ascii', engine='python')
@@ -40,6 +40,8 @@ def get_model_report_for_multi_y_pred(y_list, y_pred_list):
     precision = 0
     recall = 0
     accuracy = 0
+    r2 = 0
+    mse = 0
     for i in range(len(y_pred_list)):
         y_pred = y_pred_list[i]
         y = y_list[i]
@@ -48,18 +50,22 @@ def get_model_report_for_multi_y_pred(y_list, y_pred_list):
         precision += precision_score(y, y_pred, average="macro")
         recall += recall_score(y, y_pred, average="macro")
         accuracy += accuracy_score(y, y_pred)
+        r2 += r2_score(y, y_pred)
+        mse += mean_squared_error(y, y_pred)
 
     return format_result_scores(accuracy / len(y_pred_list), f1 / len(y_pred_list)
                                 , mis_classification / len(y_pred_list),
-                                precision / len(y_pred_list), recall / len(y_pred_list))
+                                precision / len(y_pred_list), recall / len(y_pred_list),r2 / len(y_pred_list) ,mse / len(y_pred_list) )
 
 
-def format_result_scores(accuracy, f1, mis_classification, precision, recall):
+def format_result_scores(accuracy, f1, mis_classification, precision, recall, r2, mse):
     return "MisClassification  = " + str(round(mis_classification, 4)) + "\n\n" + "Accuracy  = " + str(
         round(accuracy, 4)) + "\n\n" + "F1 score  =  " + str(
         round(f1, 4)) + "\n\n" + "Precision score  =  " + str(
         round(precision, 4)) + "\n\n" + "Recall score  =  " + str(
-        round(recall, 4)) + "\n\n"
+        round(recall, 4)) + "\n\n" +"r2   =  "+str(
+        round(r2, 4)) + "\n\n" +"mse   =  "+str(
+        round(mse,4))
 
 
 def save_logistic_regression(X, y):
@@ -230,4 +236,4 @@ def generate_readme_html():
     html_text = markdown(f.read(), output_format='html4')
     file = open(output_filename, "w")
     file.write(str(html_text))
-generate_readme_html()
+# generate_readme_html()

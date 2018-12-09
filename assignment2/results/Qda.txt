@@ -8,3 +8,6 @@ Precision score  =  0.9499
 
 Recall score  =  0.9627
 
+r2   =  0.8198
+
+mse   =  0.164
