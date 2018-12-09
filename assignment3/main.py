@@ -32,7 +32,7 @@ def get_scores_for_regression_tree(X, y):
     # Predict
     y_pred = regr_1.predict(X_test)
     f = open("./results/regression_tree.txt", "w")
-    f.write(f"MSE : {mean_squared_error(y_test, y_pred)}\nR^2 score : $r2_score(y_test, y_pred)")
+    f.write(f"MSE : {mean_squared_error(y_test, y_pred)}\nR^2 score : {r2_score(y_test, y_pred)}")
     try:
         generate_decision_tree(regr_1, "regression_tree")
     except:
@@ -47,7 +47,7 @@ def get_decision_tree(X, y):
     model.decision_path(X_train)
     f = open("./results/decision_tree.txt", "w")
     f.write(f"MSE : {mean_squared_error(y_test, y_pred)}\n" +
-            f"R^2 score : $r2_score(y_test, y_pred)")
+            f"R^2 score : {r2_score(y_test, y_pred)}")
     try:
         generate_decision_tree(model, "decision_tree")
 
@@ -111,8 +111,8 @@ def get_svm(X, y):
 X = df[get_features()]
 y = df["class"]
 
-# get_decision_tree(X,y)
-# get_scores_for_regression_tree(X,y)
+get_decision_tree(X,y)
+get_scores_for_regression_tree(X,y)
 # get_svm(X, y)
 # get_bagging(X, y)
 # get_random_forrest(X, y)

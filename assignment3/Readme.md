@@ -26,10 +26,11 @@ First of all we need to remove the Data that have missing values (16 row).
 
 # Analysis
 ## Regression Tree
-
-    MSE : 0.17329908146827155
-    R^2 score : $r2_score(y_test, y_pred)
-![Decision tree](./results/decision_tree.jpg)
+    
+    MSE : 0.16684800460672927
+    R^2 score : 0.8200247012377183
+    
+![Decision tree](./results/regression_tree.jpg)
 
 ## Decision Tree
 A decision tree is a decision support tool that 
@@ -38,11 +39,11 @@ consequences, including chance event outcomes, resource costs,
 and utility. It is one way to display an algorithm that only
 contains conditional control statements.
 
-    MSE : 0.20641685544583133
-    R^2 score : $r2_score(y_test, y_pred)
+    MSE : 0.24077872707426434
+    R^2 score : 0.7402772454909846
 
 
-![Regression decision tree](./results/regression_tree.jpg)
+![Regression decision tree](./results/decision_tree.jpg)
 
 # Bagging 
 
