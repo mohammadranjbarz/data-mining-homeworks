@@ -60,6 +60,10 @@ was :
     
     Recall score  =  0.9657261864374835
     
+    r2   =  0.8648
+
+    mse   =  0.123
+    
 
  
 ## Linear Discriminant Analysis (LDA)
@@ -78,6 +82,11 @@ Linear Discriminant Analysis (LDA) is most commonly used as dimensionality reduc
     Precision score  =  0.9615770194717563
     
     Recall score  =  0.9512420370160956
+    
+        
+    r2   =  0.8262
+    
+    mse   =  0.1581
 
 
  
@@ -101,6 +110,11 @@ QDA allows for more flexibility for the covariance matrix, tends to fit the data
     Precision score  =  0.9498533993036467
     
     Recall score  =  0.9626729239699952
+        
+        
+    r2   =  0.8198
+    
+    mse   =  0.164
     
     
 
@@ -122,6 +136,10 @@ The fundamental Naive Bayes assumption is that each attribute makes an: independ
     Precision score  =  0.9548
     
     Recall score  =  0.967
+        
+    r2   =  0.8391
+    
+    mse   =  0.1464
 
 
 ## Linear Regression
@@ -159,6 +177,10 @@ Final predictor is the average of the models.
     Precision score  =  0.9613
     
     Recall score  =  0.9573
+    
+    r2   =  0.8527
+    
+    mse   =  0.1347
 
 
 
@@ -173,6 +195,10 @@ Final predictor is the average of the models.
     Precision score  =  0.9607
     
     Recall score  =  0.949
+        
+    r2   =  0.8265
+    
+    mse   =  0.1581
 
 
 
@@ -187,6 +213,10 @@ Final predictor is the average of the models.
     Precision score  =  0.9423
     
     Recall score  =  0.9574
+        
+    r2   =  0.7692
+    
+    mse   =  0.2049
 
 
 
@@ -201,6 +231,10 @@ Final predictor is the average of the models.
     Precision score  =  0.9532
     
     Recall score  =  0.9629
+        
+    r2   =  0.8177
+    
+    mse   =  0.158
 
 
 
@@ -220,6 +254,10 @@ It is numerically very costly, but also is prone to overfitting.
     Precision score  =  0.9678
     
     Recall score  =  0.9678
+        
+    r2   =  0.9678
+    
+    mse   =  0.1288
 
 
 
@@ -234,6 +272,10 @@ It is numerically very costly, but also is prone to overfitting.
     Precision score  =  0.9605
     
     Recall score  =  0.9605
+        
+    r2   =  0.9605
+    
+    mse   =  0.1581
 
 
 
@@ -248,6 +290,10 @@ It is numerically very costly, but also is prone to overfitting.
     Precision score  =  0.9502
     
     Recall score  =  0.9502
+        
+    r2   =  0.9502
+    
+    mse   =  0.1991
 
 
 
@@ -262,7 +308,10 @@ It is numerically very costly, but also is prone to overfitting.
     Precision score  =  0.9634
     
     Recall score  =  0.9634
-
+    
+    r2   =  0.9634
+    
+    mse   =  0.1464
 
 ## Conclusion
 First, we examine the classification methods based on each of the parameters of the misclassification,
