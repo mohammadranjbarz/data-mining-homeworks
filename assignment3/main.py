@@ -49,6 +49,7 @@ def get_decision_tree(X, y):
     f.write(f"MSE : {mean_squared_error(y_test, y_pred)}\n" +
             f"R^2 score : {r2_score(y_test, y_pred)}")
     try:
+        # You should install graphviz on your system to generate decision tree otherwise you will get exception
         generate_decision_tree(model, "decision_tree")
 
     except:
@@ -113,6 +114,6 @@ y = df["class"]
 
 get_decision_tree(X,y)
 get_scores_for_regression_tree(X,y)
-# get_svm(X, y)
-# get_bagging(X, y)
-# get_random_forrest(X, y)
+get_svm(X, y)
+get_bagging(X, y)
+get_random_forrest(X, y)
