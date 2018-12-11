@@ -45,6 +45,9 @@ contains conditional control statements.
 
 ![Regression decision tree](./results/decision_tree.jpg)
 
+In the regression and decision tree, the uniformity of cellsize  is 
+located at the highest point, so we can conclude that it has the most importance among the features.
+
 # Bagging 
 
         
@@ -70,6 +73,33 @@ contains conditional control statements.
     MSE : 0.20437956204379562
     Accuracy : 0.948905109489051
     R^2 score : 0.7795402298850574
+    
+    
+# Conclusion
+
+MSE :      ` Bagging  <  SVM  <  Random forest`
+Accuracy :    `Bagging  >  SVM  > Random forest`
+
+According to the obtained values, we can conclude that the Bagging method is the best method.
+
+According to the values for the classification are better, we can conclude that the decision border is almost linear.
+
+## Comparison with Project 1
+[Project 1 results](../assignment1) 
+Compare by       :        `multiple linear regression  > regression tree`
+Based on the obtained values , we can conclude that the multiple linear regression  method is better.
+
+
+## Comparison with Project 2 
+[Project 2 results](../assignment2) 
+
+* Compare by    r2 
+    `decision tree  <  QDA  < LDA  < logistic regression` 
+According to the obtained values of  , we can conclude that the methods used in the second project are more efficient than the decision tree, Because the  value in the decision tree is smaller. 
+
+* Compare by MSE   
+      `decision tree  >  QDA  > LDA  > logistic regression`
+According to the obtained values of  MSE, we can conclude that the methods used in the second project are more efficient than the decision tree, Because the MSE value in the decision tree is bigger.
 
 ## References
 
