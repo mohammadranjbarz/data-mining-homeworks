@@ -97,14 +97,14 @@ According to the values for the classification are better, we can conclude that 
 
 ## Comparison with Project 1
 [Project 1 results](https://gitlab.com/mranjbar.z2993/sbu-data-mining/tree/master/assignment1) 
-Compare by       :        `multiple linear regression  > regression tree`
+Compare by  r2  :        `multiple linear regression  > regression tree`
 Based on the obtained values , we can conclude that the multiple linear regression  method is better.
 
 
 ## Comparison with Project 2 
 [Project 2 results](https://gitlab.com/mranjbar.z2993/sbu-data-mining/tree/master/assignment2) 
 
-* Compare by    r2 
+* Compare by   r2 
     `decision tree  <  QDA  < LDA  < logistic regression` 
 According to the obtained values of  , we can conclude that the methods used in the second project are more efficient than the decision tree, Because the  value in the decision tree is smaller. 
 
