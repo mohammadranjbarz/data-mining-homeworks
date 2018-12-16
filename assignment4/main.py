@@ -38,14 +38,15 @@ colors = np.array(['green', 'orange', 'blue', ' cyan', 'black'])
 
 def save_kmeans(X):
     start = time.time()
-    kmean = KMeans(n_clusters=6, max_iter=500)
+    n_clusters = 2
+    kmean = KMeans(n_clusters=n_clusters, max_iter=500)
     kmean.fit(X)
     labels = kmean.labels_
     silhouette_score= metrics.silhouette_score(X, labels, metric='euclidean')
     end = time.time()
     print(silhouette_score)
     f = open("./results/kmeans.txt", "w")
-    f.write(f"silhouette_score : {silhouette_score}\n")
+    f.write(f"n_clusters : {n_clusters}\nsilhouette_score : {silhouette_score}\n")
 
 def save_linkage(X):
     result =""
@@ -56,9 +57,10 @@ def save_linkage(X):
         model.fit(X)
         labels = model.labels_
         silhouette_score= metrics.silhouette_score(X, labels, metric='euclidean')
-        result += f"linkage : {linkage}\nsilhouette_score : {silhouette_score}\n\n"
+        result += f"linkage : {linkage}\nn_clusters : {n_clusters}\nsilhouette_score : {silhouette_score}\n\n"
     f = open("./results/linkage.txt", "w")
     f.write(result)
 
 X = df[get_features()]
 save_linkage(X)
+save_kmeans(X)
