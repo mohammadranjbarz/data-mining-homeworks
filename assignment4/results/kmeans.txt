@@ -1,0 +1,1 @@
+silhouette_score : 0.314226159398104

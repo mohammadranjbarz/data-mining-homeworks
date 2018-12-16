@@ -1,0 +1,12 @@
+linkage : ward
+silhouette_score : 0.24418093101151334
+
+linkage : average
+silhouette_score : 0.4763807066815255
+
+linkage : single
+silhouette_score : 0.4763807066815255
+
+linkage : complete
+silhouette_score : 0.4763807066815255
+

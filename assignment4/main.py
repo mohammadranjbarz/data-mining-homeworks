@@ -10,7 +10,11 @@ import sklearn.metrics as sm
 import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering
+
 from colorama import Back, Fore, Style
+from sklearn import metrics
 colors = np.array(['green', 'orange', 'blue', ' cyan', 'black','red'])
 
 
@@ -27,27 +31,34 @@ def get_features():
     return features
 
 
-X = df[get_features()]
 colors = np.array(['green', 'orange', 'blue', ' cyan', 'black'])
 
-#### kmeans algorithm
-from sklearn.cluster import KMeans
-start = time.time()
-kmean = KMeans(n_clusters=6, max_iter=500)
-kmean.fit(X)
-end = time.time()
-# print(kmean.labels_)
-# print(Fore.BLUE + "k-mean algorithm time is :", end - start)
-# print(Fore.RESET)
 
 
-########## PCA of features for Kmeans
-from sklearn.decomposition import PCA
-pca_model = PCA(n_components=2)
-X_new = pca_model.fit_transform(X)
 
-fig = plt.figure(figsize=(6, 3))
-ax = fig.add_subplot(121)
-ax.scatter(X_new[:, 0], X_new[:, 1],c='green', marker='o', s=10)
-ax = fig.add_subplot(122)
-ax.scatter(X_new[:, 0], X_new[:, 1], c=colors[kmean.labels_], marker='*')
+def save_kmeans(X):
+    start = time.time()
+    kmean = KMeans(n_clusters=6, max_iter=500)
+    kmean.fit(X)
+    labels = kmean.labels_
+    silhouette_score= metrics.silhouette_score(X, labels, metric='euclidean')
+    end = time.time()
+    print(silhouette_score)
+    f = open("./results/kmeans.txt", "w")
+    f.write(f"silhouette_score : {silhouette_score}\n")
+
+def save_linkage(X):
+    result =""
+    linkage_array=["ward", "average", "single", "complete"]
+    n_clusters = 2
+    for linkage in linkage_array :
+        model = AgglomerativeClustering(linkage=linkage, n_clusters=n_clusters)
+        model.fit(X)
+        labels = model.labels_
+        silhouette_score= metrics.silhouette_score(X, labels, metric='euclidean')
+        result += f"linkage : {linkage}\nsilhouette_score : {silhouette_score}\n\n"
+    f = open("./results/linkage.txt", "w")
+    f.write(result)
+
+X = df[get_features()]
+save_linkage(X)
