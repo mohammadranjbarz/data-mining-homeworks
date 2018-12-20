@@ -38,7 +38,7 @@ colors = np.array(['green', 'orange', 'blue', ' cyan', 'black'])
 
 def save_kmeans(X):
     start = time.time()
-    n_clusters = 2
+    n_clusters = 6
     kmean = KMeans(n_clusters=n_clusters, max_iter=500)
     kmean.fit(X)
     labels = kmean.labels_
@@ -51,7 +51,7 @@ def save_kmeans(X):
 def save_linkage(X):
     result =""
     linkage_array=["ward", "average", "single", "complete"]
-    n_clusters = 2
+    n_clusters = 6
     for linkage in linkage_array :
         model = AgglomerativeClustering(linkage=linkage, n_clusters=n_clusters)
         model.fit(X)

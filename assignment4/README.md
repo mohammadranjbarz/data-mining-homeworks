@@ -29,29 +29,32 @@ The silhouette value is a measure of how similar an object is to its own cluster
 The silhouette can be calculated with any distance metric, such as the Euclidean distance or the Manhattan distance.
 
 ## Kmeans
-    
-    n_clusters : 2
-    silhouette_score : 0.3079416087641895
+        
+    n_clusters : 6
+    silhouette_score : 0.2978550526393102
+
 
 
 
 ## Hierarchical clustering 
 
     linkage : ward
-    n_clusters : 2
-    silhouette_score : 0.24418093101151334
+    n_clusters : 6
+    silhouette_score : 0.2537695943060857
     
     linkage : average
-    n_clusters : 2
-    silhouette_score : 0.4763807066815255
+    n_clusters : 6
+    silhouette_score : 0.21029769932379913
     
     linkage : single
-    n_clusters : 2
-    silhouette_score : 0.4763807066815255
+    n_clusters : 6
+    silhouette_score : -0.11106803869427169
     
     linkage : complete
-    n_clusters : 2
-    silhouette_score : 0.4763807066815255
+    n_clusters : 6
+    silhouette_score : 0.24591972732074335
+
+
 
 
 
