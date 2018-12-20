@@ -1,0 +1,2 @@
+n_clusters : 2
+silhouette_score : 0.3079416087641895
