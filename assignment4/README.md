@@ -37,22 +37,117 @@ The silhouette can be calculated with any distance metric, such as the Euclidean
 
 
 ## Hierarchical clustering 
-
     linkage : ward
+    
+    n_clusters : 2
+    silhouette_score : 0.24418093101151334
+    
+    n_clusters : 3
+    silhouette_score : 0.28973852605254324
+    
+    n_clusters : 4
+    silhouette_score : 0.24988027361895215
+    
+    n_clusters : 5
+    silhouette_score : 0.24548845594378832
+    
     n_clusters : 6
     silhouette_score : 0.2537695943060857
     
+    n_clusters : 7
+    silhouette_score : 0.26526788561620696
+    
+    n_clusters : 8
+    silhouette_score : 0.2894292674564693
+    
+    n_clusters : 9
+    silhouette_score : 0.2836963765775202
+    
+    
+    ****************
     linkage : average
+    
+    n_clusters : 2
+    silhouette_score : 0.4763807066815255
+    
+    n_clusters : 3
+    silhouette_score : 0.28849394043596843
+    
+    n_clusters : 4
+    silhouette_score : 0.3247230508277392
+    
+    n_clusters : 5
+    silhouette_score : 0.30359476855496775
+    
     n_clusters : 6
     silhouette_score : 0.21029769932379913
     
+    n_clusters : 7
+    silhouette_score : 0.2569134280073912
+    
+    n_clusters : 8
+    silhouette_score : 0.24288145683859752
+    
+    n_clusters : 9
+    silhouette_score : 0.2451663065476037
+    
+    
+    ****************
     linkage : single
+    
+    n_clusters : 2
+    silhouette_score : 0.4763807066815255
+    
+    n_clusters : 3
+    silhouette_score : 0.24000100804992566
+    
+    n_clusters : 4
+    silhouette_score : -0.028251777214029824
+    
+    n_clusters : 5
+    silhouette_score : -0.10104153455087905
+    
     n_clusters : 6
     silhouette_score : -0.11106803869427169
     
+    n_clusters : 7
+    silhouette_score : -0.2030951913529466
+    
+    n_clusters : 8
+    silhouette_score : -0.08213424961087658
+    
+    n_clusters : 9
+    silhouette_score : -0.07556247582712967
+    
+    
+    ****************
     linkage : complete
+    
+    n_clusters : 2
+    silhouette_score : 0.4763807066815255
+    
+    n_clusters : 3
+    silhouette_score : 0.28849394043596843
+    
+    n_clusters : 4
+    silhouette_score : 0.24955186842539795
+    
+    n_clusters : 5
+    silhouette_score : 0.23637582388852013
+    
     n_clusters : 6
     silhouette_score : 0.24591972732074335
+    
+    n_clusters : 7
+    silhouette_score : 0.24807474873485053
+    
+    n_clusters : 8
+    silhouette_score : 0.23478197924553293
+    
+    n_clusters : 9
+    silhouette_score : 0.26757421494826006
+
+
 
 
 

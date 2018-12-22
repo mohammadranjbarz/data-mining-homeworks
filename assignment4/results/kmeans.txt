@@ -1,2 +1,2 @@
 n_clusters : 6
-silhouette_score : 0.2978550526393102
+silhouette_score : 0.30220100476892503

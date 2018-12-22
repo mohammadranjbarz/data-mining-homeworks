@@ -16,15 +16,10 @@
 * [Assignment1 : Linear Regression, Multiple Linear Regression,
 Ridge, Lasso, Elastic net](./assignment1)
 
+
 ## Installation
 `pip install -r requirements.txt` or `pip3 install -r requirements.txt`
 
 ## Run
 For run every assignment go to that directory and enter this command :
 `python main.py` or `python3 main.py` 
- 
-## Report
-For converting Readme.md to Report.pdf
-
-    npm i -g md-to-pdf
-    md-to-pdf Readme.md

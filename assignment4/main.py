@@ -51,13 +51,15 @@ def save_kmeans(X):
 def save_linkage(X):
     result =""
     linkage_array=["ward", "average", "single", "complete"]
-    n_clusters = 6
     for linkage in linkage_array :
-        model = AgglomerativeClustering(linkage=linkage, n_clusters=n_clusters)
-        model.fit(X)
-        labels = model.labels_
-        silhouette_score= metrics.silhouette_score(X, labels, metric='euclidean')
-        result += f"linkage : {linkage}\nn_clusters : {n_clusters}\nsilhouette_score : {silhouette_score}\n\n"
+        result += f"linkage : {linkage}\n\n"
+        for n_clusters in range(2,10):
+            model = AgglomerativeClustering(linkage=linkage, n_clusters=n_clusters)
+            model.fit(X)
+            labels = model.labels_
+            silhouette_score= metrics.silhouette_score(X, labels, metric='euclidean')
+            result += f"n_clusters : {n_clusters}\nsilhouette_score : {silhouette_score}\n\n"
+        result += "\n****************\n"
     f = open("./results/linkage.txt", "w")
     f.write(result)
 
