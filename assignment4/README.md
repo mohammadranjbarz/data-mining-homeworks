@@ -1,6 +1,6 @@
 ## Preparing data
 
-In [BuddyMove Dataset Data Set ](https://archive.ics.uci.edu/ml/datasets/BuddyMove+Dataset#) was populated from 
+In [BuddyMove Dataset Data Set ](https://archive.ics.uci.edu/ml/datasets/BuddyMove+Data+Set) was populated from 
 destination reviews published by 249 reviewers of holidayiq.com till October 2014. Reviews falling in 6 categories
  among destinations across South India were considered and the count of reviews in each category for every reviewer
   (traveler) is captured.
