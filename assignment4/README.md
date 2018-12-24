@@ -5,6 +5,7 @@ destination reviews published by 249 reviewers of holidayiq.com till October 201
  among destinations across South India were considered and the count of reviews in each category for every reviewer
   (traveler) is captured.
 
+We dont use `Attribute 1 : Unique user id ` and we cluster based on other features
 
 ## Attribute Information
 * Attribute 1 : Unique user id 
@@ -29,6 +30,8 @@ The silhouette value is a measure of how similar an object is to its own cluster
 The silhouette can be calculated with any distance metric, such as the Euclidean distance or the Manhattan distance.
 
 ## Kmeans
+In this way we want to divide the data into k cluster and k as the input. Because we use classification so k equal to the number of classes in the classification.) k=6)
+Given the silhouette value obtained (0.2), we can conclude that the clustering is almost done well.
         
     n_clusters : 6
     silhouette_score : 0.2978550526393102
@@ -37,8 +40,11 @@ The silhouette can be calculated with any distance metric, such as the Euclidean
 
 
 ## Hierarchical clustering 
-    linkage : ward
-    
+In this method, we want to divide the data into k-class, but in this way we do not have the number of classes as inputs.
+In this way, we use different linkage for clustring, and in each linkage, clustring is done for different k (1> k >10), and the best ones are selected.  ) compared based on the silhouette.)
+
+### linkage : ward
+
     n_clusters : 2
     silhouette_score : 0.24418093101151334
     
@@ -62,11 +68,13 @@ The silhouette can be calculated with any distance metric, such as the Euclidean
     
     n_clusters : 9
     silhouette_score : 0.2836963765775202
+`K=3 > k=8 > k=9 > k=7 > k=6 > k=4 > k=5 > k=2`
+
+In this case, the silhouette for k=3 has the highest value, so we can say that the k=3 is better.   
     
     
-    ****************
-    linkage : average
-    
+### linkage : average
+
     n_clusters : 2
     silhouette_score : 0.4763807066815255
     
@@ -90,10 +98,15 @@ The silhouette can be calculated with any distance metric, such as the Euclidean
     
     n_clusters : 9
     silhouette_score : 0.2451663065476037
+ 
+ 
+`K=2 > k=4 > k=5 > k=3 > k=7 > k=9 > k=8 > k=6`
+
+Based on the values, we can say that k=2 (s=0.4763) is better, because the silhouette has the highest value.    
     
     
-    ****************
-    linkage : single
+### linkage : single
+
     
     n_clusters : 2
     silhouette_score : 0.4763807066815255
@@ -118,11 +131,14 @@ The silhouette can be calculated with any distance metric, such as the Euclidean
     
     n_clusters : 9
     silhouette_score : -0.07556247582712967
-    
-    
-    ****************
-    linkage : complete
-    
+
+`K=2 > k=3 > k=4 > k=9 > k=8 > k=5 > k=6 > k=7`
+
+Based on the values, we can say that k=2 (s=0.4763)  is better. On the other hand, with regard to the values of the silhouette that are negated, we can say that they are not very good clustring.
+     
+   
+### linkage : complete
+ 
     n_clusters : 2
     silhouette_score : 0.4763807066815255
     
@@ -148,8 +164,13 @@ The silhouette can be calculated with any distance metric, such as the Euclidean
     silhouette_score : 0.26757421494826006
 
 
+`K=2 > k=3 > k=9 > k=4 > k=7 > k=6 > k=5 > k=8`
+
+Based on the silhouette value obtained for number of different classes, we can conclude that k=2 (s=0.4763) that has the highest amount of silhouette is a better clustring. On the other hand, since in all cases the value of the silhouette is positive, we can say that all clustring are pretty good.
 
 
 
+## Conclusion
 
+According to the silhouette in two ways we can say that hierarchical method is better because it has largest value in the silhouette score.
 
