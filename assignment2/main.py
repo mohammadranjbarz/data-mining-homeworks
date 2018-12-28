@@ -1,3 +1,4 @@
+import warnings
 import pandas as pd
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
@@ -7,7 +8,6 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import KFold
 from sklearn.model_selection import LeaveOneOut
 from markdown import markdown
-import warnings
 
 warnings.filterwarnings('ignore')
 
