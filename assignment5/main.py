@@ -31,6 +31,7 @@ clf.fit(X_train, y_train)
 
 predict = clf.predict(X_test)
 auc_score = roc_auc_score(y_test, predict)
+# average_precision_score(y_true, y_scores)
 f = open(f"./results/mlp.txt", "w")
 f.write(f"classification_report:\n\n{classification_report(y_test,predict)}\n\n \n"
         f"auc_score : {auc_score}")

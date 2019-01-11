@@ -41,3 +41,23 @@ classification_report
 auc_score 
     
     0.9527586206896552
+    
+We compare result of neural network with result of [Assignment2](https://gitlab.com/mranjbar.z2993/sbu-data-mining/tree/master/assignment2)
+to check accuracy of neural network results
+
+* Compare based on precision
+In precision analysis if this parameter is greater, the classification is better. according to the explanation the neural network that has highest precision value is better.
+`5-Fold < LOOCV < Neural Network`
+
+* Compare based on recall
+In recall analysis if this parameter is greater, the classification is better. according to the explanation the neural network that has highest recall value is better.
+`5-Fold < LOOCV < Neural Network`
+
+* Compare based on f1-score
+The value of the f1-score in the neural network is larger so we can say that the neural network is better.
+`5-Fold < LOOCV < Neural Network`
+
+# Conclusion
+By comparing the values obtained in the neural network and the second project, we conclude that the neural network is a good model for data.
+
+
