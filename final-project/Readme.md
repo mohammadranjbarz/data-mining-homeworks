@@ -17,4 +17,6 @@ First of all we need to remove the Data that have missing values (16 row).
 # References
 * [autoencoder-keras-tutorial](https://www.datacamp.com/community/tutorials/autoencoder-keras-tutorial)
 
-* [keras-pandas](https://pypi.org/project/keras-pandas/)
+* [https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification](https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification)
+
+* [https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification](https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification)
