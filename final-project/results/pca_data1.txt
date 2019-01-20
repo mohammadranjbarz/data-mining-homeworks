@@ -1,0 +1,104 @@
+logistic regression :
+MisClassification  = 0.2922
+Accuracy  = 0.7078
+F1 score  =  0.1176
+Precision score  =  0.75
+Recall score  =  0.0638
+r2   =  -0.378
+confusion matrix   =  [[106   1]
+ [ 44   3]]
+mse   =  0.2922
+
+
+*******
+lda :
+MisClassification  = 0.2922
+Accuracy  = 0.7078
+F1 score  =  0.1176
+Precision score  =  0.75
+Recall score  =  0.0638
+r2   =  -0.378
+confusion matrix   =  [[106   1]
+ [ 44   3]]
+mse   =  0.2922
+
+
+*******
+qda :
+MisClassification  = 0.3052
+Accuracy  = 0.6948
+F1 score  =  0.2034
+Precision score  =  0.5
+Recall score  =  0.1277
+r2   =  -0.4393
+confusion matrix   =  [[101   6]
+ [ 41   6]]
+mse   =  0.3052
+
+
+*******
+gnb :
+MisClassification  = 0.3052
+Accuracy  = 0.6948
+F1 score  =  0.2034
+Precision score  =  0.5
+Recall score  =  0.1277
+r2   =  -0.4393
+confusion matrix   =  [[101   6]
+ [ 41   6]]
+mse   =  0.3052
+
+
+*******
+svm :
+MisClassification  = 0.3052
+Accuracy  = 0.6948
+F1 score  =  0.0
+Precision score  =  0.0
+Recall score  =  0.0
+r2   =  -0.4393
+confusion matrix   =  [[107   0]
+ [ 47   0]]
+mse   =  0.3052
+
+
+*******
+random forrest :
+MisClassification  = 0.4286
+Accuracy  = 0.5714
+F1 score  =  0.2826
+Precision score  =  0.2889
+Recall score  =  0.2766
+r2   =  -1.0211
+confusion matrix   =  [[75 32]
+ [34 13]]
+mse   =  0.4286
+
+
+*******
+bagging :
+MisClassification  = 0.4091
+Accuracy  = 0.5909
+F1 score  =  0.2759
+Precision score  =  0.3
+Recall score  =  0.2553
+r2   =  -0.9292
+confusion matrix   =  [[79 28]
+ [35 12]]
+mse   =  0.4091
+
+
+*******
+decision tree :
+MisClassification  = 0.4416
+Accuracy  = 0.5584
+F1 score  =  0.2444
+Precision score  =  0.2558
+Recall score  =  0.234
+r2   =  -1.0823
+confusion matrix   =  [[75 32]
+ [36 11]]
+mse   =  0.4416
+
+
+*******
