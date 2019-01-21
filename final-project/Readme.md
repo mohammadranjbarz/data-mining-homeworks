@@ -19,4 +19,4 @@ First of all we need to remove the Data that have missing values (16 row).
 
 * [https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification](https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification)
 
-* [https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification](https://keras.io/getting-started/sequential-model-guide/#stacked-lstm-for-sequence-classification)
+* [Applied Deep Learning - Part 3: Autoencoders](https://towardsdatascience.com/applied-deep-learning-part-3-autoencoders-1c083af4d798)

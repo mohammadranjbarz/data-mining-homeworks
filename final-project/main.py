@@ -19,6 +19,7 @@ from sklearn.tree import DecisionTreeRegressor
 from numpy import genfromtxt
 import warnings
 import sklearn.exceptions
+
 warnings.filterwarnings("ignore", category=sklearn.exceptions.UndefinedMetricWarning)
 my_data = genfromtxt('./pima-indians-diabetes.csv', delimiter=',')
 
@@ -35,6 +36,7 @@ output_data = np.array(output_data)
 from keras.layers import Input, Dense, Activation
 from keras.models import Sequential
 from sklearn.decomposition import PCA
+
 
 # calculateKerasModel()
 # stackedAutoEncoder()
@@ -117,51 +119,6 @@ def get_scores_for_regression_tree(x_train, y_train, x_test, y_test):
     return get_model_result(y_test, y_pred)
 
 
-def calculateKerasModel(x_train, y_train, x_test,y_test):
-    encoding_dim = 3  # 32 floats -> compression of factor 24.5, assuming the input is 784 floats
-    input_img = Input(shape=(8,))
-    encoded = Dense(encoding_dim, activation='relu')(input_img)
-    decoded = Dense(8, activation='sigmoid')(encoded)
-    print(x_train.shape)
-    print(x_test.shape)
-    print(y_test.shape)
-    #
-    model = Sequential()
-    model.add(Dense(1, input_dim=8))
-    model.add(Activation('relu'))
-    print('int(x_train.shape[0])', int(x_train.shape[0] / 10))
-    model.compile(optimizer='rmsprop',
-                  loss='binary_crossentropy',
-                  metrics=['accuracy'])
-    model.fit(x_train, y_train, epochs=10, batch_size=int(x_train.shape[0] / 10), validation_data=(x_test, y_test))
-    model.predict(x_train)
-
-
-def stackedAutoEncoder(x_train, y_train, x_test,y_test):
-    from keras.models import Sequential
-    from keras.layers import LSTM, Dense
-    import numpy as np
-
-    data_dim = 8
-
-    # expected input data shape: (batch_size, timesteps, data_dim)
-    model = Sequential()
-    model.add(LSTM(data_dim, return_sequences=True,
-                   input_shape=8))  # returns a sequence of vectors of dimension 32
-    model.add(LSTM(32, return_sequences=True))  # returns a sequence of vectors of dimension 32
-    model.add(LSTM(32))  # return a single vector of dimension 32
-    model.add(Dense(1, activation='softmax'))
-
-    model.compile(loss='categorical_crossentropy',
-                  optimizer='rmsprop',
-                  metrics=['accuracy'])
-
-    model.fit(x_train, y_train,
-              batch_size=64, epochs=5,
-              validation_data=(x_test, y_test))
-
-
-
 
 def calculate_result_normal_inputs():
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
@@ -178,13 +135,14 @@ def calculate_result_normal_inputs():
     f.write(result)
 
 
-def getPCA(x,n_components):
+def getPCA(x, n_components):
     pca = PCA(n_components=n_components)
     pca.fit(x)
     # print(pca.explained_variance_ratio_)
     # print(pca.transform(x_train))
     # print(pca.fit_transform(x))
     return pca.fit_transform(x)
+
 
 def getAutoEncoderData(x):
     from keras.layers import Input, Dense
@@ -195,13 +153,16 @@ def getAutoEncoderData(x):
     encoding_dim = 1  # 32 floats -> compression of factor 24.5, assuming the input is 784 floats
 
     # this is our input placeholder
-    input_img = Input(shape=(8,))
+    input_x = Input(shape=(8,))
     # "encoded" is the encoded representation of the input
-    encoded = Dense(encoding_dim, activation='relu')(input_img)
-    encoder = Model(input_img, encoded)
+    encoded1 = Dense(7, activation='relu')(input_x)
+    encoded2 = Dense(4, activation='relu')(encoded1)
+    # encoded3 = Dense(2, activation='relu')(encoded2)
+    encoder = Model(input_x, encoded2)
     encoder.compile(optimizer='adadelta', loss='binary_crossentropy')
     encoder_imgs = encoder.predict(x)
-    return  encoder_imgs
+    return encoder_imgs
+
 
 def calculate_result_normal_inputs():
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
@@ -217,10 +178,11 @@ def calculate_result_normal_inputs():
     f = open("./results/normal_data.txt", "w")
     f.write(result)
 
+
 def calculate_result_pca_inputs(n_components):
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
-    x_train = getPCA(x_train,n_components)
-    x_test= getPCA(x_test,n_components)
+    x_train = getPCA(x_train, n_components)
+    x_test = getPCA(x_test, n_components)
     result = ""
     result += "logistic regression :\n" + get_logistic_regression(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
     result += "lda :\n" + get_lda_report(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
@@ -234,11 +196,29 @@ def calculate_result_pca_inputs(n_components):
     f.write(result)
 
 
+def calculate_result_auto_encoder_inputs(label):
+    x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
+    x_train = getAutoEncoderData(x_train)
+    x_test = getAutoEncoderData(x_test)
+    result = ""
+    result += "logistic regression :\n" + get_logistic_regression(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    result += "lda :\n" + get_lda_report(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    result += "qda :\n" + get_qda_report(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    result += "gnb :\n" + get_gnb_report(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    result += "svm :\n" + get_svm(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    result += "random forrest :\n" + get_random_forrest(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    result += "bagging :\n" + get_bagging(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    result += "decision tree :\n" + get_bagging(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
+    f = open(f"./results/auto_encoder{label}.txt", "w")
+    f.write(result)
+
+
 # calculate_result_normal_inputs()
 # calculate_result_pca_inputs(1)
 # x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
 
 # print('predict : ',calculateKerasModel(x_train,y_train,x_test,y_test))
-x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
+# x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
 
-print(getAutoEncoderData(x_test))
+# print(getAutoEncoderData(x_test))
+calculate_result_auto_encoder_inputs('2 layer, 7,4 neuron')
