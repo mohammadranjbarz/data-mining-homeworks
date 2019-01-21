@@ -186,6 +186,23 @@ def getPCA(x,n_components):
     # print(pca.fit_transform(x))
     return pca.fit_transform(x)
 
+def getAutoEncoderData(x):
+    from keras.layers import Input, Dense
+    from keras.models import Model
+    from keras.layers import Conv2D, MaxPooling2D
+
+    # this is the size of our encoded representations
+    encoding_dim = 1  # 32 floats -> compression of factor 24.5, assuming the input is 784 floats
+
+    # this is our input placeholder
+    input_img = Input(shape=(8,))
+    # "encoded" is the encoded representation of the input
+    encoded = Dense(encoding_dim, activation='relu')(input_img)
+    encoder = Model(input_img, encoded)
+    encoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+    encoder_imgs = encoder.predict(x)
+    return  encoder_imgs
+
 def calculate_result_normal_inputs():
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
     result = ""
@@ -218,7 +235,10 @@ def calculate_result_pca_inputs(n_components):
 
 
 # calculate_result_normal_inputs()
-calculate_result_pca_inputs(1)
+# calculate_result_pca_inputs(1)
 # x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
 
 # print('predict : ',calculateKerasModel(x_train,y_train,x_test,y_test))
+x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
+
+print(getAutoEncoderData(x_test))
