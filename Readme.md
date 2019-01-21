@@ -16,6 +16,16 @@
 * [Assignment1 : Linear Regression, Multiple Linear Regression,
 Ridge, Lasso, Elastic net](./assignment1)
 
+* [Assignment2 : Classification,Logistic Regression ,LDA ,QDA ,Naive Bayes ](./assignment2)
+
+* [Assignment3 : Regression Tree, Decision Tree, SVM, Random forrest, Bootstrap Aggregation(Bagging)](./assignment3)
+
+* [Assignment4 : Kmeans,  Hierarchical clustering, Linkage(complete, single, average, ward)](./assignment4)
+
+* [Assignment5 : neural_network (MLPClassifier)](./assignment5)
+
+* [Final project : ](./final-project)
+
 
 ## Installation
 `pip install -r requirements.txt` or `pip3 install -r requirements.txt`
