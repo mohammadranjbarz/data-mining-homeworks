@@ -1,5 +1,5 @@
 logistic regression :
-MisClassification  = 0.2922
+auc_score  = 0.5272
 Accuracy  = 0.7078
 F1 score  =  0.1176
 Precision score  =  0.75
@@ -12,7 +12,7 @@ mse   =  0.2922
 
 *******
 lda :
-MisClassification  = 0.2922
+auc_score  = 0.5272
 Accuracy  = 0.7078
 F1 score  =  0.1176
 Precision score  =  0.75
@@ -25,7 +25,7 @@ mse   =  0.2922
 
 *******
 qda :
-MisClassification  = 0.3052
+auc_score  = 0.5358
 Accuracy  = 0.6948
 F1 score  =  0.2034
 Precision score  =  0.5
@@ -38,7 +38,7 @@ mse   =  0.3052
 
 *******
 gnb :
-MisClassification  = 0.3052
+auc_score  = 0.5358
 Accuracy  = 0.6948
 F1 score  =  0.2034
 Precision score  =  0.5
@@ -51,7 +51,7 @@ mse   =  0.3052
 
 *******
 svm :
-MisClassification  = 0.3052
+auc_score  = 0.5
 Accuracy  = 0.6948
 F1 score  =  0.0
 Precision score  =  0.0
@@ -64,41 +64,41 @@ mse   =  0.3052
 
 *******
 random forrest :
-MisClassification  = 0.4286
-Accuracy  = 0.5714
-F1 score  =  0.2826
-Precision score  =  0.2889
-Recall score  =  0.2766
-r2   =  -1.0211
-confusion matrix   =  [[75 32]
- [34 13]]
-mse   =  0.4286
+auc_score  = 0.4735
+Accuracy  = 0.5584
+F1 score  =  0.2609
+Precision score  =  0.2667
+Recall score  =  0.2553
+r2   =  -1.0823
+confusion matrix   =  [[74 33]
+ [35 12]]
+mse   =  0.4416
 
 
 *******
 bagging :
-MisClassification  = 0.4091
-Accuracy  = 0.5909
-F1 score  =  0.2759
-Precision score  =  0.3
-Recall score  =  0.2553
-r2   =  -0.9292
-confusion matrix   =  [[79 28]
- [35 12]]
-mse   =  0.4091
+auc_score  = 0.4556
+Accuracy  = 0.5584
+F1 score  =  0.2093
+Precision score  =  0.2308
+Recall score  =  0.1915
+r2   =  -1.0823
+confusion matrix   =  [[77 30]
+ [38  9]]
+mse   =  0.4416
 
 
 *******
 decision tree :
-MisClassification  = 0.4416
-Accuracy  = 0.5584
-F1 score  =  0.2444
-Precision score  =  0.2558
-Recall score  =  0.234
-r2   =  -1.0823
-confusion matrix   =  [[75 32]
- [36 11]]
-mse   =  0.4416
+auc_score  = 0.4807
+Accuracy  = 0.5519
+F1 score  =  0.2887
+Precision score  =  0.28
+Recall score  =  0.2979
+r2   =  -1.1129
+confusion matrix   =  [[71 36]
+ [33 14]]
+mse   =  0.4481
 
 
 *******

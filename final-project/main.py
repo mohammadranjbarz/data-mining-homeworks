@@ -8,7 +8,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import KFold
 from sklearn.model_selection import LeaveOneOut
 from sklearn.metrics import r2_score, mean_squared_error, confusion_matrix
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, mean_squared_error
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, mean_squared_error, roc_auc_score
 
 from sklearn import svm
 from sklearn.model_selection import train_test_split
@@ -42,19 +42,21 @@ from sklearn.decomposition import PCA
 # stackedAutoEncoder()
 
 
-def format_result_scores(accuracy, mis_classification, f1, precision, recall, r2, mse, confussion_matrix):
-    return "MisClassification  = " + str(round(mis_classification, 4)) + "\n" + "Accuracy  = " + str(
-        round(accuracy, 4)) + "\n" + "F1 score  =  " + str(
-        round(f1, 4)) + "\n" + "Precision score  =  " + str(
-        round(precision, 4)) + "\n" + "Recall score  =  " + str(
-        round(recall, 4)) + "\n" + "r2   =  " + str(
-        round(r2, 4)) + "\n" + "confusion matrix   =  " + str(
-        confussion_matrix) + "\n" + "mse   =  " + str(
-        round(mse, 4))
+def format_result_scores(roc_auc_score, accuracy, f1, precision, recall, r2, mse, confussion_matrix):
+    return \
+        "auc_score  = " + str(round(roc_auc_score, 4)) + \
+        "\n" + "Accuracy  = " + str(
+            round(accuracy, 4)) + "\n" + "F1 score  =  " + str(
+            round(f1, 4)) + "\n" + "Precision score  =  " + str(
+            round(precision, 4)) + "\n" + "Recall score  =  " + str(
+            round(recall, 4)) + "\n" + "r2   =  " + str(
+            round(r2, 4)) + "\n" + "confusion matrix   =  " + str(
+            confussion_matrix) + "\n" + "mse   =  " + str(
+            round(mse, 4))
 
 
 def get_model_result(y, y_pred):
-    return format_result_scores(accuracy_score(y, y_pred), 1 - accuracy_score(y, y_pred),
+    return format_result_scores(roc_auc_score(y, y_pred), accuracy_score(y, y_pred),
                                 f1_score(y, y_pred), precision_score(y, y_pred), recall_score(y, y_pred),
                                 r2_score(y, y_pred),
                                 mean_squared_error(y, y_pred), confusion_matrix(y, y_pred))
@@ -119,7 +121,6 @@ def get_scores_for_regression_tree(x_train, y_train, x_test, y_test):
     return get_model_result(y_test, y_pred)
 
 
-
 def calculate_result_normal_inputs():
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
     result = ""
@@ -144,7 +145,7 @@ def getPCA(x, n_components):
     return pca.fit_transform(x)
 
 
-def getAutoEncoderData(x):
+def getAutoEncoderData(x, layer1_neurons, layer2_neurons, layer3_neurons=0):
     from keras.layers import Input, Dense
     from keras.models import Model
     from keras.layers import Conv2D, MaxPooling2D
@@ -155,10 +156,13 @@ def getAutoEncoderData(x):
     # this is our input placeholder
     input_x = Input(shape=(8,))
     # "encoded" is the encoded representation of the input
-    encoded1 = Dense(7, activation='relu')(input_x)
-    encoded2 = Dense(4, activation='relu')(encoded1)
-    # encoded3 = Dense(2, activation='relu')(encoded2)
-    encoder = Model(input_x, encoded2)
+    encoded1 = Dense(layer1_neurons, activation='relu')(input_x)
+    encoded2 = Dense(layer2_neurons, activation='relu')(encoded1)
+    finalEncoded = encoded2
+    if layer3_neurons != 0:
+        encoded3 = Dense(layer3_neurons, activation='relu')(encoded2)
+        finalEncoded = encoded3
+    encoder = Model(input_x, finalEncoded)
     encoder.compile(optimizer='adadelta', loss='binary_crossentropy')
     encoder_imgs = encoder.predict(x)
     return encoder_imgs
@@ -196,10 +200,14 @@ def calculate_result_pca_inputs(n_components):
     f.write(result)
 
 
-def calculate_result_auto_encoder_inputs(label):
+def calculate_result_auto_encoder_inputs(layer1_neurons, layer2_neurons, layer3_neurons=0):
+    label = f"2 layer - {str(layer1_neurons)}, {layer2_neurons} neurons"
+    if layer3_neurons != 0:
+        label = f"3 layer - {str(layer1_neurons)}, {layer2_neurons}, {layer3_neurons} neurons"
+
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
-    x_train = getAutoEncoderData(x_train)
-    x_test = getAutoEncoderData(x_test)
+    x_train = getAutoEncoderData(x_train, layer1_neurons, layer2_neurons, layer3_neurons)
+    x_test = getAutoEncoderData(x_test, layer1_neurons, layer2_neurons, layer3_neurons)
     result = ""
     result += "logistic regression :\n" + get_logistic_regression(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
     result += "lda :\n" + get_lda_report(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
@@ -215,10 +223,42 @@ def calculate_result_auto_encoder_inputs(label):
 
 # calculate_result_normal_inputs()
 # calculate_result_pca_inputs(1)
-# x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
-
-# print('predict : ',calculateKerasModel(x_train,y_train,x_test,y_test))
-# x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
-
-# print(getAutoEncoderData(x_test))
-calculate_result_auto_encoder_inputs('2 layer, 7,4 neuron')
+# calculate_result_pca_inputs(2)
+# calculate_result_pca_inputs(3)
+# calculate_result_pca_inputs(4)
+# calculate_result_pca_inputs(5)
+# calculate_result_pca_inputs(6)
+# calculate_result_pca_inputs(7)
+# calculate_result_auto_encoder_inputs(7, 6, 5)
+# calculate_result_auto_encoder_inputs(7, 6, 4)
+# calculate_result_auto_encoder_inputs(7, 6, 3)
+# calculate_result_auto_encoder_inputs(7, 6, 2)
+# calculate_result_auto_encoder_inputs(7, 5, 4)
+# calculate_result_auto_encoder_inputs(7, 5, 3)
+# calculate_result_auto_encoder_inputs(7, 5, 2)
+# calculate_result_auto_encoder_inputs(7, 4, 3)
+# calculate_result_auto_encoder_inputs(7, 4, 2)
+# calculate_result_auto_encoder_inputs(6, 5, 4)
+# calculate_result_auto_encoder_inputs(6, 5, 3)
+# calculate_result_auto_encoder_inputs(6, 5, 2)
+# calculate_result_auto_encoder_inputs(6, 4, 2)
+# calculate_result_auto_encoder_inputs(6, 3, 2)
+# calculate_result_auto_encoder_inputs(5, 4, 3)
+# calculate_result_auto_encoder_inputs(5, 4, 3)
+# calculate_result_auto_encoder_inputs(5, 4, 2)
+# calculate_result_auto_encoder_inputs(5, 3, 2)
+# calculate_result_auto_encoder_inputs(4, 3, 2)
+# calculate_result_auto_encoder_inputs(7, 6)
+# calculate_result_auto_encoder_inputs(7, 5)
+# calculate_result_auto_encoder_inputs(7, 4)
+# calculate_result_auto_encoder_inputs(7, 3)
+# calculate_result_auto_encoder_inputs(7, 2)
+# calculate_result_auto_encoder_inputs(6, 5)
+# calculate_result_auto_encoder_inputs(6, 4)
+# calculate_result_auto_encoder_inputs(6, 3)
+# calculate_result_auto_encoder_inputs(5, 4)
+# calculate_result_auto_encoder_inputs(5, 3)
+# calculate_result_auto_encoder_inputs(5, 2)
+# calculate_result_auto_encoder_inputs(4, 3)
+# calculate_result_auto_encoder_inputs(4, 2)
+# calculate_result_auto_encoder_inputs(3, 2)

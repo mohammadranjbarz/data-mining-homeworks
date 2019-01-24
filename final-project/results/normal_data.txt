@@ -1,5 +1,5 @@
 logistic regression :
-MisClassification  = 0.1753
+auc_score  = 0.7665
 Accuracy  = 0.8247
 F1 score  =  0.6824
 Precision score  =  0.7632
@@ -12,7 +12,7 @@ mse   =  0.1753
 
 *******
 lda :
-MisClassification  = 0.1753
+auc_score  = 0.7665
 Accuracy  = 0.8247
 F1 score  =  0.6824
 Precision score  =  0.7632
@@ -25,7 +25,7 @@ mse   =  0.1753
 
 *******
 qda :
-MisClassification  = 0.2078
+auc_score  = 0.7431
 Accuracy  = 0.7922
 F1 score  =  0.6444
 Precision score  =  0.6744
@@ -38,7 +38,7 @@ mse   =  0.2078
 
 *******
 gnb :
-MisClassification  = 0.2078
+auc_score  = 0.7431
 Accuracy  = 0.7922
 F1 score  =  0.6444
 Precision score  =  0.6744
@@ -51,7 +51,7 @@ mse   =  0.2078
 
 *******
 svm :
-MisClassification  = 0.1818
+auc_score  = 0.7618
 Accuracy  = 0.8182
 F1 score  =  0.6744
 Precision score  =  0.7436
@@ -64,40 +64,40 @@ mse   =  0.1818
 
 *******
 random forrest :
-MisClassification  = 0.2208
-Accuracy  = 0.7792
-F1 score  =  0.6047
-Precision score  =  0.6667
-Recall score  =  0.5532
-r2   =  -0.0412
-confusion matrix   =  [[94 13]
- [21 26]]
-mse   =  0.2208
+auc_score  = 0.7133
+Accuracy  = 0.7922
+F1 score  =  0.6
+Precision score  =  0.7273
+Recall score  =  0.5106
+r2   =  0.0201
+confusion matrix   =  [[98  9]
+ [23 24]]
+mse   =  0.2078
 
 
 *******
 bagging :
-MisClassification  = 0.2338
-Accuracy  = 0.7662
-F1 score  =  0.5909
-Precision score  =  0.6341
-Recall score  =  0.5532
-r2   =  -0.1024
-confusion matrix   =  [[92 15]
- [21 26]]
-mse   =  0.2338
+auc_score  = 0.7524
+Accuracy  = 0.8052
+F1 score  =  0.6591
+Precision score  =  0.7073
+Recall score  =  0.617
+r2   =  0.0813
+confusion matrix   =  [[95 12]
+ [18 29]]
+mse   =  0.1948
 
 
 *******
 decision tree :
-MisClassification  = 0.1883
+auc_score  = 0.7511
 Accuracy  = 0.8117
-F1 score  =  0.6813
-Precision score  =  0.7045
-Recall score  =  0.6596
+F1 score  =  0.6588
+Precision score  =  0.7368
+Recall score  =  0.5957
 r2   =  0.112
-confusion matrix   =  [[94 13]
- [16 31]]
+confusion matrix   =  [[97 10]
+ [19 28]]
 mse   =  0.1883
 
 

@@ -1,5 +1,5 @@
 logistic regression :
-MisClassification  = 0.2273
+auc_score  = 0.7112
 Accuracy  = 0.7727
 F1 score  =  0.5977
 Precision score  =  0.65
@@ -12,7 +12,7 @@ mse   =  0.2273
 
 *******
 lda :
-MisClassification  = 0.2338
+auc_score  = 0.7005
 Accuracy  = 0.7662
 F1 score  =  0.5814
 Precision score  =  0.641
@@ -25,7 +25,7 @@ mse   =  0.2338
 
 *******
 qda :
-MisClassification  = 0.2468
+auc_score  = 0.6852
 Accuracy  = 0.7532
 F1 score  =  0.5581
 Precision score  =  0.6154
@@ -38,7 +38,7 @@ mse   =  0.2468
 
 *******
 gnb :
-MisClassification  = 0.2273
+auc_score  = 0.6992
 Accuracy  = 0.7727
 F1 score  =  0.5783
 Precision score  =  0.6667
@@ -51,7 +51,7 @@ mse   =  0.2273
 
 *******
 svm :
-MisClassification  = 0.2338
+auc_score  = 0.6946
 Accuracy  = 0.7662
 F1 score  =  0.5714
 Precision score  =  0.6486
@@ -64,41 +64,41 @@ mse   =  0.2338
 
 *******
 random forrest :
-MisClassification  = 0.2338
-Accuracy  = 0.7662
-F1 score  =  0.5714
-Precision score  =  0.6486
-Recall score  =  0.5106
-r2   =  -0.1024
-confusion matrix   =  [[94 13]
- [23 24]]
-mse   =  0.2338
+auc_score  = 0.698
+Accuracy  = 0.7792
+F1 score  =  0.575
+Precision score  =  0.697
+Recall score  =  0.4894
+r2   =  -0.0412
+confusion matrix   =  [[97 10]
+ [24 23]]
+mse   =  0.2208
 
 
 *******
 bagging :
-MisClassification  = 0.2403
-Accuracy  = 0.7597
-F1 score  =  0.5432
-Precision score  =  0.6471
-Recall score  =  0.4681
-r2   =  -0.133
-confusion matrix   =  [[95 12]
- [25 22]]
-mse   =  0.2403
+auc_score  = 0.6712
+Accuracy  = 0.7338
+F1 score  =  0.5393
+Precision score  =  0.5714
+Recall score  =  0.5106
+r2   =  -0.2555
+confusion matrix   =  [[89 18]
+ [23 24]]
+mse   =  0.2662
 
 
 *******
 decision tree :
-MisClassification  = 0.2403
-Accuracy  = 0.7597
-F1 score  =  0.5747
-Precision score  =  0.625
-Recall score  =  0.5319
-r2   =  -0.133
-confusion matrix   =  [[92 15]
- [22 25]]
-mse   =  0.2403
+auc_score  = 0.6972
+Accuracy  = 0.7532
+F1 score  =  0.5778
+Precision score  =  0.6047
+Recall score  =  0.5532
+r2   =  -0.1637
+confusion matrix   =  [[90 17]
+ [21 26]]
+mse   =  0.2468
 
 
 *******

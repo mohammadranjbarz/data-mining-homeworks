@@ -1,5 +1,5 @@
 logistic regression :
-MisClassification  = 0.2338
+auc_score  = 0.7065
 Accuracy  = 0.7662
 F1 score  =  0.5909
 Precision score  =  0.6341
@@ -12,7 +12,7 @@ mse   =  0.2338
 
 *******
 lda :
-MisClassification  = 0.2403
+auc_score  = 0.6959
 Accuracy  = 0.7597
 F1 score  =  0.5747
 Precision score  =  0.625
@@ -25,7 +25,7 @@ mse   =  0.2403
 
 *******
 qda :
-MisClassification  = 0.2338
+auc_score  = 0.7005
 Accuracy  = 0.7662
 F1 score  =  0.5814
 Precision score  =  0.641
@@ -38,7 +38,7 @@ mse   =  0.2338
 
 *******
 gnb :
-MisClassification  = 0.2143
+auc_score  = 0.7265
 Accuracy  = 0.7857
 F1 score  =  0.6207
 Precision score  =  0.675
@@ -51,7 +51,7 @@ mse   =  0.2143
 
 *******
 svm :
-MisClassification  = 0.2403
+auc_score  = 0.6899
 Accuracy  = 0.7597
 F1 score  =  0.5647
 Precision score  =  0.6316
@@ -64,41 +64,41 @@ mse   =  0.2403
 
 *******
 random forrest :
-MisClassification  = 0.2013
+auc_score  = 0.7418
 Accuracy  = 0.7987
-F1 score  =  0.6517
-Precision score  =  0.6905
-Recall score  =  0.617
+F1 score  =  0.6437
+Precision score  =  0.7
+Recall score  =  0.5957
 r2   =  0.0507
-confusion matrix   =  [[94 13]
- [18 29]]
+confusion matrix   =  [[95 12]
+ [19 28]]
 mse   =  0.2013
 
 
 *******
 bagging :
-MisClassification  = 0.2208
-Accuracy  = 0.7792
-F1 score  =  0.6222
-Precision score  =  0.6512
-Recall score  =  0.5957
-r2   =  -0.0412
-confusion matrix   =  [[92 15]
- [19 28]]
-mse   =  0.2208
+auc_score  = 0.6759
+Accuracy  = 0.7403
+F1 score  =  0.5455
+Precision score  =  0.5854
+Recall score  =  0.5106
+r2   =  -0.2249
+confusion matrix   =  [[90 17]
+ [23 24]]
+mse   =  0.2597
 
 
 *******
 decision tree :
-MisClassification  = 0.2468
-Accuracy  = 0.7532
-F1 score  =  0.5778
-Precision score  =  0.6047
+auc_score  = 0.7252
+Accuracy  = 0.7922
+F1 score  =  0.619
+Precision score  =  0.7027
 Recall score  =  0.5532
-r2   =  -0.1637
-confusion matrix   =  [[90 17]
+r2   =  0.0201
+confusion matrix   =  [[96 11]
  [21 26]]
-mse   =  0.2468
+mse   =  0.2078
 
 
 *******

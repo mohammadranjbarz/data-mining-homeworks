@@ -1,5 +1,5 @@
 logistic regression :
-MisClassification  = 0.3052
+auc_score  = 0.5
 Accuracy  = 0.6948
 F1 score  =  0.0
 Precision score  =  0.0
@@ -12,7 +12,7 @@ mse   =  0.3052
 
 *******
 lda :
-MisClassification  = 0.3052
+auc_score  = 0.5
 Accuracy  = 0.6948
 F1 score  =  0.0
 Precision score  =  0.0
@@ -25,20 +25,20 @@ mse   =  0.3052
 
 *******
 qda :
-MisClassification  = 0.3052
-Accuracy  = 0.6948
-F1 score  =  0.0
-Precision score  =  0.0
-Recall score  =  0.0
-r2   =  -0.4393
+auc_score  = 0.5213
+Accuracy  = 0.7078
+F1 score  =  0.0816
+Precision score  =  1.0
+Recall score  =  0.0426
+r2   =  -0.378
 confusion matrix   =  [[107   0]
- [ 47   0]]
-mse   =  0.3052
+ [ 45   2]]
+mse   =  0.2922
 
 
 *******
 gnb :
-MisClassification  = 0.3052
+auc_score  = 0.5
 Accuracy  = 0.6948
 F1 score  =  0.0
 Precision score  =  0.0
@@ -51,7 +51,7 @@ mse   =  0.3052
 
 *******
 svm :
-MisClassification  = 0.3052
+auc_score  = 0.5
 Accuracy  = 0.6948
 F1 score  =  0.0
 Precision score  =  0.0
@@ -64,7 +64,7 @@ mse   =  0.3052
 
 *******
 random forrest :
-MisClassification  = 0.3052
+auc_score  = 0.5
 Accuracy  = 0.6948
 F1 score  =  0.0
 Precision score  =  0.0
@@ -77,7 +77,7 @@ mse   =  0.3052
 
 *******
 bagging :
-MisClassification  = 0.3052
+auc_score  = 0.5
 Accuracy  = 0.6948
 F1 score  =  0.0
 Precision score  =  0.0
@@ -90,15 +90,15 @@ mse   =  0.3052
 
 *******
 decision tree :
-MisClassification  = 0.3052
-Accuracy  = 0.6948
-F1 score  =  0.0
-Precision score  =  0.0
-Recall score  =  0.0
-r2   =  -0.4393
-confusion matrix   =  [[107   0]
- [ 47   0]]
-mse   =  0.3052
+auc_score  = 0.5026
+Accuracy  = 0.6818
+F1 score  =  0.0755
+Precision score  =  0.3333
+Recall score  =  0.0426
+r2   =  -0.5005
+confusion matrix   =  [[103   4]
+ [ 45   2]]
+mse   =  0.3182
 
 
 *******

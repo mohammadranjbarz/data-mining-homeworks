@@ -1,5 +1,5 @@
 logistic regression :
-MisClassification  = 0.2208
+auc_score  = 0.7158
 Accuracy  = 0.7792
 F1 score  =  0.6047
 Precision score  =  0.6667
@@ -12,7 +12,7 @@ mse   =  0.2208
 
 *******
 lda :
-MisClassification  = 0.2273
+auc_score  = 0.7052
 Accuracy  = 0.7727
 F1 score  =  0.5882
 Precision score  =  0.6579
@@ -25,7 +25,7 @@ mse   =  0.2273
 
 *******
 qda :
-MisClassification  = 0.2013
+auc_score  = 0.7299
 Accuracy  = 0.7987
 F1 score  =  0.6265
 Precision score  =  0.7222
@@ -38,7 +38,7 @@ mse   =  0.2013
 
 *******
 gnb :
-MisClassification  = 0.2078
+auc_score  = 0.7252
 Accuracy  = 0.7922
 F1 score  =  0.619
 Precision score  =  0.7027
@@ -51,7 +51,7 @@ mse   =  0.2078
 
 *******
 svm :
-MisClassification  = 0.2143
+auc_score  = 0.7146
 Accuracy  = 0.7857
 F1 score  =  0.6024
 Precision score  =  0.6944
@@ -64,41 +64,41 @@ mse   =  0.2143
 
 *******
 random forrest :
-MisClassification  = 0.2532
-Accuracy  = 0.7468
-F1 score  =  0.5618
-Precision score  =  0.5952
-Recall score  =  0.5319
-r2   =  -0.1943
+auc_score  = 0.7291
+Accuracy  = 0.7727
+F1 score  =  0.6237
+Precision score  =  0.6304
+Recall score  =  0.617
+r2   =  -0.0718
 confusion matrix   =  [[90 17]
- [22 25]]
-mse   =  0.2532
+ [18 29]]
+mse   =  0.2273
 
 
 *******
 bagging :
-MisClassification  = 0.2338
-Accuracy  = 0.7662
-F1 score  =  0.5909
-Precision score  =  0.6341
-Recall score  =  0.5532
-r2   =  -0.1024
-confusion matrix   =  [[92 15]
- [21 26]]
-mse   =  0.2338
+auc_score  = 0.7052
+Accuracy  = 0.7727
+F1 score  =  0.5882
+Precision score  =  0.6579
+Recall score  =  0.5319
+r2   =  -0.0718
+confusion matrix   =  [[94 13]
+ [22 25]]
+mse   =  0.2273
 
 
 *******
 decision tree :
-MisClassification  = 0.2338
-Accuracy  = 0.7662
-F1 score  =  0.5909
-Precision score  =  0.6341
-Recall score  =  0.5532
-r2   =  -0.1024
-confusion matrix   =  [[92 15]
- [21 26]]
-mse   =  0.2338
+auc_score  = 0.7179
+Accuracy  = 0.7987
+F1 score  =  0.6076
+Precision score  =  0.75
+Recall score  =  0.5106
+r2   =  0.0507
+confusion matrix   =  [[99  8]
+ [23 24]]
+mse   =  0.2013
 
 
 *******
