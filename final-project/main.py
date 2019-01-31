@@ -146,28 +146,6 @@ def getPCA(x, n_components):
     return pca.fit_transform(x)
 
 
-def getAutoEncoderData(x, layer1_neurons, layer2_neurons, layer3_neurons=0):
-    from keras.layers import Input, Dense
-    from keras.models import Model
-    from keras.layers import Conv2D, MaxPooling2D
-
-    # this is the size of our encoded representations
-    encoding_dim = 1  # 32 floats -> compression of factor 24.5, assuming the input is 784 floats
-
-    # this is our input placeholder
-    input_x = Input(shape=(8,))
-    # "encoded" is the encoded representation of the input
-    encoded1 = Dense(layer1_neurons, activation='relu')(input_x)
-    encoded2 = Dense(layer2_neurons, activation='relu')(encoded1)
-    finalEncoded = encoded2
-    if layer3_neurons != 0:
-        encoded3 = Dense(layer3_neurons, activation='relu')(encoded2)
-        finalEncoded = encoded3
-    encoder = Model(input_x, finalEncoded)
-    encoder.compile(optimizer='adadelta', loss='binary_crossentropy')
-    encoder_imgs = encoder.predict(x)
-    return encoder_imgs
-
 
 def encodFunction_three_layers(x_train, x_test, first_layer_neurons, second_layer_neurons,
                                third_layer_nuerons):
