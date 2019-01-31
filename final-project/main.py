@@ -21,6 +21,7 @@ import warnings
 import sklearn.exceptions
 
 warnings.filterwarnings("ignore", category=sklearn.exceptions.UndefinedMetricWarning)
+warnings.filterwarnings("ignore", category=sklearn.exceptions.DataConversionWarning)
 my_data = genfromtxt('./pima-indians-diabetes.csv', delimiter=',')
 
 input_data = []
@@ -168,6 +169,64 @@ def getAutoEncoderData(x, layer1_neurons, layer2_neurons, layer3_neurons=0):
     return encoder_imgs
 
 
+def encodFunction_three_layers(x_train, x_test, first_layer_neurons, second_layer_neurons,
+                               third_layer_nuerons):
+    from keras.layers import Input, Dense
+    from keras.models import Model
+    input_x = Input(shape=(8,))
+
+    encoded = Dense(first_layer_neurons, activation='relu')(input_x)
+    encoded2 = Dense(second_layer_neurons, activation='relu')(encoded)
+    encoded3 = Dense(third_layer_nuerons, activation='relu')(encoded2)
+    decoded1 = Dense(second_layer_neurons, activation='sigmoid')(encoded3)
+    decoded2 = Dense(first_layer_neurons, activation='sigmoid')(decoded1)
+
+    decoded3 = Dense(8, activation='sigmoid')(decoded2)
+
+    # this model maps an input to its reconstruction
+    encoder = Model(input_x, encoded3)
+    autoencoder = Model(input_x, decoded3)
+    # this model maps an input to its encoded representation
+    # encoder = Model(input_x, encoded)
+    autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+
+    autoencoder.fit(x_train, x_train,
+                    epochs=0,
+                    batch_size=800,
+                    shuffle=True,
+                    validation_data=(x_test, x_test))
+    encoded_x_test = encoder.predict(x_test)
+    encoded_x_train = encoder.predict(x_train)
+    return encoded_x_train, encoded_x_test
+
+
+def encodFunction_two_layers(x_train, x_test, first_layer_neurons, second_layer_neurons):
+    from keras.layers import Input, Dense
+    from keras.models import Model
+    input_x = Input(shape=(8,))
+
+    encoded = Dense(first_layer_neurons, activation='relu')(input_x)
+    encoded2 = Dense(second_layer_neurons, activation='relu')(encoded)
+    decoded1 = Dense(second_layer_neurons, activation='sigmoid')(encoded2)
+    decoded2 = Dense(8, activation='sigmoid')(decoded1)
+
+    # this model maps an input to its reconstruction
+    encoder = Model(input_x, encoded2)
+    autoencoder = Model(input_x, decoded2)
+    # this model maps an input to its encoded representation
+    # encoder = Model(input_x, encoded)
+    autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+
+    autoencoder.fit(x_train, x_train,
+                    epochs=0,
+                    batch_size=800,
+                    shuffle=True,
+                    validation_data=(x_test, x_test))
+    encoded_x_test = encoder.predict(x_test)
+    encoded_x_train = encoder.predict(x_train)
+    return encoded_x_train, encoded_x_test
+
+
 def calculate_result_normal_inputs():
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
     result = ""
@@ -201,13 +260,18 @@ def calculate_result_pca_inputs(n_components):
 
 
 def calculate_result_auto_encoder_inputs(layer1_neurons, layer2_neurons, layer3_neurons=0):
-    label = f"2 layer - {str(layer1_neurons)}, {layer2_neurons} neurons"
-    if layer3_neurons != 0:
-        label = f"3 layer - {str(layer1_neurons)}, {layer2_neurons}, {layer3_neurons} neurons"
-
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_data, test_size=0.2, random_state=0)
-    x_train = getAutoEncoderData(x_train, layer1_neurons, layer2_neurons, layer3_neurons)
-    x_test = getAutoEncoderData(x_test, layer1_neurons, layer2_neurons, layer3_neurons)
+    if layer3_neurons != 0:
+        print('before shape', x_train.shape, x_test.shape)
+        label = f"three layer - {str(layer1_neurons)}, {layer2_neurons}, {layer3_neurons} neurons"
+        x_train, x_test = encodFunction_three_layers(x_train, x_test, layer1_neurons, layer2_neurons, layer3_neurons)
+        print('after shape', x_train.shape, x_test.shape)
+
+    else:
+
+        label = f"two layer - {str(layer1_neurons)}, {layer2_neurons} neurons"
+        x_train, x_test = encodFunction_two_layers(x_train, x_test, layer1_neurons, layer2_neurons)
+
     result = ""
     result += "logistic regression :\n" + get_logistic_regression(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
     result += "lda :\n" + get_lda_report(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
@@ -217,9 +281,8 @@ def calculate_result_auto_encoder_inputs(layer1_neurons, layer2_neurons, layer3_
     result += "random forrest :\n" + get_random_forrest(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
     result += "bagging :\n" + get_bagging(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
     result += "decision tree :\n" + get_bagging(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
-    f = open(f"./results/auto_encoder{label}.txt", "w")
+    f = open(f"./tests/auto_encoder{label}.txt", "w")
     f.write(result)
-
 
 # calculate_result_normal_inputs()
 # calculate_result_pca_inputs(1)
