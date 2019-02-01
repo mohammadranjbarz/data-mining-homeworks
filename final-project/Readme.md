@@ -10,8 +10,7 @@
     7. Diabetes pedigree function
     8. Age (years)
     9. Class variable (0 or 1)    
-First of all we need to remove the Data that have missing values (16 row).
-
+    
 داده های این پروژه مربوط به تشخیص دیابت در حدود 700 نفر است و هدف نهایی کلاس بندی داده ها به دو دسته ی سالم و بیمار می باشد.در این پروژه ما مسئله را با 8 روش logistic regression ، LDA ، QDA ، gnb ، SVM ، random forest  ، bagging و decision tree و در 4 حالت پیش پردازش خودرمزنگار با دولایه پنهان ، پیش پردازش خودرمزنگار با سه لایه پنهان ، پیش پردازش PCA و بدون پیش پردازش برای هرکدام بررسی نموده ایم و نتایج را با صورت های متنوع مقایسه کرده ایم 
 
 برای مشاهده کامل نتایج بدست آمده میتوانید به لینک مقابل مراجعه کنید
