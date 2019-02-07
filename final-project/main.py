@@ -156,20 +156,20 @@ def encodFunction_three_layers(x_train, x_test, first_layer_neurons, second_laye
     encoded = Dense(first_layer_neurons, activation='relu')(input_x)
     encoded2 = Dense(second_layer_neurons, activation='relu')(encoded)
     encoded3 = Dense(third_layer_nuerons, activation='relu')(encoded2)
-    decoded1 = Dense(second_layer_neurons, activation='sigmoid')(encoded3)
-    decoded2 = Dense(first_layer_neurons, activation='sigmoid')(decoded1)
+    decoded1 = Dense(second_layer_neurons, activation='relu')(encoded3)
+    decoded2 = Dense(first_layer_neurons, activation='relu')(decoded1)
 
-    decoded3 = Dense(8, activation='sigmoid')(decoded2)
+    decoded3 = Dense(8, activation='relu')(decoded2)
 
     # this model maps an input to its reconstruction
     encoder = Model(input_x, encoded3)
     autoencoder = Model(input_x, decoded3)
     # this model maps an input to its encoded representation
     # encoder = Model(input_x, encoded)
-    autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+    autoencoder.compile(optimizer='adadelta', loss='mse')
 
     autoencoder.fit(x_train, x_train,
-                    epochs=0,
+                    epochs=2000,
                     batch_size=800,
                     shuffle=True,
                     validation_data=(x_test, x_test))
@@ -185,18 +185,18 @@ def encodFunction_two_layers(x_train, x_test, first_layer_neurons, second_layer_
 
     encoded = Dense(first_layer_neurons, activation='relu')(input_x)
     encoded2 = Dense(second_layer_neurons, activation='relu')(encoded)
-    decoded1 = Dense(second_layer_neurons, activation='sigmoid')(encoded2)
-    decoded2 = Dense(8, activation='sigmoid')(decoded1)
+    decoded1 = Dense(second_layer_neurons, activation='relu')(encoded2)
+    decoded2 = Dense(8, activation='relu')(decoded1)
 
     # this model maps an input to its reconstruction
     encoder = Model(input_x, encoded2)
     autoencoder = Model(input_x, decoded2)
     # this model maps an input to its encoded representation
     # encoder = Model(input_x, encoded)
-    autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+    autoencoder.compile(optimizer='adadelta', loss='mse')
 
     autoencoder.fit(x_train, x_train,
-                    epochs=0,
+                    epochs=2000,
                     batch_size=800,
                     shuffle=True,
                     validation_data=(x_test, x_test))
@@ -259,7 +259,7 @@ def calculate_result_auto_encoder_inputs(layer1_neurons, layer2_neurons, layer3_
     result += "random forrest :\n" + get_random_forrest(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
     result += "bagging :\n" + get_bagging(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
     result += "decision tree :\n" + get_bagging(x_train, y_train, x_test, y_test) + "\n\n\n*******\n"
-    f = open(f"./tests/auto_encoder{label}.txt", "w")
+    f = open(f"./results/auto_encoder{label}.txt", "w")
     f.write(result)
 
 # calculate_result_normal_inputs()
@@ -270,6 +270,8 @@ def calculate_result_auto_encoder_inputs(layer1_neurons, layer2_neurons, layer3_
 # calculate_result_pca_inputs(5)
 # calculate_result_pca_inputs(6)
 # calculate_result_pca_inputs(7)
+
+
 # calculate_result_auto_encoder_inputs(7, 6, 5)
 # calculate_result_auto_encoder_inputs(7, 6, 4)
 # calculate_result_auto_encoder_inputs(7, 6, 3)
@@ -277,7 +279,9 @@ def calculate_result_auto_encoder_inputs(layer1_neurons, layer2_neurons, layer3_
 # calculate_result_auto_encoder_inputs(7, 5, 4)
 # calculate_result_auto_encoder_inputs(7, 5, 3)
 # calculate_result_auto_encoder_inputs(7, 5, 2)
-# calculate_result_auto_encoder_inputs(7, 4, 3)
+
+
+
 # calculate_result_auto_encoder_inputs(7, 4, 2)
 # calculate_result_auto_encoder_inputs(6, 5, 4)
 # calculate_result_auto_encoder_inputs(6, 5, 3)
@@ -288,18 +292,20 @@ def calculate_result_auto_encoder_inputs(layer1_neurons, layer2_neurons, layer3_
 # calculate_result_auto_encoder_inputs(5, 4, 3)
 # calculate_result_auto_encoder_inputs(5, 4, 2)
 # calculate_result_auto_encoder_inputs(5, 3, 2)
-# calculate_result_auto_encoder_inputs(4, 3, 2)
-# calculate_result_auto_encoder_inputs(7, 6)
-# calculate_result_auto_encoder_inputs(7, 5)
-# calculate_result_auto_encoder_inputs(7, 4)
-# calculate_result_auto_encoder_inputs(7, 3)
-# calculate_result_auto_encoder_inputs(7, 2)
-# calculate_result_auto_encoder_inputs(6, 5)
-# calculate_result_auto_encoder_inputs(6, 4)
-# calculate_result_auto_encoder_inputs(6, 3)
-# calculate_result_auto_encoder_inputs(5, 4)
-# calculate_result_auto_encoder_inputs(5, 3)
-# calculate_result_auto_encoder_inputs(5, 2)
-# calculate_result_auto_encoder_inputs(4, 3)
-# calculate_result_auto_encoder_inputs(4, 2)
-# calculate_result_auto_encoder_inputs(3, 2)
+
+
+
+calculate_result_auto_encoder_inputs(7, 6)
+calculate_result_auto_encoder_inputs(7, 5)
+calculate_result_auto_encoder_inputs(7, 4)
+calculate_result_auto_encoder_inputs(7, 3)
+calculate_result_auto_encoder_inputs(7, 2)
+calculate_result_auto_encoder_inputs(6, 5)
+calculate_result_auto_encoder_inputs(6, 4)
+calculate_result_auto_encoder_inputs(6, 3)
+calculate_result_auto_encoder_inputs(5, 4)
+calculate_result_auto_encoder_inputs(5, 3)
+calculate_result_auto_encoder_inputs(5, 2)
+calculate_result_auto_encoder_inputs(4, 3)
+calculate_result_auto_encoder_inputs(4, 2)
+calculate_result_auto_encoder_inputs(3, 2)

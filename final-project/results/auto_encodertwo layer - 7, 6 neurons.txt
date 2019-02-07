@@ -1,104 +1,104 @@
 logistic regression :
-auc_score  = 0.5949
-Accuracy  = 0.7273
-F1 score  =  0.3636
-Precision score  =  0.6316
-Recall score  =  0.2553
-r2   =  -0.2861
-confusion matrix   =  [[100   7]
- [ 35  12]]
-mse   =  0.2727
+auc_score  = 0.7325
+Accuracy  = 0.7857
+F1 score  =  0.6292
+Precision score  =  0.6667
+Recall score  =  0.5957
+r2   =  -0.0105
+confusion matrix   =  [[93 14]
+ [19 28]]
+mse   =  0.2143
 
 
 *******
 lda :
-auc_score  = 0.6056
-Accuracy  = 0.7338
-F1 score  =  0.3881
-Precision score  =  0.65
-Recall score  =  0.2766
-r2   =  -0.2555
-confusion matrix   =  [[100   7]
- [ 34  13]]
-mse   =  0.2662
+auc_score  = 0.7325
+Accuracy  = 0.7857
+F1 score  =  0.6292
+Precision score  =  0.6667
+Recall score  =  0.5957
+r2   =  -0.0105
+confusion matrix   =  [[93 14]
+ [19 28]]
+mse   =  0.2143
 
 
 *******
 qda :
-auc_score  = 0.5
-Accuracy  = 0.6948
-F1 score  =  0.0
-Precision score  =  0.0
-Recall score  =  0.0
-r2   =  -0.4393
-confusion matrix   =  [[107   0]
- [ 47   0]]
-mse   =  0.3052
+auc_score  = 0.7252
+Accuracy  = 0.7922
+F1 score  =  0.619
+Precision score  =  0.7027
+Recall score  =  0.5532
+r2   =  0.0201
+confusion matrix   =  [[96 11]
+ [21 26]]
+mse   =  0.2078
 
 
 *******
 gnb :
-auc_score  = 0.5
-Accuracy  = 0.3052
-F1 score  =  0.4677
-Precision score  =  0.3052
-Recall score  =  1.0
-r2   =  -2.2766
-confusion matrix   =  [[  0 107]
- [  0  47]]
-mse   =  0.6948
+auc_score  = 0.7405
+Accuracy  = 0.8052
+F1 score  =  0.6429
+Precision score  =  0.7297
+Recall score  =  0.5745
+r2   =  0.0813
+confusion matrix   =  [[97 10]
+ [20 27]]
+mse   =  0.1948
 
 
 *******
 svm :
-auc_score  = 0.5272
-Accuracy  = 0.7078
-F1 score  =  0.1176
-Precision score  =  0.75
-Recall score  =  0.0638
-r2   =  -0.378
-confusion matrix   =  [[106   1]
- [ 44   3]]
-mse   =  0.2922
+auc_score  = 0.7418
+Accuracy  = 0.7987
+F1 score  =  0.6437
+Precision score  =  0.7
+Recall score  =  0.5957
+r2   =  0.0507
+confusion matrix   =  [[95 12]
+ [19 28]]
+mse   =  0.2013
 
 
 *******
 random forrest :
-auc_score  = 0.5614
-Accuracy  = 0.6558
-F1 score  =  0.3614
-Precision score  =  0.4167
-Recall score  =  0.3191
-r2   =  -0.623
+auc_score  = 0.6785
+Accuracy  = 0.7273
+F1 score  =  0.5532
+Precision score  =  0.5532
+Recall score  =  0.5532
+r2   =  -0.2861
 confusion matrix   =  [[86 21]
- [32 15]]
-mse   =  0.3442
+ [21 26]]
+mse   =  0.2727
 
 
 *******
 bagging :
-auc_score  = 0.5402
-Accuracy  = 0.6429
-F1 score  =  0.321
-Precision score  =  0.3824
-Recall score  =  0.2766
-r2   =  -0.6842
-confusion matrix   =  [[86 21]
- [34 13]]
-mse   =  0.3571
+auc_score  = 0.6878
+Accuracy  = 0.7403
+F1 score  =  0.5652
+Precision score  =  0.5778
+Recall score  =  0.5532
+r2   =  -0.2249
+confusion matrix   =  [[88 19]
+ [21 26]]
+mse   =  0.2597
 
 
 *******
 decision tree :
-auc_score  = 0.6061
-Accuracy  = 0.7013
-F1 score  =  0.425
-Precision score  =  0.5152
-Recall score  =  0.3617
-r2   =  -0.4086
-confusion matrix   =  [[91 16]
- [30 17]]
-mse   =  0.2987
+auc_score  = 0.741
+Accuracy  = 0.7727
+F1 score  =  0.6392
+Precision score  =  0.62
+Recall score  =  0.6596
+r2   =  -0.0718
+confusion matrix   =  [[88 19]
+ [16 31]]
+mse   =  0.2273
 
 
 *******

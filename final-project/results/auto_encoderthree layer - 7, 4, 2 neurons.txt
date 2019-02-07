@@ -38,15 +38,15 @@ mse   =  0.3052
 
 *******
 gnb :
-auc_score  = 0.5252
-Accuracy  = 0.6883
-F1 score  =  0.1724
-Precision score  =  0.4545
-Recall score  =  0.1064
-r2   =  -0.4699
+auc_score  = 0.5358
+Accuracy  = 0.6948
+F1 score  =  0.2034
+Precision score  =  0.5
+Recall score  =  0.1277
+r2   =  -0.4393
 confusion matrix   =  [[101   6]
- [ 42   5]]
-mse   =  0.3117
+ [ 41   6]]
+mse   =  0.3052
 
 
 *******
@@ -64,41 +64,41 @@ mse   =  0.3052
 
 *******
 random forrest :
-auc_score  = 0.5858
-Accuracy  = 0.6234
-F1 score  =  0.4423
-Precision score  =  0.4035
-Recall score  =  0.4894
-r2   =  -0.7761
-confusion matrix   =  [[73 34]
- [24 23]]
-mse   =  0.3766
+auc_score  = 0.6066
+Accuracy  = 0.6688
+F1 score  =  0.4516
+Precision score  =  0.4565
+Recall score  =  0.4468
+r2   =  -0.5617
+confusion matrix   =  [[82 25]
+ [26 21]]
+mse   =  0.3312
 
 
 *******
 bagging :
-auc_score  = 0.5692
-Accuracy  = 0.6169
-F1 score  =  0.4158
-Precision score  =  0.3889
-Recall score  =  0.4468
-r2   =  -0.8067
-confusion matrix   =  [[74 33]
- [26 21]]
-mse   =  0.3831
+auc_score  = 0.5326
+Accuracy  = 0.5909
+F1 score  =  0.3636
+Precision score  =  0.3462
+Recall score  =  0.383
+r2   =  -0.9292
+confusion matrix   =  [[73 34]
+ [29 18]]
+mse   =  0.4091
 
 
 *******
 decision tree :
-auc_score  = 0.5985
-Accuracy  = 0.6494
-F1 score  =  0.449
-Precision score  =  0.4314
-Recall score  =  0.4681
-r2   =  -0.6536
-confusion matrix   =  [[78 29]
- [25 22]]
-mse   =  0.3506
+auc_score  = 0.5619
+Accuracy  = 0.6234
+F1 score  =  0.3958
+Precision score  =  0.3878
+Recall score  =  0.4043
+r2   =  -0.7761
+confusion matrix   =  [[77 30]
+ [28 19]]
+mse   =  0.3766
 
 
 *******
